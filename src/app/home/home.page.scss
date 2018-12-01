@@ -1,0 +1,21 @@
+.devices {
+  display: flex;
+  flex-flow: column wrap;
+
+  .top {
+    align-content: center;
+  }
+  
+  .bottom {
+    align-content: center;
+  }
+}
+
+.top-buttons {
+  display:flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 5px;
+
+  
+}

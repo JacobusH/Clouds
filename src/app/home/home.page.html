@@ -1,0 +1,38 @@
+<ion-header>
+  <!-- <ion-navbar> -->
+    <ion-title>
+      NeoPixel
+    </ion-title>
+  <!-- </ion-navbar> -->
+</ion-header>
+ 
+<ion-content>
+  <div class="top-buttons">
+    <button (click)="scan()">
+      Scan
+    </button>
+  </div>
+  <div class="devices" *ngFor="let device of devices">
+    <div class="top">
+      <h2 class="name">{{ device.name || 'Unnamed' }}</h2>
+      <p class="id">{{ device.id }}</p>
+      <p class="rssi">RSSI: {{device.rssi}}</p>
+    </div>
+    <div class="bottom">
+      <button (click)="deviceSelected(device)">
+        Select
+      </button>  
+    </div>
+  </div>
+
+  Test Link: 
+  <button (click)="testDeviceSelected()">
+      Select
+    </button>  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>
