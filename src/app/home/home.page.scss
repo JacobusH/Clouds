@@ -16,6 +16,13 @@
   flex-flow: row nowrap;
   align-items: center;
   margin: 5px;
+}
 
-  
+.collapser {
+  position: absolute;
+  /* display: flex; */
+  right: 3px;
+  top: 0px;
+  z-index: 10000;
+  cursor: pointer;
 }

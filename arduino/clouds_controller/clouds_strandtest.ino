@@ -21,6 +21,9 @@
 // and minimize distance between Arduino and first pixel.  Avoid connecting
 // on a live circuit...if you must, connect GND first.
 
+//const long interval = 1000;           // interval at which to blink (milliseconds)
+bool is_looping = false; 
+
 /*
 void setup() {
   // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
@@ -74,7 +77,7 @@ void rainbow(uint8_t wait) {
 }
 
 // Slightly different, this makes the rainbow equally distributed throughout
-void rainbowCycle(uint8_t wait) {
+void rainbowCycleDelay(uint8_t wait) {
   uint16_t i, j;
 
   for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
@@ -85,6 +88,29 @@ void rainbowCycle(uint8_t wait) {
     delay(wait);
   }
 }
+
+// Slightly different, this makes the rainbow equally distributed throughout
+void rainbowCycleLoop(uint8_t interval) {
+  uint16_t i, j;
+  unsigned long currentMillis = millis();
+
+  while(is_looping) {
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+      for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+        for(i=0; i< strip.numPixels(); i++) {
+          strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+        }
+        strip.show();
+//        delay(wait);
+      }
+    }
+  }
+  
+}
+
 
 //Theatre-style crawling lights.
 void theaterChase(uint32_t c, uint8_t wait) {

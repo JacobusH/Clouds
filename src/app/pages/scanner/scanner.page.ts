@@ -1,17 +1,17 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
-import { DeviceService } from '../modules/shared/services/device.service';
+import { DeviceService } from '../../modules/shared/services/device.service';
 import { Router } from '@angular/router';
 // import { AlertController } from 'ionic-angular';
 
 const NEOPIXEL_SERVICE = 'ccc0';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-scanner',
+  templateUrl: './scanner.page.html',
+  styleUrls: ['./scanner.page.scss']
 })
-export class HomePage implements OnInit {
+export class ScannerPage implements OnInit {
   devices: any[] = [];
   statusMessage: string;
   displayMessage:string = "Hallo";
@@ -104,4 +104,5 @@ export class HomePage implements OnInit {
     // });
     // alert.present();
   }
+
 }

@@ -148,10 +148,10 @@ void loop()
           break;
         }
   
-      /*case 'S': {   // Setup dimensions, components, stride...
-          commandSetup();
+      case 'S': {   // Setup dimensions, components, stride...
+          commandCloudSetup();
           break;
-       }*/
+       }
 
       case 'C': {   // Clear with color
           commandClearColor();
@@ -224,39 +224,6 @@ void commandTest() {
 void commandVersion() {
   Serial.println(F("Command: Version check"));
   sendResponse(NEOPIXEL_VERSION_STRING);
-}
-
-void commandSetup() {
-  Serial.println(F("Command: Setup"));
-
-  width = bleuart.read();
-  height = bleuart.read();
-  stride = bleuart.read();
-  componentsValue = bleuart.read();
-  is400Hz = bleuart.read();
-
-  neoPixelType pixelType;
-  pixelType = componentsValue + (is400Hz ? NEO_KHZ400 : NEO_KHZ800);
-
-  components = (componentsValue == NEO_RGB || componentsValue == NEO_RBG || componentsValue == NEO_GRB || componentsValue == NEO_GBR || componentsValue == NEO_BRG || componentsValue == NEO_BGR) ? 3:4;
-  
-  Serial.printf("\tsize: %dx%d\n", width, height);
-  Serial.printf("\tstride: %d\n", stride);
-  Serial.printf("\tpixelType %d\n", pixelType);
-  Serial.printf("\tcomponents: %d\n", components);
-
-  if (pixelBuffer != NULL) {
-      delete[] pixelBuffer;
-  }
-
-  uint32_t size = width*height;
-  pixelBuffer = new uint8_t[size*components];
-  strip.updateLength(size);
-  strip.updateType(pixelType);
-  strip.setPin(PIN);
-
-  // Done
-  sendResponse("SETUP OK");
 }
 
 void commandSetBrightness() {

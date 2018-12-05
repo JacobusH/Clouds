@@ -1,0 +1,22 @@
+<div class="top-buttons"> 
+  <button (click)="scan()">
+    Scan
+  </button> 
+</div>
+<div class="devices" *ngFor="let device of devices">
+  <div class="top">
+    <h2 class="name">{{ device.name || 'Unnamed' }}</h2>
+    <p class="id">{{ device.id }}</p>
+    <p class="rssi">RSSI: {{device.rssi}}</p>
+  </div>
+  <div class="bottom">
+    <button (click)="deviceSelected(device)">
+      Select
+    </button>  
+  </div>
+</div>
+
+Test Link: 
+<button (click)="testDeviceSelected()">
+    Select
+  </button>  

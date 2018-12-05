@@ -1,0 +1,13 @@
+{
+  "name": "clouds",
+  "short_name": "clouds",
+  "start_url": "ravenrepeat.com",
+  "display": "fullscreen",
+  "icons": [{
+    "src": "assets/icon/logo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#4e8ef7",
+  "theme_color": "#4e8ef7"
+}
