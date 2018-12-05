@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../../modules/shared/services/device.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Patterns } from '../../modules/shared/models/patterns.model';
+import { PatternsEnum } from '../../modules/shared/models/patterns.model';
 
 @Component({
   selector: 'app-clouds',

@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(en);
 // import { AlertController } from 'ionic-angular';
@@ -31,7 +33,7 @@ registerLocaleData(en);
     , BrowserAnimationsModule
     , FormsModule
     , HttpClientModule
-    , NgZorroAntdModule
+    , NgZorroAntdModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
