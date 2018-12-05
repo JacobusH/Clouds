@@ -11,6 +11,7 @@ import { PatternsEnum } from '../../modules/shared/models/patterns.model';
 })
 export class CloudsPage implements OnInit, OnDestroy {
   serviceDevice;
+  connected = false;
 
   displayMsg;
   notifMsg;
@@ -60,6 +61,7 @@ export class CloudsPage implements OnInit, OnDestroy {
 
   onConnected(peripheral) {
     this.ngZone.run(() => {
+      this.connected = true;
       this.deviceService.setPeripheral(peripheral);
       this.displayMsg = 'Connected to: ' + peripheral.name + ' ' + peripheral.id;
     });

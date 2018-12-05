@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
-import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule, NzCollapseModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule } from 'ng-zorro-antd';
 
 
 import { HomePage } from './home.page';
@@ -28,7 +28,6 @@ import { routing } from './home.routing';
     , FormsModule
     , IonicModule
     , NgZorroAntdModule
-    , NzCollapseModule
     , RouterModule.forChild([
       {
         path: '',

@@ -12,7 +12,6 @@ import { BLE } from '@ionic-native/ble/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -33,7 +32,7 @@ registerLocaleData(en);
     , BrowserAnimationsModule
     , FormsModule
     , HttpClientModule
-    , NgZorroAntdModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    , ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
@@ -41,7 +40,6 @@ registerLocaleData(en);
     BLE,
     // AlertController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent]
 })

@@ -17,6 +17,9 @@ export class HomePage implements OnInit {
   displayMessage:string = "Hallo";
   logMessage:string = "No device selected";
 
+  triggerTemplate;
+  isCollapsed = false;
+
   constructor(private ble: BLE
               // , private alertCtrl: AlertController,
               , private ngZone: NgZone
