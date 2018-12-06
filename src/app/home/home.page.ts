@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
     });
-  }
+  } 
 
   installPWA() {
     this.deferredPrompt.prompt();
