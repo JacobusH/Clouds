@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { environment } from '../environments/environment';
 
 registerLocaleData(en);
@@ -28,6 +32,9 @@ registerLocaleData(en);
   entryComponents: [],
   imports: [
     BrowserModule
+    , AngularFirestoreModule
+    , AngularFireStorageModule
+    , AngularFireModule.initializeApp(environment.firebase)
     , IonicModule.forRoot()
     , AppRoutingModule
     , BrowserAnimationsModule

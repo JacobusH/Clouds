@@ -73,7 +73,7 @@ export class ScannerPage implements OnInit {
       this.logMessage = "Device Selected: ";
       this.deviceService.setDevice(device);
 
-      this.router.navigateByUrl('/clouds', { queryParams: { device: JSON.stringify(device) }} )
+      this.router.navigateByUrl('/home/clouds', { queryParams: { device: JSON.stringify(device) }} )
     })
   }
 
@@ -84,7 +84,7 @@ export class ScannerPage implements OnInit {
       console.log(JSON.stringify(devvy) + ' selected');
       this.deviceService.setDevice(devvy);
 
-      this.router.navigateByUrl('/clouds', { queryParams: { device: JSON.stringify(devvy) }} )
+      this.router.navigateByUrl('/home/clouds', { queryParams: { device: JSON.stringify(devvy) }} )
     })
   }
 

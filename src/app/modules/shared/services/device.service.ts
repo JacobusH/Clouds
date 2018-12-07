@@ -41,7 +41,6 @@ export class DeviceService {
 
   setDevice(device: any) {
     this.selectedDevice = device;
-    
   }
 
   setPeripheral(peripheral: any) {

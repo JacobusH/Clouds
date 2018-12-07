@@ -28,11 +28,14 @@
 <!--
   Installations
   $ ionic cordova plugin add cordova-plugin-ble-central
-``$ npm install --save @ionic-native/ble
+  $ npm install --save @ionic-native/ble@5.0.0-beta.22
 
   Building for test on android device
-  $ ionic cordova build --release android
+  $ ionic cordova run android --device
 
   Building for PWA deployment
-  $ 
+  $ npm run ionic:build --prod
+  $ ionic cordova build android --release --prod
+  $ firebase login
+  $ firebase deploy
 -->

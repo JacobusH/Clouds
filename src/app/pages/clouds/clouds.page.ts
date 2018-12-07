@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../../modules/shared/services/device.service';
+import { PatternsService } from '../../modules/shared/services/patterns.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatternsEnum } from '../../modules/shared/models/patterns.model';
 
@@ -15,6 +16,7 @@ export class CloudsPage implements OnInit, OnDestroy {
 
   displayMsg;
   notifMsg;
+  otherInfo;
 
   showPickers = false;
   showPerp = false;
@@ -30,12 +32,12 @@ export class CloudsPage implements OnInit, OnDestroy {
   piServices;
   piCharacs;
 
-
   constructor(private ble: BLE,
               private ngZone: NgZone
               , private deviceService: DeviceService
               , private router: Router
-              , private actRoute: ActivatedRoute) {
+              , private actRoute: ActivatedRoute
+              , private patternService: PatternsService) {
 
   }
 
@@ -51,6 +53,29 @@ export class CloudsPage implements OnInit, OnDestroy {
     })
   }
 
+  sendCmd(letter: string) {
+    // this.patternService.sendCommand(letter).then(
+    //   (info) => {
+    //     this.displayMsg = 'Sent cmd' + letter + " | info: " + info; 
+    //   },
+    //   (err) => {
+    //     this.displayMsg = 'Err sending cmd' + letter + " | err: " + err; 
+    //   }
+    // )
+
+    let data : Uint8Array;
+    data = new Uint8Array([0x41]); // A
+    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, data.buffer as ArrayBuffer).then(
+      (info) => {
+        this.displayMsg = 'Sent cmd' + letter + " | info: " + info; 
+      },
+      (err) => {
+        this.displayMsg = 'Err sending cmd' + letter + " | err: " + err; 
+      }
+    )
+  }
+
+
   ngOnDestroy() {
     console.log('destroying disconnecting Bluetooth');
     this.ble.disconnect(this.peripheral.id).then(
@@ -64,6 +89,19 @@ export class CloudsPage implements OnInit, OnDestroy {
       this.connected = true;
       this.deviceService.setPeripheral(peripheral);
       this.displayMsg = 'Connected to: ' + peripheral.name + ' ' + peripheral.id;
+
+      this.otherInfo = "service: " + this.deviceService.serviceCloud1 + "tx: " + this.deviceService.txCloud1;
+
+      this.ble.startNotification(peripheral.id, this.deviceService.serviceCloud1, this.deviceService.rxCloud1).subscribe(
+        buffer => {
+          var data = new Uint8Array(buffer);
+          console.log('Received Notification: Power Switch = ' + data);
+          this.ngZone.run(() => {
+            this.displayMsg = "started notifs";
+            this.power = data[0] !== 0;
+          });
+        }
+      );
     });
   }
 

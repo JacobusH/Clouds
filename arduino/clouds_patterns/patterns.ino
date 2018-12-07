@@ -1,10 +1,27 @@
-#include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-  #include <avr/power.h>
-#endif
+/*********************************************************************
+ *  This file defines the different patterns possible for the clouds
+ * 
+*********************************************************************/
 
-//const long interval = 1000;           // interval at which to blink (milliseconds)
-bool is_looping = false; 
+bool is_looping = false; // Are we currently looping a pattern?
+
+void commandSendA() {
+  Serial.println("----------------------------------------");
+  Serial.println("IN A mothaFUCKA!!!!!");
+
+  colorWipe(strip.Color(255, 0, 0), 50); // Red
+  colorWipe(strip.Color(0, 255, 0), 50); // Green
+  colorWipe(strip.Color(0, 0, 255), 50); // Blue
+}
+
+
+void commandSendAB() {
+  Serial.println("----------------------------------------");
+  Serial.println("IN AB mothaFUCKA!!!!!");
+
+  rainbowCycleLoop(1000);
+}
+
 
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
@@ -20,6 +37,7 @@ uint32_t Wheel(byte WheelPos) {
   WheelPos -= 170;
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
+
 // Fill the dots one after the other with a color
 void colorWipe(uint32_t c, uint8_t wait) {
   for(uint16_t i=0; i<strip.numPixels(); i++) {
@@ -55,26 +73,25 @@ void rainbowCycleDelay(uint8_t wait) {
 }
 
 // Slightly different, this makes the rainbow equally distributed throughout
-//void rainbowCycleLoop(uint8_t interval) {
-//  uint16_t i, j;
-//  unsigned long currentMillis = millis();
-//
-//  while(is_looping) {
-//    currentMillis = millis();
-//    if (currentMillis - previousMillis >= interval) {
-//    previousMillis = currentMillis;
-//
-//      for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
-//        for(i=0; i< strip.numPixels(); i++) {
-//          strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
-//        }
-//        strip.show();
-////        delay(wait);
-//      }
-//    }
-//  }
-//  
-//}
+void rainbowCycleLoop(uint8_t interval) {
+  uint16_t i, j;
+  unsigned long currentMillis = millis();
+
+  while(is_looping) {
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+      for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+        for(i=0; i< strip.numPixels(); i++) {
+          strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+        }
+        strip.show();
+//        delay(wait);
+      }
+    }
+  }
+}
 
 
 //Theatre-style crawling lights.

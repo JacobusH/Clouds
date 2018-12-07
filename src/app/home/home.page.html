@@ -1,35 +1,35 @@
-<nz-layout>
+<!-- <nz-layout>
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
     <div class="collapser">
       <i class="anticon trigger" 
       style="color: #d3d3d3;"
       [class.anticon-menu-fold]="!isCollapsed" 
       [class.anticon-menu-unfold]="isCollapsed" 
-      (click)="isCollapsed=!isCollapsed">
+      (click)="isCollapsed=!isCollapsed"> 
       </i>
   </div>
-  <!-- Menu -->
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
       <li nz-menu-item routerLink='/home'><span><i class="anticon anticon-home"></i><span class="nav-text">Home</span></span></li>
       <li nz-menu-item routerLink='/home/scanner'><span><i class="anticon anticon-radar-chart"></i><span class="nav-text">Scanner</span></span></li>
       <li nz-menu-item routerLink='/home/clouds'><span><i class="anticon anticon-cloud"></i><span class="nav-text">Clouds</span></span></li>
       <li nz-menu-item (click)="installPWA()"><span><i class="anticon anticon-leaf"></i><span class="nav-text">Install Me</span></span></li>
-      <!-- Sub Menu-->
-      <!-- <li nz-submenu>
-        <span title routerLink='/trackers/home'><i class="anticon anticon-line-chart"></i><span class="nav-text">Trackers</span></span>
-        <ul>
-          <li nz-menu-item>
-          <i class="anticon anticon-user"></i>
-            <span class="nav-text">Hi</span>
-          </li>
-        </ul>
-      </li> -->
     </ul>
   </nz-sider>
   <nz-layout>
     <router-outlet></router-outlet>
   </nz-layout>
-</nz-layout>
+</nz-layout> -->
 
+<ion-content class="padding">
+  <router-outlet></router-outlet>
 
+</ion-content>
+
+<ion-footer>
+  <div class="footer-list flex-space-around">
+      <i nz-icon [type]="'home'" routerLink='/home/overview'></i>
+      <i nz-icon [type]="'radar-chart'" routerLink='/home/scanner'></i>
+      <i nz-icon [type]="'cloud'" [theme]="'outline'" routerLink='/home/clouds'></i>
+    </div>
+</ion-footer>
 

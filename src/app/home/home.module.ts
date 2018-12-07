@@ -6,14 +6,12 @@ import { RouterModule } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
 import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule } from 'ng-zorro-antd';
 
-
 import { HomePage } from './home.page';
 import { CloudsPage } from '../pages/clouds/clouds.page';
 import { ScannerPage } from '../pages/scanner/scanner.page';
 import { OverviewPage } from '../pages/overview/overview.page';
 
 import { routing } from './home.routing';
-
 
 @NgModule({
   declarations: [

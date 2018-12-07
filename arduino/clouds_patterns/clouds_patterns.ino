@@ -1,26 +1,41 @@
 /*********************************************************************
- This is an example for our nRF52 based Bluefruit LE modules
+ This is the controller for Jeanne's Clouds!
 
- Pick one up today in the adafruit shop!
+ It works in conjunction with her personal Android App so she can set
+ colors and patterns on her clouds in any way she wants. 
 
- Adafruit invests time and resources providing this open source code,
- please support Adafruit and open-source hardware by purchasing
- products from Adafruit!
+ Love you Jeanne!  
 
- MIT license, check LICENSE for more information
- All text above, and the splash screen below must be included in
- any redistribution
+ .;;;, .;;;,                   .;;;, .;;;,
+       .;;;,;;;;;,;;;;;,.;;;,       .;;;.,;;;;;,;;;;;,;;;.
+      ;;;;oOOoOOoOOoOOoOOo;;;. .,. .;;;oOOoOOoOOoOOoOOo;;;;
+  .,,.`oOOo'           `OoOOo,;;;;;,oOOoO'          `oOOo;',,.
+ ;;;;oOOo'    ,;;;,       `OoOOo;oOOoO'       ,;;;,   `oOOo;;;;
+ `;;OOoO'    ;;;'             `OOO'             `;;;   `OoOO;;'
+,;;,OOoO     ;;                 "                 ;;    OoOO,;;,
+;;;;OOoO     `;     ,;;.                          ;'    OoOO;;;;
+ ``.;OOoO,    `;    ` ;;    .;;. ;; ;; .;;,      ;'   ,OoOO;,''
+   ;;;;OOoO,          ;;    ;  ; `; ;' ;..'         ,OoOO;;;;
+    ```.;OOoO,        ;,;;, `;;'  `;'  `;;'       ,OoOO;,'''
+       ;;;;OOoO,      '    ',  ,                ,OoOO;;;;
+        ```,;OOoO,.          ''              .,OoOO;,'''
+            ;;;;OOoO,.                    .,OoOO;;;;
+             ````,;OOoO,.              .,OoOO;, '''
+                 ;;;;;OOoO,.        .,OoOO;;;;
+                  `````,;OOoO,.  .,OoOO;,''''
+                       ;;;;;OOoOOoOO;;;;; 
+                        `````;;OO;;'''''
+                             `;;;;'
+                             
 *********************************************************************/
-
-// This sketch is intended to be used with the NeoPixel control
-// surface in Adafruit's Bluefruit LE Connect mobile application.
+// This sketch is intended to be used with Jeanne's App
 //
 // - Compile and flash this sketch to the nRF52 Feather
-// - Open the Bluefruit LE Connect app
-// - Switch to the NeoPixel utility
+// - Open Jeanne's app
+// - Scan for "Jeanne's Clouds" 
 // - Click the 'connect' button to establish a connection and
 //   send the meta-data about the pixel layout
-// - Use the NeoPixel utility to update the pixels on your device
+// - Use the application to control the clouds
 
 /* NOTE: This sketch required at least version 1.1.0 of Adafruit_Neopixel !!! */
 
@@ -40,26 +55,11 @@ uint8_t componentsValue;
 bool is400Hz;
 uint8_t components = 3;     // only 3 and 4 are valid values
 
-// Adafruit_NeoPixel neopixel = Adafruit_NeoPixel();
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
 
 // BLE Service
 BLEDis  bledis;
 BLEUart bleuart;
-
-BLEService        cloudService = BLEService(0x180D);
-BLECharacteristic cloudCharac = BLECharacteristic(0x2A37);
-
-void connect_callback(uint16_t conn_handle)
-{
-  char central_name[32] = { 0 };
-  Bluefruit.Gap.getPeerName(conn_handle, central_name, sizeof(central_name));
-
-  Serial.print("Connected to ");
-  Serial.println(central_name);
-
-  Serial.println("Please select the 'Neopixels' tab, click 'Connect' and have fun");
-}
 
 void setup()
 {
@@ -72,13 +72,12 @@ void setup()
   
   // Config Neopixels
   strip.begin();
-  // neopixel.begin();
 
   // Init Bluefruit
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
   Bluefruit.setTxPower(4);
-  Bluefruit.setName("Jeanne's Clouds");
+  Bluefruit.setName("Bluefruit52");
   Bluefruit.setConnectCallback(connect_callback);
 
   // Configure and Start Device Information Service
@@ -121,24 +120,33 @@ void startAdv(void)
   Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds  
 }
 
+void connect_callback(uint16_t conn_handle)
+{
+  char central_name[32] = { 0 };
+  Bluefruit.Gap.getPeerName(conn_handle, central_name, sizeof(central_name));
+
+  Serial.print("Connected to ");
+  Serial.println(central_name);
+
+  Serial.println("Please select the 'Neopixels' tab, click 'Connect' and have fun");
+}
+
 void loop()
 {
   // Echo received data
-  if ( Bluefruit.connected() && bleuart.notifyEnabled() )
+  // if ( Bluefruit.connected() && bleuart.notifyEnabled() )
+  if ( Bluefruit.connected() )
   {
     int command = bleuart.read();
-    
+
     switch (command) {
-      case 'A': { // TEST
-        Serial.println("------------------------------");
-        Serial.println("IN A");
-        Serial.println("------------------------------");
-        commandTest();
+      case 'A': { // test
+        commandSendA();
         break;
       }
 
-      case 'S': { // Cloud setup
-        commandCloudSetup();
+      case "AB": { // nother test
+        commandSendAB();
         break;
       }
       
@@ -148,7 +156,7 @@ void loop()
         }
   
       case 'S': {   // Setup dimensions, components, stride...
-          commandCloudSetup();
+//          commandSetup();
           break;
        }
 
@@ -170,11 +178,6 @@ void loop()
       case 'I': {   // Receive new image
           commandImage();
           break;
-       }
-
-       default: { // ??
-        // Serial.println("Command Received");
-        // Serial.println(command);
        }
 
     }
@@ -203,23 +206,6 @@ void swapBuffers()
 
 }
 
-void commandCloudSetup() {
-  Serial.println("Command: Cloud Setup");
-  sendResponse("Command: Cloud Setup");
-
-  strip.show(); // Initialize all pixels to 'off'
-}
-
-void commandTest() {
-  sendResponse("HEY WHAT'S UP MOTHAFUCKA!!!!");
-  sendResponse("Time to change some colors");
-  
-
-  colorWipe(strip.Color(255, 0, 0), 50); // Red
-  colorWipe(strip.Color(0, 255, 0), 50); // Green
-  colorWipe(strip.Color(0, 0, 255), 50); // Blue
-}
-
 void commandVersion() {
   Serial.println(F("Command: Version check"));
   sendResponse(NEOPIXEL_VERSION_STRING);
@@ -238,7 +224,7 @@ void commandSetBrightness() {
   swapBuffers();
 
   // Done
-  sendResponse("BRIGHTNESS OK");
+  sendResponse("OK");
 }
 
 void commandClearColor() {
@@ -276,7 +262,7 @@ void commandClearColor() {
   }
   
   // Done
-  sendResponse("CLEAR OK");
+  sendResponse("OK");
 }
 
 void commandSetPixel() {
@@ -314,7 +300,7 @@ void commandSetPixel() {
   strip.show();
 
   // Done
-  sendResponse("SET PIXEL OK");
+  sendResponse("OK");
 }
 
 void commandImage() {
@@ -345,7 +331,7 @@ void commandImage() {
   swapBuffers();
 
   // Done
-  sendResponse("IMAGE OK");
+  sendResponse("OK");
 }
 
 void sendResponse(char const *response) {
