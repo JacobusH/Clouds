@@ -1,50 +1,19 @@
-<div>
-      Display MSG: 
-      {{displayMsg}}
-    <br>
-      Service Device: 
-      {{serviceDevice}}
-    <br>
-    Other info:
-    {{otherInfo}}
-  </div>
+<ng-container *ngIf="connected; else loading_screen">
+  Display MSG: 
+  {{displayMsg}}
+  <br>
+  Service Device: 
+  {{serviceDevice}}
+  <br>
+  Other info:
+  {{otherInfo}}
 
+  <app-patterns></app-patterns>
+</ng-container>
+<ng-template #loading_screen>
+  <!-- <span class="loading-msg">Connecting to the Clouds</span> -->
+  <object class="loading-clouds" data="../../../assets//Cloud-6s-200x200px.svg" type="image/svg+xml">
+    <!-- <img src="yourfallback.jpg" /> -->
+  </object>
+</ng-template>
 
-  <button (click)="sendCmd('A')">Send A</button>
-  <br/>
-  <button (click)="sendCmd('D')">Send D</button>
-  
-PICKERS: <button (click)="showPickers = !showPickers">Show</button>
-<div *ngIf="showPickers">
-  <ion-item>
-    <ion-label>Red</ion-label>
-      <ion-range max="255" debounce="30" [(ngModel)]="red"  (ionChange)="setColor($event)">
-    </ion-range>
-  </ion-item>
-  <ion-item>
-    <ion-label>Green</ion-label>
-    <ion-range max="255" debounce="30" [(ngModel)]="green"  (ionChange)="setColor($event)">
-    </ion-range>
-  </ion-item>
-  <ion-item>
-    <ion-label>Blue</ion-label>
-    <ion-range max="255" debounce="30" [(ngModel)]="blue"  (ionChange)="setColor($event)">
-    </ion-range>
-  </ion-item>
-  <ion-item>
-    <ion-label>Brightness</ion-label>
-    <ion-range max="255" debounce="30" [(ngModel)]="brightness" (ionChange)="setBrightness($event)">
-      <ion-icon range-left small name="sunny"></ion-icon>
-      <ion-icon range-right name="sunny"></ion-icon>
-    </ion-range>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Power</ion-label>
-    <ion-toggle [(ngModel)]="power" (ngModelChange)="onPowerSwitchChange($event);"></ion-toggle>  
-  </ion-item>
-  <ion-item>
-    <ion-label>Power 2</ion-label>
-    <ion-checkbox [(ngModel)]="power2"></ion-checkbox>
-  </ion-item>
-</div>

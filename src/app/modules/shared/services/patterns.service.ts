@@ -22,17 +22,8 @@ export class PatternsService {
 
   // Commands to send to controller
   sendCommand(cmd: string) {
-    let data : Uint8Array;
-
-    switch(cmd) {
-      case 'A':
-        data = new Uint8Array([0x41]); // A
-        break;
-      case 'AB':
-        data = new Uint8Array([0x44, 0x45]); // AB
-        break;
-      } 
-
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, data.buffer as ArrayBuffer)
+    let data = new TextEncoder().encode(cmd);
+    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, data.buffer as ArrayBuffer)
   }
+
 }

@@ -44,7 +44,9 @@
 #include <bluefruit.h>
 
 #define NEOPIXEL_VERSION_STRING "Neopixel v2.0"
-#define PIN                     7   /* Pin used to drive the NeoPixels */
+#define PIN7                     7   /* Pin used for Cloud 1 */
+#define PIN16                    16  /* Pin used for Cloud 2 */
+#define PIN27                    27  /* Pin used for Cloud 3 */
 
 #define MAXCOMPONENTS  4
 uint8_t *pixelBuffer = NULL;
@@ -55,7 +57,9 @@ uint8_t componentsValue;
 bool is400Hz;
 uint8_t components = 3;     // only 3 and 4 are valid values
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
+//Adafruit_NeoPixel Cloud_1 = Adafruit_NeoPixel(16, PIN7, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel Cloud_2 = Adafruit_NeoPixel(16, PIN16, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel Cloud_3 = Adafruit_NeoPixel(16, PIN27, NEO_GRB + NEO_KHZ800);
 
 // BLE Service
 BLEDis  bledis;
@@ -71,7 +75,9 @@ void setup()
   Serial.println("Please connect using the Bluefruit Connect LE application");
   
   // Config Neopixels
-  strip.begin();
+//  Cloud_1.begin();
+  Cloud_2.begin();
+  Cloud_3.begin();
 
   // Init Bluefruit
   Bluefruit.begin();
@@ -145,8 +151,20 @@ void loop()
         break;
       }
 
-      case "AB": { // nother test
-        commandSendAB();
+      case 'Q': { // test
+//        commandSendQ(200, Cloud_1);
+        commandSendQ(200, Cloud_2);
+        commandSendQ(200, Cloud_3);
+        break;
+      }
+
+      case 'X': {
+        commandSendX();
+        break;
+      }
+
+      case 'Z': { // nother test
+        commandSendZ();
         break;
       }
       
@@ -161,30 +179,32 @@ void loop()
        }
 
       case 'C': {   // Clear with color
-          commandClearColor();
+//          commandClearColor(Cloud_1);
+          commandClearColor(Cloud_2);
+          commandClearColor(Cloud_3);
           break;
       }
 
       case 'B': {   // Set Brightness
-          commandSetBrightness();
+//          commandSetBrightness(Cloud_1);
+          commandSetBrightness(Cloud_2);
+          commandSetBrightness(Cloud_3);
           break;
       }
             
       case 'P': {   // Set Pixel
-          commandSetPixel();
+//          commandSetPixel(Cloud_1);
+          commandSetPixel(Cloud_2);
+          commandSetPixel(Cloud_3);
           break;
       }
   
-      case 'I': {   // Receive new image
-          commandImage();
-          break;
-       }
 
     }
   }
 }
 
-void swapBuffers()
+void swapBuffers(Adafruit_NeoPixel cur_cloud)
 {
   uint8_t *base_addr = pixelBuffer;
   int pixelIndex = 0;
@@ -192,17 +212,17 @@ void swapBuffers()
   {
     for (int i = 0; i < width; i++) {
       if (components == 3) {
-        strip.setPixelColor(pixelIndex, strip.Color(*base_addr, *(base_addr+1), *(base_addr+2)));
+        cur_cloud.setPixelColor(pixelIndex, cur_cloud.Color(*base_addr, *(base_addr+1), *(base_addr+2)));
       }
       else {
-        strip.setPixelColor(pixelIndex, strip.Color(*base_addr, *(base_addr+1), *(base_addr+2), *(base_addr+3) ));
+        cur_cloud.setPixelColor(pixelIndex, cur_cloud.Color(*base_addr, *(base_addr+1), *(base_addr+2), *(base_addr+3) ));
       }
-      base_addr+=components;
+      base_addr += components;
       pixelIndex++;
     }
     pixelIndex += stride - width;   // Move pixelIndex to the next row (take into account the stride)
   }
-  strip.show();
+  cur_cloud.show();
 
 }
 
@@ -211,23 +231,23 @@ void commandVersion() {
   sendResponse(NEOPIXEL_VERSION_STRING);
 }
 
-void commandSetBrightness() {
+void commandSetBrightness(Adafruit_NeoPixel cur_cloud) {
   Serial.println(F("Command: SetBrightness"));
 
    // Read value
   uint8_t brightness = bleuart.read();
 
   // Set brightness
-  strip.setBrightness(brightness);
+  cur_cloud.setBrightness(brightness);
 
   // Refresh pixels
-  swapBuffers();
+  swapBuffers(cur_cloud);
 
   // Done
   sendResponse("OK");
 }
 
-void commandClearColor() {
+void commandClearColor(Adafruit_NeoPixel cur_cloud) {
   Serial.println(F("Command: ClearColor"));
 
   // Read color
@@ -251,7 +271,7 @@ void commandClearColor() {
 
   // Swap buffers
   Serial.println(F("ClearColor completed"));
-  swapBuffers();
+  swapBuffers(cur_cloud);
 
 
   if (components == 3) {
@@ -265,7 +285,7 @@ void commandClearColor() {
   sendResponse("OK");
 }
 
-void commandSetPixel() {
+void commandSetPixel(Adafruit_NeoPixel cur_cloud) {
   Serial.println(F("Command: SetPixel"));
 
   // Read position
@@ -289,46 +309,15 @@ void commandSetPixel() {
   uint8_t *pixelBufferPointer = pixelBuffer + pixelDataOffset;
   uint32_t color;
   if (components == 3) {
-    color = strip.Color( *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2) );
+    color = cur_cloud.Color( *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2) );
     Serial.printf("\tcolor (%d, %d, %d)\n",*pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2) );
   }
   else {
-    color = strip.Color( *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );
+    color = cur_cloud.Color( *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );
     Serial.printf("\tcolor (%d, %d, %d, %d)\n", *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );    
   }
-  strip.setPixelColor(neopixelIndex, color);
-  strip.show();
-
-  // Done
-  sendResponse("OK");
-}
-
-void commandImage() {
-  Serial.printf("Command: Image %dx%d, %d, %d\n", width, height, components, stride);
-  
-  // Receive new pixel buffer
-  int size = width * height;
-  uint8_t *base_addr = pixelBuffer;
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < components;) {
-      if (bleuart.available()) {
-        *base_addr = bleuart.read();
-        base_addr++;
-        j++;
-      }
-    }
-
-/*
-    if (components == 3) {
-      uint32_t index = i*components;
-      Serial.printf("\tp%d (%d, %d, %d)\n", i, pixelBuffer[index], pixelBuffer[index+1], pixelBuffer[index+2] );
-    }
-    */
-  }
-
-  // Swap buffers
-  Serial.println(F("Image received"));
-  swapBuffers();
+  cur_cloud.setPixelColor(neopixelIndex, color);
+  cur_cloud.show();
 
   // Done
   sendResponse("OK");
@@ -337,4 +326,195 @@ void commandImage() {
 void sendResponse(char const *response) {
     Serial.printf("Send Response: %s\n", response);
     bleuart.write(response, strlen(response)*sizeof(char));
+}
+
+/*********************************************************************
+ *  This file defines the different patterns possible for the clouds
+ * 
+*********************************************************************/
+
+bool is_looping = false; // Are we currently looping a pattern?
+unsigned long previousMillis = millis();
+
+void commandSendA() {
+  Serial.println("----------------------------------------");
+  Serial.println("IN A mothaFUCKA!!!!!");
+
+  colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 50); // Green
+  colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 50); // Red
+
+  Serial.println("----------------------------------------");
+  Serial.println("IN A mothaFUCKA, aFter 1!!!!!");
+
+  colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 50); // Red
+  colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 50); // Blue
+
+  Serial.println("----------------------------------------");
+  Serial.println("IN A mothaFUCKA, aFter 2!!!!!");
+
+  colorWipe(Cloud_2, Cloud_2.Color(0, 0, 255), 50); // Blue
+  colorWipe(Cloud_3, Cloud_3.Color(0, 255, 0), 50); // Green
+
+//  colorWipe(Cloud_1, Cloud_1.Color(255, 0, 0), 50); // Red
+//  colorWipe(Cloud_1, Cloud_1.Color(0, 255, 0), 50); // Green
+//  colorWipe(Cloud_1, Cloud_1.Color(0, 0, 255), 50); // Blue
+
+//  colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 50); // Red
+//  colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 50); // Green
+//  colorWipe(Cloud_2, Cloud_2.Color(0, 0, 255), 50); // Blue
+//
+//  colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 50); // Red
+//  colorWipe(Cloud_3, Cloud_3.Color(0, 255, 0), 50); // Green
+//  colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 50); // Blue
+}
+
+void commandSendQ(uint8_t interval, Adafruit_NeoPixel cur_cloud) {
+  Serial.println("----------------------------------------");
+  Serial.println("IN Q mothaFUCKA!!!!!");
+  
+  unsigned long currentMillis = millis();
+  is_looping = true;
+  currentMillis = millis();
+  while(is_looping) {
+    previousMillis = currentMillis;
+    if (currentMillis - previousMillis >= interval) {
+      for(uint16_t i=0; i<cur_cloud.numPixels(); i++) {
+        cur_cloud.setPixelColor(i, cur_cloud.Color(251, 0, 0));
+        cur_cloud.show();
+      }
+    }
+    is_looping = false;
+  }
+}
+
+void commandSendX() {
+  Serial.println("----------------------------------------");
+  Serial.println("IN X mothaFUCKA!!!!!");
+
+//  rainbowCycleDelay(20, Cloud_1);
+  rainbowCycleDelay(20, Cloud_2);
+  rainbowCycleDelay(20, Cloud_3);
+}
+
+void commandSendZ() {
+  Serial.println("----------------------------------------");
+  Serial.println("IN Z mothaFUCKA!!!!!");
+
+//  rainbowCycleLoop(20, Cloud_1);
+  rainbowCycleLoop(20, Cloud_2);
+  rainbowCycleLoop(20, Cloud_3);
+}
+
+
+// Input a value 0 to 255 to get a color value.
+// The colours are a transition r - g - b - back to r.
+uint32_t Wheel(byte WheelPos) {
+  WheelPos = 255 - WheelPos;
+  if(WheelPos < 85) {
+    return Cloud_3.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+  }
+  if(WheelPos < 170) {
+    WheelPos -= 85;
+    return Cloud_3.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+  }
+  WheelPos -= 170;
+  return Cloud_3.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+}
+
+// Fill the dots one after the other with a color
+void colorWipe(Adafruit_NeoPixel cur_cloud, uint32_t c, uint8_t wait) {  
+  Serial.println("Beg of wipe");
+
+  for(uint16_t i=0; i < cur_cloud.numPixels(); i++) {
+    cur_cloud.setPixelColor(i, c);
+    cur_cloud.show();
+    delay(wait);
+  }
+
+  Serial.println("End of wipe");
+}
+
+void rainbow(uint8_t wait, Adafruit_NeoPixel cur_cloud) {
+  uint16_t i, j;
+
+  for(j=0; j < 256; j++) {
+    for(i=0; i < cur_cloud.numPixels(); i++) {
+      cur_cloud.setPixelColor(i, Wheel((i+j) & 255));
+    }
+    cur_cloud.show();
+    delay(wait);
+  }
+}
+
+// Slightly different, this makes the rainbow equally distributed throughout
+void rainbowCycleDelay(uint8_t wait, Adafruit_NeoPixel cur_cloud) {
+  uint16_t i, j;
+
+  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+    for(i=0; i< cur_cloud.numPixels(); i++) {
+      cur_cloud.setPixelColor(i, Wheel(((i * 256 / cur_cloud.numPixels()) + j) & 255));
+    }
+    cur_cloud.show();
+    delay(wait);
+  }
+}
+
+// Slightly different, this makes the rainbow equally distributed throughout
+void rainbowCycleLoop(uint8_t interval, Adafruit_NeoPixel cur_cloud) {
+  uint16_t i, j;
+  unsigned long currentMillis = millis();
+  
+  is_looping = true;
+  while(is_looping) {
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+      for(j=0; j < 256*5; j++) { // 5 cycles of all colors on wheel
+        for(i=0; i < cur_cloud.numPixels(); i++) {
+          cur_cloud.setPixelColor(i, Wheel(((i * 256 / cur_cloud.numPixels()) + j) & 255));
+        }
+        cur_cloud.show();
+//        delay(wait);
+      }
+    }
+    is_looping = false;
+  }
+}
+
+
+//Theatre-style crawling lights.
+void theaterChase(uint32_t c, uint8_t wait, Adafruit_NeoPixel cur_cloud) {
+  for (int j=0; j<10; j++) {  //do 10 cycles of chasing
+    for (int q=0; q < 3; q++) {
+      for (uint16_t i=0; i < cur_cloud.numPixels(); i=i+3) {
+        cur_cloud.setPixelColor(i+q, c);    //turn every third pixel on
+      }
+      cur_cloud.show();
+
+      delay(wait);
+
+      for (uint16_t i=0; i < cur_cloud.numPixels(); i=i+3) {
+        cur_cloud.setPixelColor(i+q, 0);        //turn every third pixel off
+      }
+    }
+  }
+}
+
+//Theatre-style crawling lights with rainbow effect
+void theaterChaseRainbow(uint8_t wait, Adafruit_NeoPixel cur_cloud) {
+  for (int j=0; j < 256; j++) {     // cycle all 256 colors in the wheel
+    for (int q=0; q < 3; q++) {
+      for (uint16_t i=0; i < cur_cloud.numPixels(); i=i+3) {
+        cur_cloud.setPixelColor(i+q, Wheel( (i+j) % 255));    //turn every third pixel on
+      }
+      cur_cloud.show();
+
+      delay(wait);
+
+      for (uint16_t i=0; i < cur_cloud.numPixels(); i=i+3) {
+        cur_cloud.setPixelColor(i+q, 0);        //turn every third pixel off
+      }
+    }
+  }
 }

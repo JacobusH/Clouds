@@ -22,6 +22,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { environment } from '../environments/environment';
 
+
 registerLocaleData(en);
 // import { AlertController } from 'ionic-angular';
 

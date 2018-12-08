@@ -11,6 +11,9 @@ import { CloudsPage } from '../pages/clouds/clouds.page';
 import { ScannerPage } from '../pages/scanner/scanner.page';
 import { OverviewPage } from '../pages/overview/overview.page';
 
+import { ColorPickerComponent } from '../pages/clouds/color-picker/color-picker.component';
+import { PatternsComponent } from '../pages/clouds/patterns/patterns.component';
+
 import { routing } from './home.routing';
 
 @NgModule({
@@ -19,6 +22,8 @@ import { routing } from './home.routing';
     , CloudsPage
     , ScannerPage
     , OverviewPage
+    , ColorPickerComponent
+    , PatternsComponent
   ],
   imports: [
     routing

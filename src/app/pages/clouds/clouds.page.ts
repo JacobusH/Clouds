@@ -53,28 +53,6 @@ export class CloudsPage implements OnInit, OnDestroy {
     })
   }
 
-  sendCmd(letter: string) {
-    // this.patternService.sendCommand(letter).then(
-    //   (info) => {
-    //     this.displayMsg = 'Sent cmd' + letter + " | info: " + info; 
-    //   },
-    //   (err) => {
-    //     this.displayMsg = 'Err sending cmd' + letter + " | err: " + err; 
-    //   }
-    // )
-
-    let data : Uint8Array;
-    data = new Uint8Array([0x41]); // A
-    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, data.buffer as ArrayBuffer).then(
-      (info) => {
-        this.displayMsg = 'Sent cmd' + letter + " | info: " + info; 
-      },
-      (err) => {
-        this.displayMsg = 'Err sending cmd' + letter + " | err: " + err; 
-      }
-    )
-  }
-
 
   ngOnDestroy() {
     console.log('destroying disconnecting Bluetooth');
