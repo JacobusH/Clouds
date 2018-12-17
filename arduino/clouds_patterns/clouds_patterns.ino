@@ -44,7 +44,7 @@
 #include <bluefruit.h>
 
 #define NEOPIXEL_VERSION_STRING "Neopixel v2.0"
-#define PIN7                     7   /* Pin used for Cloud 1 */
+#define PIN11                    11   /* Pin used for Cloud 1 */
 #define PIN16                    16  /* Pin used for Cloud 2 */
 #define PIN27                    27  /* Pin used for Cloud 3 */
 
@@ -57,7 +57,7 @@ uint8_t componentsValue;
 bool is400Hz;
 uint8_t components = 3;     // only 3 and 4 are valid values
 
-//Adafruit_NeoPixel Cloud_1 = Adafruit_NeoPixel(16, PIN7, NEO_GRB + NEO_KHZ800);
+//Adafruit_NeoPixel Cloud_1 = Adafruit_NeoPixel(16, PIN11, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel Cloud_2 = Adafruit_NeoPixel(16, PIN16, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel Cloud_3 = Adafruit_NeoPixel(16, PIN27, NEO_GRB + NEO_KHZ800);
 
@@ -340,12 +340,14 @@ void commandSendA() {
   Serial.println("----------------------------------------");
   Serial.println("IN A mothaFUCKA!!!!!");
 
+//  colorWipe(Cloud_1, Cloud_1.Color(0, 255, 0), 50); // Green
   colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 50); // Green
   colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 50); // Red
 
   Serial.println("----------------------------------------");
   Serial.println("IN A mothaFUCKA, aFter 1!!!!!");
 
+//  colorWipe(Cloud_1, Cloud_1.Color(255, 0, 0), 50); // Green
   colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 50); // Red
   colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 50); // Blue
 

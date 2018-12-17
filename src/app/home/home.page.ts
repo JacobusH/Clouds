@@ -1,8 +1,9 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../modules/shared/services/device.service';
 import { Router } from '@angular/router';
-// import { AlertController } from 'ionic-angular';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { bounce, pulse } from 'ng-animate';
 
 const NEOPIXEL_SERVICE = 'ccc0';
 
@@ -10,6 +11,12 @@ const NEOPIXEL_SERVICE = 'ccc0';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  animations: [
+    trigger('pulse', [transition('* => *', useAnimation(pulse, {
+      // Set the duration to 5seconds and delay to 2seconds
+      params: { timing: 5, delay: 2 }
+    }))])
+  ]
 })
 export class HomePage implements OnInit {
   devices: any[] = [];
@@ -22,7 +29,6 @@ export class HomePage implements OnInit {
   deferredPrompt;
 
   constructor(private ble: BLE
-              // , private alertCtrl: AlertController,
               , private ngZone: NgZone
               , private deviceService: DeviceService
               , private router: Router) { 
@@ -36,6 +42,7 @@ export class HomePage implements OnInit {
       this.deferredPrompt = e;
     });
   } 
+
 
   installPWA() {
     this.deferredPrompt.prompt();
@@ -59,61 +66,6 @@ export class HomePage implements OnInit {
     })
   }
 
-  scan() {
-    this.ngZone.run(() => {
-      // this.ble.scan([], 60).subscribe(
-        this.devices = [];  // clear existing list
-        this.displayMsg("in scanning mode");
-        this.ble.scan([], 4).subscribe(
-          device => {
-            let msg:string = "Found device: " + JSON.stringify(device);
-            // this.displayMsg(msg);
-            this.onDiscoveredDevice(device);
-          },
-          err => {
-            this.displayMsg("Error occurred during BLE scan: " + JSON.stringify(err));
-            console.log("Error occurred during BLE scan: " + JSON.stringify(err));
-          },
-          () => {
-            this.displayMsg("End of devices...");
-            console.log("End of devices…");
-        }
-      );
-    })
-    
-    console.log('Scanning for Bluetooth LE Devices');
-  }
-
-  onDiscoveredDevice(device) {
-    console.log('Discovered ' + JSON.stringify(device, null, 2));
-    this.ngZone.run(() => {
-        this.displayMsg('Discovered ' + JSON.stringify(device, null, 2));
-        this.devices.push(device);
-    });
-  }
-
-  deviceSelected(device) {
-    this.ngZone.run(() => {
-      console.log(JSON.stringify(device) + ' selected');
-      this.logMessage = "Device Selected: ";
-      this.deviceService.setDevice(device);
-
-      this.router.navigateByUrl('/clouds', { queryParams: { device: JSON.stringify(device) }} )
-    })
-  }
-
-  testDeviceSelected() {
-    let devvy = { id: 'C6:50:3F:C2:27:DB', name: 'testName', RSSI: -86}
-
-    this.ngZone.run(() => {
-      console.log(JSON.stringify(devvy) + ' selected');
-      this.deviceService.setDevice(devvy);
-
-      this.router.navigateByUrl('/clouds', { queryParams: { device: JSON.stringify(devvy) }} )
-    })
-  }
-
-
   setStatus(message) {
     this.ngZone.run(() => {
       console.log(message);
@@ -121,12 +73,7 @@ export class HomePage implements OnInit {
     });
   } 
 
-  showAlert(title, message) {
-    // let alert = this.alertCtrl.create({
-    //   title: title,
-    //   subTitle: message,
-    //   buttons: ['OK']
-    // });
-    // alert.present();
+  getBrightness(event) {
+    console.log('home brightness', event)
   }
 }

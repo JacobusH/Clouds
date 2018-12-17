@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { DragDropModule  } from '@angular/cdk/drag-drop';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
@@ -36,6 +37,7 @@ registerLocaleData(en);
     , AngularFirestoreModule
     , AngularFireStorageModule
     , AngularFireModule.initializeApp(environment.firebase)
+    , DragDropModule
     , IonicModule.forRoot()
     , AppRoutingModule
     , BrowserAnimationsModule

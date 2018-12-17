@@ -1,19 +1,33 @@
-<ng-container *ngIf="connected; else loading_screen">
-  Display MSG: 
-  {{displayMsg}}
-  <br>
-  Service Device: 
-  {{serviceDevice}}
-  <br>
-  Other info:
-  {{otherInfo}}
+<div class="whole-screen">
+  <ng-container *ngIf="connected; else loading_screen">
+      Display MSG: 
+      {{displayMsg}}
+      <br>
+      Service Device: 
+      {{serviceDevice}}
+      <br>
+      Other info:
+      {{otherInfo}}
+      <app-patterns></app-patterns>
+    </ng-container>
+    <ng-template #loading_screen>
+        <div class="cloud variant-5"></div>
+      </ng-template>
+  
 
-  <app-patterns></app-patterns>
-</ng-container>
-<ng-template #loading_screen>
-  <!-- <span class="loading-msg">Connecting to the Clouds</span> -->
-  <object class="loading-clouds" data="../../../assets//Cloud-6s-200x200px.svg" type="image/svg+xml">
-    <!-- <img src="yourfallback.jpg" /> -->
-  </object>
-</ng-template>
+  
+</div>
+
+
+
+
+
+
+
+
+<!-- SVG Loading Clouds-->
+<!-- <span class="loading-msg">Connecting to the Clouds</span> -->
+<!-- <object class="loading-clouds" data="../../../assets//Cloud-6s-200x200px.svg" type="image/svg+xml">
+  <img src="yourfallback.jpg" />
+</object> -->
 

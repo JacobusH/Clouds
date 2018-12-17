@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
+import { DragDropModule  } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
 import { NgZorroAntdModule, NZ_I18N, en_US, NzLayoutModule, NzCheckboxModule, NzPopoverModule } from 'ng-zorro-antd';
+import { SharedModule } from '../modules/shared/shared.module';
 
 import { HomePage } from './home.page';
 import { CloudsPage } from '../pages/clouds/clouds.page';
@@ -27,7 +29,9 @@ import { routing } from './home.routing';
   ],
   imports: [
     routing
+    , SharedModule
     , CommonModule
+    , DragDropModule
     , FormsModule
     , IonicModule
     , NgZorroAntdModule

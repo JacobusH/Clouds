@@ -17,6 +17,8 @@ export class ScannerPage implements OnInit {
   displayMessage:string = "Hallo";
   logMessage:string = "No device selected";
 
+  cloudsDeviceID = "C6:50:3F:C2:27:DB";
+
   constructor(private ble: BLE
               // , private alertCtrl: AlertController,
               , private ngZone: NgZone
@@ -25,7 +27,7 @@ export class ScannerPage implements OnInit {
   }
   
   ngOnInit() {
-
+    this.scan();
   }
 
   displayMsg(msg: string) {
@@ -39,11 +41,15 @@ export class ScannerPage implements OnInit {
       // this.ble.scan([], 60).subscribe(
         this.devices = [];  // clear existing list
         this.displayMsg("in scanning mode");
-        this.ble.scan([], 4).subscribe(
+        this.ble.scan([], 6).subscribe(
           device => {
-            let msg:string = "Found device: " + JSON.stringify(device);
-            // this.displayMsg(msg);
+            this.displayMsg("Found device: " + JSON.stringify(device));
             this.onDiscoveredDevice(device);
+
+            if(device.id == this.cloudsDeviceID) {
+              this.deviceSelected(device);
+            }
+
           },
           err => {
             this.displayMsg("Error occurred during BLE scan: " + JSON.stringify(err));
