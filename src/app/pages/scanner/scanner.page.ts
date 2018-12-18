@@ -79,8 +79,49 @@ export class ScannerPage implements OnInit {
       this.logMessage = "Device Selected: ";
       this.deviceService.setDevice(device);
 
+      this.ble.connect(this.deviceService.selectedDevice.id).subscribe(
+        peripheral => this.onConnected(peripheral),
+        peripheral => this.onDeviceDisconnected(peripheral)
+      )
+
       this.router.navigateByUrl('/home/clouds', { queryParams: { device: JSON.stringify(device) }} )
     })
+  }
+
+  onConnected(peripheral) {
+    this.ngZone.run(() => {
+      // this.connected = true;
+      this.deviceService.setPeripheral(peripheral);
+      // this.displayMsg = 'Connected to: ' + peripheral.name + ' ' + peripheral.id;
+
+      // this.otherInfo = "service: " + this.deviceService.serviceCloud1 + "tx: " + this.deviceService.txCloud1;
+
+      this.ble.startNotification(peripheral.id, this.deviceService.serviceCloud1, this.deviceService.rxCloud1).subscribe(
+        buffer => {
+          var data = new Uint8Array(buffer);
+          console.log('Received Notification: Power Switch = ' + data);
+          this.ngZone.run(() => {
+            // this.displayMsg = "started notifs";
+            // this.power = data[0] !== 0;
+          });
+        }
+      );
+    });
+  }
+
+  onDeviceDisconnected(peripheral) {
+    // let toast = this.toastCtrl.create({
+    //   message: 'The peripheral unexpectedly disconnected',
+    //   duration: 3000,
+    //   position: 'center'
+    // });
+
+    // toast.onDidDismiss(() => {
+    //   console.log('Dismissed toast');
+    //   // TODO navigate back?
+    // });
+
+    // toast.present();
   }
 
   testDeviceSelected() {

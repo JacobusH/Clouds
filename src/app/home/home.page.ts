@@ -3,6 +3,7 @@ import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../modules/shared/services/device.service';
 import { Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
+import { PatternsService } from '../modules/shared/services/patterns.service';
 import { bounce, pulse } from 'ng-animate';
 
 const NEOPIXEL_SERVICE = 'ccc0';
@@ -31,7 +32,8 @@ export class HomePage implements OnInit {
   constructor(private ble: BLE
               , private ngZone: NgZone
               , private deviceService: DeviceService
-              , private router: Router) { 
+              , private router: Router
+              , private patternService: PatternsService) { 
   }
   
   ngOnInit() {
@@ -73,7 +75,8 @@ export class HomePage implements OnInit {
     });
   } 
 
-  getBrightness(event) {
-    console.log('home brightness', event)
+  changeBrightness(brightness: number) {
+    this.patternService.setBrightness(brightness);
+    console.log('home brightness', brightness);
   }
 }

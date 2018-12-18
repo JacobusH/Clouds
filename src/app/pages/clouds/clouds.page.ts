@@ -1,9 +1,15 @@
-import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../../modules/shared/services/device.service';
 import { PatternsService } from '../../modules/shared/services/patterns.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatternsEnum } from '../../modules/shared/models/patterns.model';
+
+interface CloudCircle {
+  coordX: number,
+  coordY: number,
+  radius: number
+}
 
 @Component({
   selector: 'app-clouds',
@@ -11,6 +17,10 @@ import { PatternsEnum } from '../../modules/shared/models/patterns.model';
   styleUrls: ['./clouds.page.scss'],
 })
 export class CloudsPage implements OnInit, OnDestroy {
+  // @ViewChild('my_svg') mySvg: ElementRef;
+  Cloud1: Array<CloudCircle> = new Array<CloudCircle>();
+  cloudHeight:number;
+  cloudWidth: number;
   serviceDevice;
   connected = false;
 
@@ -43,13 +53,22 @@ export class CloudsPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.ngZone.run(() => {
-      this.displayMsg = "Trying to connect to " + this.deviceService.selectedDevice.name;
-      this.serviceDevice = JSON.stringify(this.deviceService.selectedDevice);
+      // this.displayMsg = "Trying to connect to " + this.deviceService.selectedDevice.name;
+      // this.serviceDevice = JSON.stringify(this.deviceService.selectedDevice);
 
-      this.ble.connect(this.deviceService.selectedDevice.id).subscribe(
-        peripheral => this.onConnected(peripheral),
-        peripheral => this.onDeviceDisconnected(peripheral)
-      )
+      // this.ble.connect(this.deviceService.selectedDevice.id).subscribe(
+      //   peripheral => this.onConnected(peripheral),
+      //   peripheral => this.onDeviceDisconnected(peripheral)
+      // )
+
+      this.cloudWidth = window.innerWidth;
+      this.cloudHeight = window.innerHeight / 2;
+
+      var cx = (window.innerWidth / 2)
+      var cy = window.innerHeight / 4
+      this.drawClouds(cx, cy, 120, 90);
+
+
     })
   }
 
@@ -153,6 +172,68 @@ export class CloudsPage implements OnInit, OnDestroy {
     //     }
     //   );
     // })
+  }
+
+  drawClouds(cx, cy, r1, r2) {
+    this.ngZone.run(() => {
+      //  The center is the same for all circles
+      // var cx = window.innerWidth / 3
+      // var cy = window.innerHeight / 3
+
+      var radius_of_satellites_from_center = [r1, r2]
+      var radius_of_small_circles = 10
+      var number_of_satellite_circles = 16
+
+      for(var r in radius_of_satellites_from_center){
+        console.log('rrr', r)
+        //  The angle increments for each circle drawn
+        for(var n=0; n<number_of_satellite_circles; n++){
+                
+          //  Find how many degrees separate each circle
+          var degrees_of_separation = 360/number_of_satellite_circles
+          var angle_as_degrees = degrees_of_separation * n
+          var coordinates = this.polarToCartesian(cx, cy, radius_of_satellites_from_center[r], angle_as_degrees)
+
+          let cc: CloudCircle = {
+            coordX: coordinates.x,
+            coordY: coordinates.y,
+            radius: radius_of_small_circles
+          };
+          this.Cloud1.push(cc);
+          // document.getElementById('my_svg').appendChild( this.drawCircle(coordinates.x,coordinates.y,radius_of_small_circles) )
+        }
+      }
+      
+    })
+
+    console.log(this.Cloud1);
+  }
+
+  drawCircle(cx,cy,r){
+    var svgCircle = document.createElementNS('http://www.w3.org/2000/svg',"circle");
+        svgCircle.setAttributeNS(null,"cx", cx);
+        svgCircle.setAttributeNS(null,"cy", cy);
+        svgCircle.setAttributeNS(null,"r", r);
+        svgCircle.setAttributeNS(null,"stroke",'blue')
+        svgCircle.setAttributeNS(null,"fill",'transparent')
+    return svgCircle;
+  }
+
+  polarToCartesian(center_x, center_y, radius, angle_in_degrees) {
+    var return_value: any = {}
+    var angle_in_radians =  angle_in_degrees * Math.PI / 180.0;
+        return_value.x =    center_x + radius * Math.cos(angle_in_radians);
+        return_value.y =    center_y + radius * Math.sin(angle_in_radians);
+    return return_value;
+  }
+
+  determineColor(index:number) {
+    return "red";
+  }
+
+  changeColor(index: number) {
+    console.log('changing', index)
+
   }
 
   

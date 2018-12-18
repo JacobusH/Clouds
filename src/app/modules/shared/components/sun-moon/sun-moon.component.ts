@@ -14,6 +14,7 @@ export class SunMoonComponent implements OnInit {
   @Output('brightness') brightness: EventEmitter<number> = new EventEmitter(); // 0 - 255
   sunOpacity: number = 1;
   moonOpacity: number = 0;
+  curBrightness: number = 0;
 
   constructor(private ngZone: NgZone) { }
 
@@ -64,8 +65,15 @@ export class SunMoonComponent implements OnInit {
     else if(opacityVal >= 1) {
       toEmit = 255;
     }
+    else { // in between
+      toEmit = Math.floor(opacityVal * 255);
+    }
     this.brightness.emit(toEmit);
     console.log('emitted brightness', toEmit)
+
+    this.ngZone.run(() => {
+      this.curBrightness = toEmit
+    })
   }
 
 }

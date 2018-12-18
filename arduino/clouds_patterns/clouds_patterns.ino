@@ -72,7 +72,7 @@ void setup()
   Serial.println("--------------------------------");
 
   Serial.println();
-  Serial.println("Please connect using the Bluefruit Connect LE application");
+  Serial.println("Please connect using Jeanne's awesome app");
   
   // Config Neopixels
 //  Cloud_1.begin();
@@ -83,7 +83,7 @@ void setup()
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
   Bluefruit.setTxPower(4);
-  Bluefruit.setName("Bluefruit52");
+  Bluefruit.setName("Jeanne's Clouds");
   Bluefruit.setConnectCallback(connect_callback);
 
   // Configure and Start Device Information Service
@@ -145,10 +145,20 @@ void loop()
   {
     int command = bleuart.read();
 
+//    Serial.println("--- CMD ----");
+//    Serial.println(command);
+
+
     switch (command) {
       case 'A': { // test
         commandSendA();
         break;
+      }
+
+      case 'B': {   // Set Brightness
+          int test = bleuart.read();
+          commandSetBrightness(test);
+          break;
       }
 
       case 'Q': { // test
@@ -185,12 +195,7 @@ void loop()
           break;
       }
 
-      case 'B': {   // Set Brightness
-//          commandSetBrightness(Cloud_1);
-          commandSetBrightness(Cloud_2);
-          commandSetBrightness(Cloud_3);
-          break;
-      }
+      
             
       case 'P': {   // Set Pixel
 //          commandSetPixel(Cloud_1);
@@ -231,17 +236,26 @@ void commandVersion() {
   sendResponse(NEOPIXEL_VERSION_STRING);
 }
 
-void commandSetBrightness(Adafruit_NeoPixel cur_cloud) {
-  Serial.println(F("Command: SetBrightness"));
+void commandSetBrightness(int test) {
+  Serial.println("----------------------------------------");
+  Serial.println("IN B mothaFUCKA!!!!!");
 
    // Read value
-  uint8_t brightness = bleuart.read();
+//  uint8_t brightness = bleuart.read();
+  Serial.println("brightness...");
+  Serial.println(test);
 
   // Set brightness
-  cur_cloud.setBrightness(brightness);
+  Cloud_2.setBrightness(test);
+  Cloud_3.setBrightness(test);
 
+  // Show brightness
+  Cloud_2.show();
+  Cloud_3.show();
+  
   // Refresh pixels
-  swapBuffers(cur_cloud);
+  swapBuffers(Cloud_2);
+  swapBuffers(Cloud_3);
 
   // Done
   sendResponse("OK");
