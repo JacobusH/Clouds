@@ -354,34 +354,20 @@ void commandSendA() {
   Serial.println("----------------------------------------");
   Serial.println("IN A mothaFUCKA!!!!!");
 
-//  colorWipe(Cloud_1, Cloud_1.Color(0, 255, 0), 50); // Green
-  colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 50); // Green
-  colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 50); // Red
+  colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 2000); // Green
+//  colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 2000); // Red
 
   Serial.println("----------------------------------------");
   Serial.println("IN A mothaFUCKA, aFter 1!!!!!");
 
-//  colorWipe(Cloud_1, Cloud_1.Color(255, 0, 0), 50); // Green
-  colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 50); // Red
-  colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 50); // Blue
+//  colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 2000); // Red
+//  colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 2000); // Blue
 
   Serial.println("----------------------------------------");
   Serial.println("IN A mothaFUCKA, aFter 2!!!!!");
 
-  colorWipe(Cloud_2, Cloud_2.Color(0, 0, 255), 50); // Blue
-  colorWipe(Cloud_3, Cloud_3.Color(0, 255, 0), 50); // Green
-
-//  colorWipe(Cloud_1, Cloud_1.Color(255, 0, 0), 50); // Red
-//  colorWipe(Cloud_1, Cloud_1.Color(0, 255, 0), 50); // Green
-//  colorWipe(Cloud_1, Cloud_1.Color(0, 0, 255), 50); // Blue
-
-//  colorWipe(Cloud_2, Cloud_2.Color(255, 0, 0), 50); // Red
-//  colorWipe(Cloud_2, Cloud_2.Color(0, 255, 0), 50); // Green
-//  colorWipe(Cloud_2, Cloud_2.Color(0, 0, 255), 50); // Blue
-//
-//  colorWipe(Cloud_3, Cloud_3.Color(255, 0, 0), 50); // Red
-//  colorWipe(Cloud_3, Cloud_3.Color(0, 255, 0), 50); // Green
-//  colorWipe(Cloud_3, Cloud_3.Color(0, 0, 255), 50); // Blue
+//  colorWipe(Cloud_2, Cloud_2.Color(0, 0, 255), 2000); // Blue
+//  colorWipe(Cloud_3, Cloud_3.Color(0, 255, 0), 2000); // Green
 }
 
 void commandSendQ(uint8_t interval, Adafruit_NeoPixel cur_cloud) {
@@ -440,14 +426,28 @@ uint32_t Wheel(byte WheelPos) {
 // Fill the dots one after the other with a color
 void colorWipe(Adafruit_NeoPixel cur_cloud, uint32_t c, uint8_t wait) {  
   Serial.println("Beg of wipe");
-
-  for(uint16_t i=0; i < cur_cloud.numPixels(); i++) {
-    cur_cloud.setPixelColor(i, c);
-    cur_cloud.show();
-    delay(wait);
+//
+//  for(uint16_t i=0; i < cur_cloud.numPixels(); i++) {
+//    cur_cloud.setPixelColor(i, c);
+//    cur_cloud.show();
+//    delay(wait);
+//  }
+//
+//  Serial.println("End of wipe");
+  unsigned long currentMillis = millis();
+  is_looping = true;
+  while(is_looping) {
+    currentMillis = millis();
+    for(uint16_t i=0; i < cur_cloud.numPixels(); i++) {
+      if (currentMillis - previousMillis >= wait) {
+        previousMillis = currentMillis;
+        cur_cloud.setPixelColor(i, c);
+        cur_cloud.show();
+      }
+    is_looping = false;
+    }
   }
 
-  Serial.println("End of wipe");
 }
 
 void rainbow(uint8_t wait, Adafruit_NeoPixel cur_cloud) {
