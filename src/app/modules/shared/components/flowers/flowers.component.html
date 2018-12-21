@@ -1,4 +1,5 @@
-<div class="flower-cont" *ngFor="let flow of flowers; let i = index" [ngSwitch]="i % 5">
+<!-- <div class="flower-cont" *ngFor="let flow of flowers; let i = index; trackBy: trackElement" [ngSwitch]="i % 5"> -->
+<div class="flower-cont" *ngFor="let flow of _observableList | async; let i = index; trackBy: trackElement" [ngSwitch]="i % 5">
   <img @grow *ngSwitchCase="'0'" class="flower" src="assets/flower_yellow.svg" [ngStyle]="setFlowerStyles(flow.width, flow.bottom, flow.left, flow.z-index)" /> 
   <img @grow *ngSwitchCase="'1'" class="flower" src="assets/flower_rose.svg" [ngStyle]="setFlowerStyles(flow.width, flow.bottom, flow.left, flow.index)" /> 
   <img @grow *ngSwitchCase="'2'" class="flower" src="assets/flower_beige.svg" [ngStyle]="setFlowerStyles(flow.width, flow.bottom, flow.left, flow.index)" /> 
@@ -13,3 +14,10 @@
   <img @growSlowly *ngSwitchCase="'0'" class="tree" src="assets/tree_1.svg" [ngStyle]="setFlowerStyles(tree.width, tree.bottom, tree.left, tree.index)" /> 
   <!-- <img @growSlowly *ngSwitchCase="'1'" class="tree" src="assets/tree_6.svg" [ngStyle]="setFlowerStyles(tree.width, tree.bottom, tree.left)" />  -->
 </div>
+
+<div class="test-cont" style="position: absolute; top:0px;">
+    <div *ngFor="let flow of _observableList | async">
+        {{flow.width}}
+      </div>
+</div>
+

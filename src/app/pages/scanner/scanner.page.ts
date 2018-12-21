@@ -91,6 +91,7 @@ export class ScannerPage implements OnInit {
   onConnected(peripheral) {
     this.ngZone.run(() => {
       // this.connected = true;
+      this.deviceService.setConnectedTrue();
       this.deviceService.setPeripheral(peripheral);
       // this.displayMsg = 'Connected to: ' + peripheral.name + ' ' + peripheral.id;
 
@@ -110,6 +111,7 @@ export class ScannerPage implements OnInit {
   }
 
   onDeviceDisconnected(peripheral) {
+    this.deviceService.setConnectedFalse();
     // let toast = this.toastCtrl.create({
     //   message: 'The peripheral unexpectedly disconnected',
     //   duration: 3000,

@@ -439,6 +439,10 @@ void connect_callback(uint16_t conn_handle)
   Serial.println("Please select the 'Neopixels' tab, click 'Connect' and have fun");
 }
 
+pattern Ring1_curPattern = FADE;
+pattern Ring2_curPattern = FADE;
+pattern Ring3_curPattern = FADE;
+
 // Main loop
 void loop()
 {
@@ -467,10 +471,13 @@ void loop()
           commandSetBrightness(test);
           break;
         }
-        case 'P': {   // Set Pixel
-          commandSetPixel(Ring1);
-          commandSetPixel(Ring2);
-          commandSetPixel(Ring3);
+        case 'C': {   // Set Pixel
+          int cloudNum = bleuart.read();
+          int interval = bleuart.read();
+          Serial.println("--CloudNum--");
+          Serial.println(cloudNum);
+          Serial.println("--interval--");
+          Serial.println(interval);
           break;
         }
       }

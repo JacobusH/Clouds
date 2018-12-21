@@ -6,8 +6,8 @@ import { BLE } from '@ionic-native/ble/ngx';
   providedIn: 'root'
 })
 export class DeviceService {
-  public bhSub = new BehaviorSubject<boolean>(true);
-  cfState$ = this.bhSub.asObservable();
+  public bhSub = new BehaviorSubject<boolean>(false);
+  isConnected$ = this.bhSub.asObservable();
 
   selectedDevice: any;
   peripheral: any;
@@ -35,8 +35,12 @@ export class DeviceService {
     this.bhSub.next(!this.bhSub.value);
   }
   
-  setStateFalse(){
+  setConnectedFalse(){
     this.bhSub.next(false);
+  }
+
+  setConnectedTrue(){
+    this.bhSub.next(true);
   }
 
   setDevice(device: any) {

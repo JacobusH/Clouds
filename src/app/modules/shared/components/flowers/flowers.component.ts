@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { Power1, Bounce } from 'gsap/all';
 import { TweenLite } from "gsap";
 import { interval } from 'rxjs';
@@ -10,6 +10,10 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { first } from 'rxjs/operators';
+import { from, of, pipe } from 'rxjs';
+import { concatMap, delay } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 interface Flower {
   width: number,
@@ -28,9 +32,27 @@ export class FlowersComponent implements OnInit, AfterViewInit {
   flowers = [];
   trees = [];
   curflowerCount: number = 0;
-  totalFlowers: number = 200;
+  totalFlowers: number = 250;
   curTreeCount: number = 0;
-  totalTreeCount: number = 10;
+  totalTreeCount: number = 0;
+
+  _list: Flower[] = [];
+  _observableList: BehaviorSubject<Flower[]> = new BehaviorSubject([]);
+  get observableList(): Observable<Flower[]> { return this._observableList.asObservable() }
+  addFlower(person: Flower) {
+      this._list.push(person);
+      this._observableList.next(this._list);
+  }
+  removeFlower() {
+    // this._list.shift(); // remove first elem
+    this._list[0] = {
+      bottom: -1,
+      index: 0,
+      left: -1,
+      width: 0
+    }
+    this._observableList.next(this._list);
+}
 
   constructor(private ngZone: NgZone) { }
 
@@ -44,15 +66,19 @@ export class FlowersComponent implements OnInit, AfterViewInit {
     let left = -1;
     let bottom = -1;
 
-    let firstTree = {
-      'width': 30
-      , 'bottom': 45
-      , 'left': 12
-      , 'index': 300
-    }
+    // let firstTree = {
+    //   'width': 30
+    //   , 'bottom': 45
+    //   , 'left': 12
+    //   , 'index': 300
+    // }
     
     this.ngZone.run(() => {
-      this.trees.push(firstTree);
+      let obby$ = of([1,2,3,4,5]);
+      obby$.subscribe(x => {
+        console.log('obby', x)
+      })
+      // this.trees.push(firstTree);
 
       let flowerMaker$ = interval(1000).subscribe(n => {
         left = this.randomIntFromInterval(leftBound, rightBound);
@@ -68,10 +94,17 @@ export class FlowersComponent implements OnInit, AfterViewInit {
           , 'index': this.getZIndex(bottom)
         };
         this.flowers.push(flower);
-        this.curflowerCount++;
+        this.addFlower(flower);
+        console.log(this._observableList)
+        
         
         if(this.curflowerCount >= this.totalFlowers) {
           flowerMaker$.unsubscribe();
+          // this.removeFlower();
+          // this.flowers.reverse().pop;
+        }
+        else {
+          this.curflowerCount++;
         }
         // console.log(`It's been ${n} seconds since subscribing!`)
       });
@@ -147,6 +180,10 @@ export class FlowersComponent implements OnInit, AfterViewInit {
   randomIntFromInterval(min,max) // min and max included
   {
       return Math.floor(Math.random()*(max-min+1)+min);
+  }
+
+  trackElement(index: number, element: Flower) {
+    return element ? element.left : null;
   }
 
 

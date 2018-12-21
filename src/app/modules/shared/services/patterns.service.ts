@@ -29,50 +29,47 @@ export class PatternsService {
   setBrightness(brightness: number) {
     console.log('setBrightness');
     let cmd = new Uint8Array([0x42, brightness]); // send B
-    // let data = new Uint8Array([brightness]);
-    // let data = new TextEncoder().encode(this.brightnessBullshit(brightness));
     this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer).then(
       () => {
           console.log('Sent B');
-          // this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, data.buffer as ArrayBuffer).then(
-          //   () => console.log('Sent brightness value'),
-          //   () => console.log('Failed to send brightness')
-          // )
         },
       () => console.log('Error updating brightness')
     );
   }
 
-  brightnessBullshit(curBrightness: number) {
-    if(curBrightness < 50) {
-      return 'A';
+  sendPattern(cloudNum: number, pattLett: string, interval: number) {
+    if(pattLett == 'A') { // RAINBOW_CYCLE
+      let cmd = new Uint8Array([0x42, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
     }
-    else if(curBrightness < 75) {
-      return 'B';
+    else if(pattLett == 'C') { // THEATER_CHASE
+      let cmd = new Uint8Array([0x44, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
     }
-    else if(curBrightness < 100) {
-      return 'C';
+    else if(pattLett == 'D') {  // COLOR_WIPE
+      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
     }
-    else if(curBrightness < 125) {
-      return 'D';
+    else if(pattLett == 'E') { // SCANNER
+      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
     }
-    else if(curBrightness < 150) {
-      return 'E';
-    }
-    else if(curBrightness < 175) {
-      return 'F';
-    }
-    else if(curBrightness < 225) {
-      return 'G';
-    }
-    else if(curBrightness < 250) {
-      return 'H';
-    }
-    else {
-      return 'I';
+    else if(pattLett == 'F') { // FADE
+      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
     }
 
-    return 'I';
+    let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+  }
+
+  getPatternHex(patternLett: string) {
+    switch(patternLett) {
+      case 'A': {
+        return 0x42;
+      }
+    }
+    
   }
 
 }

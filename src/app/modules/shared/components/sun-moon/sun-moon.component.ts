@@ -15,6 +15,7 @@ export class SunMoonComponent implements OnInit {
   sunOpacity: number = 1;
   moonOpacity: number = 0;
   curBrightness: number = 0;
+  emitter = { 'min': 1, 'max': 255 }
 
   constructor(private ngZone: NgZone) { }
 
@@ -36,17 +37,18 @@ export class SunMoonComponent implements OnInit {
 
   setSunMoonOpacity(left: number, right: number) {
     this.ngZone.run(() => {
-      if(left <= 0) { 
+      let middle = left - 10;
+      if(middle <= 0) { 
         this.sunOpacity = 1;
         this.moonOpacity = 0;
       }
-      else if(right >= window.innerWidth) {
+      else if(middle >= window.innerWidth) {
         this.sunOpacity = 0;
         this.moonOpacity = 1;
       }
       else { // in betwewen 
-        let sunny = 1 - (left / window.innerWidth);
-        let moony = right / window.innerWidth;
+        let sunny = 1 - (middle / window.innerWidth);
+        let moony = middle / window.innerWidth;
 
         this.sunOpacity = sunny;
         this.moonOpacity = moony;
@@ -60,10 +62,10 @@ export class SunMoonComponent implements OnInit {
   calculateBrightness(opacityVal: number) {
     let toEmit = 0;
     if(opacityVal <= 0) {
-      toEmit = 50;
+      toEmit = this.emitter.min;
     }
     else if(opacityVal >= 1) {
-      toEmit = 255;
+      toEmit = this.emitter.max;
     }
     else { // in between
       toEmit = Math.floor(opacityVal * 255);

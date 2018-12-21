@@ -16,12 +16,12 @@
         <img class="cloud" src="assets/cloud.svg" />
       </div> -->
       <!-- <svg #my_svg height="400" width="400"></svg> -->
-      <button (click)="drawClouds()">Draw</button>
+      <!-- <button (click)="drawClouds()">Draw</button> -->
 
-      <div class="cloud-1">
+      <!-- <div class="cloud-1">
         <div class="bg-cloud"></div>
         <svg [attr.height]="cloudHeight" [attr.width]="cloudWidth">
-          <!-- <circle cx="cc.coordX" cy="cc.coordY" r="cc.radius" stroke="black" stroke-width="3" fill="blue" /> -->
+          <circle cx="cc.coordX" cy="cc.coordY" r="cc.radius" stroke="black" stroke-width="3" fill="blue" />
           <circle *ngFor="let cc of Cloud1; let i = index" 
           [attr.cx]="cc.coordX" 
           [attr.cy]="cc.coordY" 
@@ -31,7 +31,7 @@
           [attr.fill]="determineColor(i)"
           (click)="changeColor(i)" />
         </svg>
-      </div>
+      </div> -->
 
       <app-patterns></app-patterns>
     <!-- </ng-container>

@@ -24,17 +24,16 @@
     <img class="house" src="assets/house.svg" routerLink='/home/overview' />
   </div>
   <div class="ant-cont">
-    <img class="antenna" src="assets/antenna.svg" routerLink='/home/scanner' />
-    <!-- <img @pulse class="pulsar" src="assets/signal.svg" /> -->
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100, 100">
-    <g fill="#020202">
-      <path class="left-signal" d="M149.443 267.107c-3.52-35.438 10.051-72.072 35.715-96.731 7.028-6.752 19.123-5.97 25.626 1.142 7.794 6.458 8.319 19.4 1.014 26.419-14.269 13.9-23.286 33.153-24.373 53.087-1.612 22.625 7.323 45.515 23.223 61.581 4.439 3.95 7.167 9.818 6.458 15.825-.979 13.946-19.594 23.628-30.769 14.021-21.04-19.399-34.075-46.952-36.894-75.344z"/>
-      <path class="right-signal" d="M362.557 244.892c3.519 35.437-10.05 72.073-35.715 96.732-7.028 6.752-19.123 5.97-25.626-1.143-7.795-6.457-8.319-19.399-1.015-26.42 14.27-13.899 23.287-33.152 24.374-53.087 1.612-22.624-7.323-45.515-23.223-61.58-4.44-3.952-7.167-9.819-6.458-15.826.978-13.946 19.594-23.627 30.768-14.02 21.04 19.401 34.075 46.953 36.895 75.344z"/>
-    </g>
-    </svg>
-
-
+      <img class="antenna" src="assets/antenna.svg" routerLink='/home/scanner' />
+      <div *ngIf="isConnected">
+        <img class="pulsarR" src="assets/signal.svg" />
+        <img class="pulsarL" src="assets/signal.svg" />
+      </div>
+      <div *ngIf="!isConnected">
+        <img class="one" src="assets/lightning.svg" />
+        <img class="two" src="assets/lightning.svg" />
+        <img class="three" src="assets/lightning.svg" />
+      </div>
   </div>
   <div class="mountains-cont">
       <img class="mountains" src="assets/mountains.svg" />
