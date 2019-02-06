@@ -4,6 +4,7 @@ import { DeviceService } from '../../modules/shared/services/device.service';
 import { PatternsService } from '../../modules/shared/services/patterns.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatternsEnum } from '../../modules/shared/models/patterns.model';
+import { routeAnimations } from '../../animations/routes.animation';
 
 interface CloudCircle {
   coordX: number,
@@ -15,6 +16,7 @@ interface CloudCircle {
   selector: 'app-clouds',
   templateUrl: './clouds.page.html',
   styleUrls: ['./clouds.page.scss'],
+  animations: [ routeAnimations ]
 })
 export class CloudsPage implements OnInit, OnDestroy {
   // @ViewChild('my_svg') mySvg: ElementRef;

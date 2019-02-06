@@ -1,10 +1,13 @@
 import { Component, OnInit, NgZone, ElementRef, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../modules/shared/services/device.service';
 import { Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { PatternsService } from '../modules/shared/services/patterns.service';
 import { bounce, pulse, fadeOutRight } from 'ng-animate';
+import { routeAnimations } from '../animations/routes.animation';
+// import { Keyboard } from 'ionic-angular';
 
 const NEOPIXEL_SERVICE = 'ccc0';
 
@@ -13,6 +16,7 @@ const NEOPIXEL_SERVICE = 'ccc0';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   animations: [
+    routeAnimations,
     trigger('pulse', [transition('* => *', useAnimation(fadeOutRight, {
       // Set the duration to 5seconds and delay to 2seconds
       // params: { timing: 5, delay: 2 }
@@ -25,6 +29,7 @@ export class HomePage implements OnInit {
   displayMessage:string = "Hallo";
   logMessage:string = "No device selected";
   isConnected;
+  isOn = true;
 
   triggerTemplate;
   isCollapsed = false;
@@ -47,9 +52,14 @@ export class HomePage implements OnInit {
 
     this.deviceService.isConnected$.subscribe(x => {
       this.isConnected = x;
+      this.isOn = x;
       console.log('connect', x)
     })
   } 
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
 
 
   installPWA() {
@@ -84,5 +94,14 @@ export class HomePage implements OnInit {
   changeBrightness(brightness: number) {
     this.patternService.setBrightness(brightness);
     console.log('home brightness', brightness);
+  }
+
+  flipPower(flipTo: string) {
+    if(flipTo == 'off') {
+      this.patternService.sendPattern(0, 'Z', 10);
+    }
+    else { // to 'on'
+      this.patternService.sendPattern(0, 'Y', 100);
+    }
   }
 }

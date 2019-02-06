@@ -37,7 +37,7 @@ export class SunMoonComponent implements OnInit {
 
   setSunMoonOpacity(left: number, right: number) {
     this.ngZone.run(() => {
-      let middle = left - 10;
+      let middle = (right + left) / 2;
       if(middle <= 0) { 
         this.sunOpacity = 1;
         this.moonOpacity = 0;

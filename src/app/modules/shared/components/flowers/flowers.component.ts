@@ -94,8 +94,8 @@ export class FlowersComponent implements OnInit, AfterViewInit {
           , 'index': this.getZIndex(bottom)
         };
         this.flowers.push(flower);
-        this.addFlower(flower);
-        console.log(this._observableList)
+        // this.addFlower(flower);
+        // console.log(this._observableList)
         
         
         if(this.curflowerCount >= this.totalFlowers) {

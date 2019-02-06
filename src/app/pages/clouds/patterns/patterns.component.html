@@ -1,14 +1,33 @@
 <div class="pattern-cont">
-  <div class="clouds-left">
-    <div class="cloud1">One</div>
-    <div class="cloud2">Two</div>
-    <div class="cloud3">Three</div>
-  </div>
-  <div class="patterns-right">
-    <div class="rainbow-cycle">Rainbow</div>
-    <div class="theater-chase">Theater</div>
-    <div class="color-wipe">Color</div>
-    <div class="scanner">Scanner</div>
-    <div class="fade">Fade</div>
+  <div class="patt-col">
+      <div class="cloud-btn cloud-name cloud1">One</div>
+      <div
+        *ngFor="let cloud of buttons1; let i = index" 
+        [ngClass]="computeClass(cloud)"
+        (click)="selectThis(cloud, i, 1)" >
+        {{cloud.pattern}}
+      </div>
+      <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud1_interval"  (keyup)="changeInterval(1)" /></div>
+    </div>
+  <div class="patt-col">
+      <div class="cloud-btn cloud-name cloud2">Two</div>
+      <div
+        *ngFor="let cloud of buttons2; let i = index" 
+        [ngClass]="computeClass(cloud)"
+        (click)="selectThis(cloud, i, 2)" >
+        {{cloud.pattern}}
+      </div>
+      <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud2_interval" (keyup)="changeInterval(2)" /></div>
+    </div>
+  <div class="patt-col">
+    <div class="cloud-btn cloud-name cloud3">Three</div>
+    <div
+      *ngFor="let cloud of buttons3; let i = index" 
+      [ngClass]="computeClass(cloud)"
+      (click)="selectThis(cloud, i, 3)" >
+      {{cloud.pattern}}
+    </div>
+    <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud3_interval"  (keyup)="changeInterval(3)" /></div>
+    <!-- {{cloud3_interval}} -->
   </div>
 </div>

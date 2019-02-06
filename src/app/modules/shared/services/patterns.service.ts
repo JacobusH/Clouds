@@ -13,7 +13,9 @@ import * as firebase from 'firebase/app';
 })
 export class PatternsService {
   colPatters = '!Patterns';
- 
+
+  PATTERNS = {'rainbow': 'rainbow', 'theater': 'theater','colorwipe': 'colorwipe','scanner': 'scanner', 'fade': 'fade'}
+
   constructor(
     private ble: BLE 
     , private deviceService: DeviceService) { 
@@ -37,29 +39,32 @@ export class PatternsService {
     );
   }
 
-  sendPattern(cloudNum: number, pattLett: string, interval: number) {
-    if(pattLett == 'A') { // RAINBOW_CYCLE
-      let cmd = new Uint8Array([0x42, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+  sendPattern(cloudNum: number, pattern: string, interval: number) {
+    console.log('patternservice', cloudNum, pattern, interval)
+    let hexxy = 0x41;
+    if(pattern == this.PATTERNS.rainbow) { // RAINBOW_CYCLE, A
+      hexxy = 0x41;
     }
-    else if(pattLett == 'C') { // THEATER_CHASE
-      let cmd = new Uint8Array([0x44, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+    else if(pattern == this.PATTERNS.theater) { // THEATER_CHASE, C
+      hexxy = 0x43;
     }
-    else if(pattLett == 'D') {  // COLOR_WIPE
-      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+    else if(pattern == this.PATTERNS.colorwipe) {  // COLOR_WIPE, D
+      hexxy = 0x44;
     }
-    else if(pattLett == 'E') { // SCANNER
-      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+    else if(pattern == this.PATTERNS.scanner) { // SCANNER, E
+      hexxy = 0x45;
     }
-    else if(pattLett == 'F') { // FADE
-      let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-      return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+    else if(pattern == this.PATTERNS.fade) { // FADE, F
+      hexxy = 0x46;
+    }
+    else if(pattern == 'Y') { // ON, Y
+      hexxy = 0x59;
+    }
+    else if(pattern == 'Z') { // OFF, Z
+      hexxy = 0x5A;
     }
 
-    let cmd = new Uint8Array([0x45, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
+    let cmd = new Uint8Array([hexxy, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
     return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
   }
 

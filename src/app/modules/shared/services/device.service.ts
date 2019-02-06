@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { BLE } from '@ionic-native/ble/ngx';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class DeviceService {

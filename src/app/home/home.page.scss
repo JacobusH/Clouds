@@ -11,6 +11,14 @@
   animation-iteration-count: infinite;
 }
 
+.power-cont {
+  position: absolute;
+  bottom: 12px;
+  right: 158px;
+  z-index: 500000;
+  width: 35px;
+}
+
 
 .one {
   animation-duration: 1.2254s;

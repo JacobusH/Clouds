@@ -8,12 +8,12 @@ import { ScannerPage } from '../pages/scanner/scanner.page';
 import { OverviewPage } from '../pages/overview/overview.page';
 
 export const routes: Routes = [
-  { path: '', component: HomePage, data: { state: 'home' },
+  { path: '', component: HomePage, data: { state: 'homePage' },
   children: [
     { path: '', redirectTo: 'overview', pathMatch: 'full' },
-    { path: 'clouds', component: CloudsPage, data: { state: 'clouds' }},
-    { path: 'scanner', component: ScannerPage, data: { state: 'scanner' }},
-    { path: 'overview', component: OverviewPage, data: { state: 'overview' }},
+    { path: 'clouds', component: CloudsPage, data: { state: 'cloudsPage' }},
+    { path: 'scanner', component: ScannerPage, data: { state: 'scannerPage' }},
+    { path: 'overview', component: OverviewPage, data: { state: 'overviewPage' }},
   ]},
 ];
  

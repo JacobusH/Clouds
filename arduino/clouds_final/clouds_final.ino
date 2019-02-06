@@ -376,10 +376,21 @@ void setup()
   Ring3.setBrightness(120);
   
   // Kick off patterns
-  Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 100);
-  Ring2.RainbowCycle(3);
-  Ring2.Color1 = Ring1.Color1;
-  Ring3.TheaterChase(Ring3.Color(175,58,0), Ring3.Color(30,60,50), 300);
+//  Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 300);
+//  Ring2.RainbowCycle(5);
+//  Ring2.Color1 = Ring1.Color1;
+//  Ring2.RainbowCycle(10);
+//  Ring2.Color1 = Ring1.Color1;
+
+//  Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 300);
+//  Ring2.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 300);
+//  Ring3.TheaterChase(Ring1.Color(0,255,58), Ring1.Color(23,0,50), 300);
+
+  Ring1.RainbowCycle(5);
+  Ring1.Color1 = Ring1.Color1;
+  Ring2.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
+  Ring3.RainbowCycle(15);
+  Ring3.Color1 = Ring3.Color1;
 
   // Init Bluefruit
   Bluefruit.begin();
@@ -436,7 +447,8 @@ void connect_callback(uint16_t conn_handle)
   Serial.print("Connected to ");
   Serial.println(central_name);
 
-  Serial.println("Please select the 'Neopixels' tab, click 'Connect' and have fun");
+//  Serial.println("Please select the 'Neopixels' tab, click 'Connect' and have fun");
+  Serial.println("Please select a cloud pattern and enjoy");
 }
 
 pattern Ring1_curPattern = FADE;
@@ -455,33 +467,172 @@ void loop()
       int command = bleuart.read();
     
       switch (command) {
-        case 'A': { // test
-  //        commandSendA();
-          // Switch Ring1 to FADE pattern
-          Ring1.ActivePattern = FADE;
-          Ring1.Interval = 20;
-          Ring2.ActivePattern = FADE;
-          Ring2.Interval = 100;
-          Ring3.ActivePattern = FADE;
-          Ring3.Interval = 200;
+        case 'A': { // Rainbow Cycle
+          int cloudNum = bleuart.read();
+          int interval = bleuart.read();
+
+          Serial.println("----- In Rainbow Cycle -----");
+          Serial.println(command);
+          Serial.println(cloudNum);
+          Serial.println(interval);
+          
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = RAINBOW_CYCLE;
+            Ring1.Interval = interval;
+            Ring1.TotalSteps = 255;
+            Ring1.Color1 = Ring1.Wheel(random(255));
+          }
+          else if(cloudNum == 2) {
+            Ring2.ActivePattern = RAINBOW_CYCLE;
+            Ring2.Interval = interval;
+            Ring2.TotalSteps = 255;
+          }
+          else if(cloudNum == 3) {
+            Ring3.ActivePattern = RAINBOW_CYCLE;
+            Ring3.Interval = interval;
+            Ring3.TotalSteps = 255;
+          }
           break;
         }
         case 'B': {   // Set Brightness
           int test = bleuart.read();
           commandSetBrightness(test);
           break;
-        }
-        case 'C': {   // Set Pixel
+        }      
+        case 'C': { // Theater Chase
           int cloudNum = bleuart.read();
           int interval = bleuart.read();
-          Serial.println("--CloudNum--");
+
+          Serial.println("----- In Theater Chase -----");
+          Serial.println(command);
           Serial.println(cloudNum);
-          Serial.println("--interval--");
           Serial.println(interval);
+          
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = THEATER_CHASE;
+            Ring1.Color1 = Ring1.Wheel(random(255));
+            Ring1.TheaterChase(Ring1.Wheel(random(255)), Ring1.Wheel(random(255)), interval);
+          }
+          else if(cloudNum == 2) {
+            Ring2.ActivePattern = THEATER_CHASE;
+            Ring2.Color1 = Ring2.Wheel(random(255));
+            Ring2.TheaterChase(Ring2.Wheel(random(255)), Ring2.Wheel(random(255)), interval);
+          }
+          else if(cloudNum == 3) {
+            Ring3.ActivePattern = THEATER_CHASE;
+            Ring3.Color1 = Ring3.Wheel(random(255));
+            Ring3.TheaterChase(Ring3.Wheel(random(255)), Ring3.Wheel(random(255)), interval);
+          }
           break;
         }
+        case 'D': { // Color Wipe
+          int cloudNum = bleuart.read();
+          int interval = bleuart.read();
+
+          Serial.println("----- In Color Wipe -----");
+          Serial.println(command);
+          Serial.println(cloudNum);
+          Serial.println(interval);
+          
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = COLOR_WIPE;
+            Ring1.TotalSteps = Ring1.numPixels();
+            Ring1.Interval = interval;
+            Ring1.Color1 = Ring1.Wheel(random(255));
+          }
+          else if(cloudNum == 2) {
+            Ring2.ActivePattern = COLOR_WIPE;
+            Ring2.TotalSteps = Ring2.numPixels();
+            Ring2.Interval = interval;
+            Ring2.Color1 = Ring2.Wheel(random(255));
+          }
+          else if(cloudNum == 3) {
+            Ring3.ActivePattern = COLOR_WIPE;
+            Ring3.TotalSteps = Ring3.numPixels();
+            Ring3.Interval = interval;
+            Ring3.Color1 = Ring3.Wheel(random(255));
+          }
+          break;
+        }
+        case 'E': { // Scanner
+          int cloudNum = bleuart.read();
+          int interval = bleuart.read();
+
+          Serial.println("----- In Scanner -----");
+          Serial.println(command);
+          Serial.println(cloudNum);
+          Serial.println(interval);
+          
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = SCANNER;
+            Ring1.Scanner(Ring1.Wheel(random(255)), interval);
+          }
+          else if(cloudNum == 2) {
+            Ring2.ActivePattern = SCANNER;
+            Ring2.Scanner(Ring2.Wheel(random(255)), interval);
+          }
+          else if(cloudNum == 3) {
+            Ring3.ActivePattern = SCANNER;
+            Ring3.Scanner(Ring3.Wheel(random(255)), interval);
+          }
+          break;
+        }
+        case 'F': { // Fade
+          int cloudNum = bleuart.read();
+          int interval = bleuart.read();
+
+          Serial.println("----- In Fade -----");
+          Serial.println(command);
+          Serial.println(cloudNum);
+          Serial.println(interval);
+          
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = FADE;
+            Ring1.Fade(Ring1.Wheel(random(255)), Ring1.Wheel(random(255)), random(Ring1.numPixels()), interval, FORWARD);
+          }
+          else if(cloudNum == 2) {
+            Ring2.ActivePattern = FADE;
+            Ring2.Fade(Ring2.Wheel(random(255)), Ring2.Wheel(random(255)), random(Ring2.numPixels()), interval, FORWARD);
+          }
+          else if(cloudNum == 3) {
+            Ring3.ActivePattern = FADE;
+            Ring3.Fade(Ring1.Wheel(random(255)), Ring3.Wheel(random(255)), random(Ring3.numPixels()), interval, FORWARD);
+          }
+          break;
+        }
+        case 'Y': { // Turn On
+          Ring1.ActivePattern = COLOR_WIPE;
+          Ring1.TotalSteps = Ring1.numPixels();
+          Ring1.Interval = 100;
+          Ring1.Color1 = Ring1.Wheel(random(255));
+
+          Ring2.ActivePattern = COLOR_WIPE;
+          Ring2.TotalSteps = Ring2.numPixels();
+          Ring2Interval = 100;
+          Ring2.Color1 = Ring2.Wheel(random(255));
+
+          Ring2.ActivePattern = COLOR_WIPE;
+          Ring2.TotalSteps = Ring2.numPixels();
+          Ring2.Interval = 100;
+          Ring2.Color1 = Ring2.Wheel(random(255));
+        }
+        case 'Z': { // Turn Off
+          Ring1.ActivePattern = COLOR_WIPE;
+          Ring1.TotalSteps = Ring1.numPixels();
+          Ring1.Interval = 10;
+          Ring1.Color1 = Ring1.Wheel(0);
+
+          Ring2.ActivePattern = COLOR_WIPE;
+          Ring2.TotalSteps = Ring2.numPixels();
+          Ring2Interval = 10;
+          Ring2.Color1 = Ring2.Wheel(0);
+
+          Ring2.ActivePattern = COLOR_WIPE;
+          Ring2.TotalSteps = Ring2.numPixels();
+          Ring2.Interval = 10;
+          Ring2.Color1 = Ring2.Wheel(0);
+        }
       }
-    
       
     
 //    // Switch patterns on a button press:
@@ -500,7 +651,7 @@ void loop()
 //        // Switch to alternating color wipes on Rings1 and 2
 //        Ring1.ActivePattern = COLOR_WIPE;
 //        Ring2.ActivePattern = COLOR_WIPE;
-//        Ring2.TotalSteps = Ring2.numPixels();
+//        c
 //        // And update tbe stick
 //        Stick.Update();
 //    }
