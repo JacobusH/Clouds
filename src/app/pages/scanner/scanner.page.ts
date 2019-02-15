@@ -46,9 +46,10 @@ export class ScannerPage implements OnInit {
             this.displayMsg("Found device: " + JSON.stringify(device));
             this.onDiscoveredDevice(device);
 
-            if(device.id == this.cloudsDeviceID) {
-              this.deviceSelected(device);
-            }
+            // NOTE: use this for auto connect
+            // if(device.id == this.cloudsDeviceID) {
+            //   this.deviceSelected(device);
+            // }
 
           },
           err => {

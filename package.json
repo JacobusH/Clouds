@@ -33,7 +33,7 @@
     "@ionic/pro": "2.0.3",
     "angular-radial-color-picker": "^3.0.1",
     "angularfire2": "^5.1.1",
-    "cordova": "^8.1.2", 
+    "cordova": "^8.1.2",
     "cordova-android": "7.1.4",
     "cordova-browser": "5.0.4",
     "cordova-ios": "4.5.5",
