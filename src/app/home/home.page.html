@@ -27,10 +27,14 @@
   </div>
   <!-- <div *ngIf="!keyboard.isOpen()" class="house-cont"> -->
   <div  class="house-cont">
+      <div *ngIf="debugMode">{{debugMsg}}</div>
     <img class="house" src="assets/house.svg" routerLink='/home/overview' />
   </div>
   <div  class="ant-cont">
-      <img class="antenna" src="assets/antenna.svg" routerLink='/home/scanner' />
+      <img class="antenna" 
+        src="assets/antenna.svg" 
+        (press)="onPress($event)"
+        (tap)="onTap($event)" />
       <div *ngIf="isConnected">
         <img class="pulsarR" src="assets/signal.svg" />
         <img class="pulsarL" src="assets/signal.svg" />
@@ -44,6 +48,9 @@
   <div class="mountains-cont">
       <img class="mountains" src="assets/mountains.svg" />
   </div>
+  <div class="tent-cont">
+      <img class="tent" src="assets/tent.svg" routerLink='/home/settings' />
+  </div>
   <div class="power-cont">
     <div *ngIf="isOn" (click)="flipPower('off')">
       <img src="assets/power_on.svg" />
@@ -53,6 +60,7 @@
     </div>
   </div>
   <app-flowers style="width:100%; height: 100%;"></app-flowers>
+  
 
   
 </ion-content>

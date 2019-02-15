@@ -5,6 +5,7 @@ import { DeviceService } from '../modules/shared/services/device.service';
 import { Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { PatternsService } from '../modules/shared/services/patterns.service';
+import { ScannerService } from '../modules/shared/services/scanner.service';
 import { bounce, pulse, fadeOutRight } from 'ng-animate';
 import { routeAnimations } from '../animations/routes.animation';
 // import { Keyboard } from 'ionic-angular';
@@ -24,6 +25,8 @@ const NEOPIXEL_SERVICE = 'ccc0';
   ]
 })
 export class HomePage implements OnInit {
+  debugMode = false;
+  debugMsg = 'ahh';
   devices: any[] = [];
   statusMessage: string;
   displayMessage:string = "Hallo";
@@ -39,7 +42,8 @@ export class HomePage implements OnInit {
               , private ngZone: NgZone
               , private deviceService: DeviceService
               , private router: Router
-              , private patternService: PatternsService) { 
+              , private patternService: PatternsService
+              , private scannerService: ScannerService) { 
   }
   
   ngOnInit() {
@@ -76,8 +80,6 @@ export class HomePage implements OnInit {
       });
   }
 
-  
-
   displayMsg(msg: string) {
     this.ngZone.run(() => {
       this.displayMessage = msg;
@@ -104,4 +106,20 @@ export class HomePage implements OnInit {
       this.patternService.sendPattern(0, 'Y', 100);
     }
   }
+
+  onTap(event) {
+    console.log("tapped")
+    this.debugMsg = 'tapped';
+    this.scannerService.setShowSettingsFalse();
+    this.router.navigateByUrl('/home/scanner', { queryParams: { 'isShort': 'true' }} )
+  }
+
+  onPress(event) {
+    console.log("held")
+    this.debugMsg = 'held';
+    this.scannerService.setShowSettingsTrue();
+    this.router.navigateByUrl('/home/scanner', { queryParams: { 'isShort': 'false' }} )
+  }
+
+
 }

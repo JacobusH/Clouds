@@ -1,0 +1,35 @@
+.sel-btn {
+  border:2px solid #adbce6;
+  border-radius: 5px;
+  background: #fff;
+  padding: 2px;
+}
+
+.top-buttons {
+  display:flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .sel-btn {
+    padding: 6px;
+  }
+}
+
+.device-cont {
+  display: flex; 
+  flex-flow: row wrap;
+  
+  .device {
+    display: flex;
+    flex-flow: column nowrap;
+    border:1px solid #adbce6;
+    border-radius: 5px;
+    background: #fff;
+    margin: 5px; 
+    padding: 5px;
+
+    .bottom {
+      align-self: center;
+    }
+  }
+}

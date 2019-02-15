@@ -12,6 +12,7 @@ import { HomePage } from './home.page';
 import { CloudsPage } from '../pages/clouds/clouds.page';
 import { ScannerPage } from '../pages/scanner/scanner.page';
 import { OverviewPage } from '../pages/overview/overview.page';
+import { SettingsPage } from '../pages/settings/settings.page';
 
 import { ColorPickerComponent } from '../pages/clouds/color-picker/color-picker.component';
 import { PatternsComponent } from '../pages/clouds/patterns/patterns.component';
@@ -26,6 +27,7 @@ import { routing } from './home.routing';
     , OverviewPage
     , ColorPickerComponent
     , PatternsComponent
+    , SettingsPage
   ],
   imports: [
     routing

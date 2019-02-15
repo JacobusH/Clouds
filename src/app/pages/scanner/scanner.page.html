@@ -1,26 +1,32 @@
-<div>
+<div *ngIf="isShowSettings">
+<!-- <div>
   {{displayMessage}}
-</div>
+</div> -->
 
 <div class="top-buttons"> 
-  <button (click)="scan()">
+  <button class='sel-btn' (click)="scan()">
     Scan
   </button> 
 </div>
-<div class="devices" *ngFor="let device of devices">
-  <div class="top">
-    <h2 class="name">{{ device.name || 'Unnamed' }}</h2>
-    <p class="id">{{ device.id }}</p>
-    <p class="rssi">RSSI: {{device.rssi}}</p>
-  </div>
-  <div class="bottom">
-    <button (click)="deviceSelected(device)">
-      Select
-    </button>  
+<div class="device-cont">
+  <div class="device" *ngFor="let device of devices">
+    <div class="top">
+      <h3 class="name">{{ device.name || 'Unnamed' }}</h3>
+      <div class="id">Device ID:<br/>&nbsp;&nbsp; {{ device.id }}</div>
+      <div class="rssi">RSSI: {{device.rssi}}</div>
+    </div>
+    <div class="bottom">
+      <button class='sel-btn' (click)="deviceSelected(device)">
+        Select
+      </button>  
+    </div>
   </div>
 </div>
 
-Test Link: 
+
+<!-- Test Link: 
 <button (click)="testDeviceSelected()">
     Select
-  </button>  
+  </button>   -->
+
+</div>

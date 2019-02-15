@@ -1,7 +1,11 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from '../../modules/shared/services/device.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ScannerService } from '../../modules/shared/services/scanner.service';
+import { switchMap } from 'rxjs/operators';
 // import { AlertController } from 'ionic-angular';
 
 const NEOPIXEL_SERVICE = 'ccc0';
@@ -11,23 +15,54 @@ const NEOPIXEL_SERVICE = 'ccc0';
   templateUrl: './scanner.page.html',
   styleUrls: ['./scanner.page.scss']
 })
-export class ScannerPage implements OnInit {
+export class ScannerPage implements OnInit, AfterViewInit {
+  clickManner$: Observable<any[]>;
+  isShowSettings: Boolean;
   devices: any[] = [];
   statusMessage: string;
   displayMessage:string = "Hallo";
   logMessage:string = "No device selected";
 
-  cloudsDeviceID = "C6:50:3F:C2:27:DB";
+  // cloudsDeviceID = "C6:50:3F:C2:27:DB"; // Jeanne's
+  cloudsDeviceID = "EC:73:E7:89:67:01"; // mine
 
   constructor(private ble: BLE
               // , private alertCtrl: AlertController,
               , private ngZone: NgZone
               , private deviceService: DeviceService
-              , private router: Router) { 
+              , private router: Router
+              , private actRoute: ActivatedRoute
+              , private scannerService: ScannerService) { 
   }
   
   ngOnInit() {
-    this.scan();
+    // this.ngZone.run(() => {
+    //   this.scannerService.isShowSettings$.subscribe(toShow => {
+    //     if(toShow) {
+    //       this.isShowSettings = true;
+    //       this.scan(false); // scan and only show list, allow them to pick which to connect
+    //     }
+    //     else {
+    //       this.isShowSettings = false;
+    //       this.scan(true); // scan and connect to hardcoded device
+    //     }
+    //   })
+    // })
+  }
+
+  ngAfterViewInit() {
+    this.ngZone.run(() => {
+      this.scannerService.isShowSettings$.subscribe(toShow => {
+        if(toShow) {
+          this.isShowSettings = true;
+          this.scan(false); // scan and only show list, allow them to pick which to connect
+        }
+        else {
+          this.isShowSettings = false;
+          this.scan(true); // scan and connect to hardcoded device
+        }
+      })
+    })
   }
 
   displayMsg(msg: string) {
@@ -36,7 +71,7 @@ export class ScannerPage implements OnInit {
     })
   }
 
-  scan() {
+  scan(auto: boolean) {
     this.ngZone.run(() => {
       // this.ble.scan([], 60).subscribe(
         this.devices = [];  // clear existing list
@@ -47,9 +82,9 @@ export class ScannerPage implements OnInit {
             this.onDiscoveredDevice(device);
 
             // NOTE: use this for auto connect
-            // if(device.id == this.cloudsDeviceID) {
-            //   this.deviceSelected(device);
-            // }
+            if(auto && device.id == this.cloudsDeviceID) {
+              this.deviceSelected(device);
+            }
 
           },
           err => {
