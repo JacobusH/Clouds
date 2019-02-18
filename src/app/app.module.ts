@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { IonicStorageModule } from '@ionic/storage';
 // import { CustomReuseStrategy } from './home/route-reuse-strategy';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular'; 
@@ -41,6 +42,7 @@ registerLocaleData(en);
     , AngularFireModule.initializeApp(environment.firebase)
     , DragDropModule
     , IonicModule.forRoot()
+    , IonicStorageModule.forRoot()
     , AppRoutingModule
     , BrowserAnimationsModule
     , FormsModule

@@ -1,4 +1,4 @@
-<div *ngIf="isShowSettings">
+<div *ngIf="!(isShowSettings$ | async)">
 <!-- <div>
   {{displayMessage}}
 </div> -->
