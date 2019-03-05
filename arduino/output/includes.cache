@@ -1,0 +1,232 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\cores\\nRF5"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\variants\\feather_nrf52832"
+  },
+  {
+    "Sourcefile": "e:\\Projects\\clouds\\arduino\\output\\sketch\\clouds_final.ino.cpp",
+    "Include": "Adafruit_NeoPixel.h",
+    "Includepath": "C:\\Users\\Jacobus\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel"
+  },
+  {
+    "Sourcefile": "e:\\Projects\\clouds\\arduino\\output\\sketch\\clouds_final.ino.cpp",
+    "Include": "bluefruit.h",
+    "Includepath": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src"
+  },
+  {
+    "Sourcefile": "e:\\Projects\\clouds\\arduino\\output\\sketch\\clouds_final.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\Adafruit_NeoPixel.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEAdvertising.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLECentral.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLECharacteristic.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEClientCharacteristic.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEClientService.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEDiscovery.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEGap.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEGatt.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEScanner.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEService.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\BLEUuid.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\bluefruit.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\clients\\BLEAncs.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\clients\\BLEClientCts.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\clients\\BLEClientDis.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\clients\\BLEClientHidAdafruit.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\clients\\BLEClientUart.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEBas.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEBeacon.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEDfu.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEDis.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEHidAdafruit.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEHidGeneric.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEMidi.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\BLEUart.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\services\\EddyStone.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\utility\\AdaMsg.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\utility\\bonding.cpp",
+    "Include": "Bluefruit_FileIO.h",
+    "Includepath": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\utility\\bonding.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\Bluefruit52Lib\\src\\utility\\bootloader_util.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\Bluefruit_FileIO.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\ExternalFS.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\InternalFS.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\fatfs\\source\\diskio.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\fatfs\\source\\ff.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\fatfs\\source\\ffsystem.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\fatfs\\source\\ffunicode.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\littlefs\\lfs.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\Jacobus\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\nrf52\\0.9.2\\libraries\\FileSystem\\src\\littlefs\\lfs_util.c",
+    "Include": "",
+    "Includepath": ""
+  }
+]

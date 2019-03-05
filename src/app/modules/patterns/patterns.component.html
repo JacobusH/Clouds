@@ -1,0 +1,26 @@
+<div class="top">
+  <div class='cloud-sel' *ngFor="let cloud of clouds; let i = index">
+    <img src="assets/cloud.svg" (tap)="curCloud = clouds[i]" /> 
+  </div>
+</div>
+<div class="patt-cont" *ngIf="curCloud">
+  <div class="funcs">
+    <div class="left">
+      <div class="building-block" *ngFor="let block of curCloud.buildingBlocks" (click)="curBlock = block">
+        {{block.blockID}}
+        <!-- <div class="pixels" *ngFor="let pix of pixels; let i = index">
+          {{cloud.pix}}
+        </div> -->
+      </div>
+    </div>
+    <div class="right">
+      {{curCloud.cloudID}}
+      {{curCloud.numPixels}}
+      {{curCloud.curBrightness}}
+      {{curCloud.isActive}}
+    </div>
+  </div>
+  <div class="state" *ngIf="curBlock">
+    <app-state-circle [items]="curBlock.pixels"></app-state-circle>
+  </div>
+</div>

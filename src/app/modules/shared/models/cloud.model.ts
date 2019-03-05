@@ -3,10 +3,14 @@ export interface Cloud {
   numPixels: number;
   curBrightness: number;
   isActive: boolean
-  buildingBlocks: Array<BuildingBlock>
+  buildingBlocks: Array<PatternBlock>
 }
 
-export interface BuildingBlock {
+export interface PatternBlock {
   blockID: string,
-  
+  pixels: Array<string> // arr of pixel color hex-codes in position
+}
+
+export interface FunctionBlock {
+  blockID: string,
 }

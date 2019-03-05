@@ -1,0 +1,11 @@
+<svg id='menuWheel' 
+  [attr.width]='menuRadius * 2'
+  [attr.heightZ]='menuRadius * 2'>
+  <circle class='menu-item' 
+    [attr.r]='itemRadius' 
+    [attr.cx]='determineItemCX(i)' 
+    [attr.cy]='determineItemCY(i)'
+    *ngFor="let item of items; let i = index">
+  </circle>
+  <circle id='menuCenter' r='5' fill="red" [attr.cx]='menuRadius + itemRadius' [attr.cy]='menuRadius + itemRadius'></circle>
+</svg>

@@ -1,0 +1,33 @@
+<div class="text-center">
+    <h1>Drag and pull the edges of the rectangle</h1>
+    <div
+      class="rectangle"
+      [ngStyle]="style"
+      mwlResizable
+      [validateResize]="validate"
+      [enableGhostResize]="true"
+      [resizeSnapGrid]="{ left: 50, right: 50 }"
+      (resizeEnd)="onResizeEnd($event)"
+    >
+      <div
+        class="resize-handle-top"
+        mwlResizeHandle
+        [resizeEdges]="{ top: true }"
+      ></div>
+      <div
+        class="resize-handle-left"
+        mwlResizeHandle
+        [resizeEdges]="{ left: true }"
+      ></div>
+      <div
+        class="resize-handle-right"
+        mwlResizeHandle
+        [resizeEdges]="{ right: true }"
+      ></div>
+      <div
+        class="resize-handle-bottom"
+        mwlResizeHandle
+        [resizeEdges]="{ bottom: true }"
+      ></div>
+    </div>
+  </div>

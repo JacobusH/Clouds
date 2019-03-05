@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { PatternsEnum } from '../../../modules/shared/models/patterns.model';
+import { Cloud, PatternBlock } from '../../../modules/shared/models/cloud.model';
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from './device.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { v4 as uuid } from 'uuid';
+import { convertToR3QueryMetadata } from '@angular/core/src/render3/jit/directive';
 
 
 @Injectable({
@@ -13,13 +15,25 @@ import * as firebase from 'firebase/app';
 })
 export class PatternsService {
   colPatters = '!Patterns';
-
   PATTERNS = {'rainbow': 'rainbow', 'theater': 'theater','colorwipe': 'colorwipe','scanner': 'scanner', 'fade': 'fade'}
 
   constructor(
     private ble: BLE 
     , private deviceService: DeviceService) { 
       
+  }
+
+  createNewCloud(): Cloud {
+    return {
+      cloudID: uuid(),
+      numPixels: 24,
+      curBrightness: 125,
+      isActive: true,
+      buildingBlocks: [{
+        blockID: uuid(),
+        pixels: Array<string>().fill('#8B008B', 0, 23) // arr of clouds hex colors in position
+      }]
+    }
   }
 
   // Commands to send to controller

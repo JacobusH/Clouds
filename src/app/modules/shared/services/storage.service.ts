@@ -10,12 +10,12 @@ export class StorageService {
 
   }
 
-  setNumClouds(howMany: number) {
-    this.storage.set('numClouds', howMany);
+  setClouds(howMany: number) {
+    this.storage.set('clouds', howMany);
   }
 
-  getNumClouds(): Promise<any> {
-    return this.storage.get('numClouds');
+  getClouds(): Promise<any> {
+    return this.storage.get('clouds');
   }
 
   /***********

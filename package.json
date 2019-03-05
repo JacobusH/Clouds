@@ -33,6 +33,7 @@
     "@ionic/pro": "2.0.3",
     "@ionic/storage": "^2.2.0",
     "angular-radial-color-picker": "^3.0.1",
+    "angular-resizable-element": "^3.2.3",
     "angularfire2": "^5.1.1",
     "cordova": "^8.1.2",
     "cordova-android": "7.1.4",
@@ -60,6 +61,7 @@
     "node-sass": "^4.10.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "uuid": "^3.3.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
