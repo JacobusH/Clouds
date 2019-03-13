@@ -1,3 +1,13 @@
+.top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+
+  .cloud-sel {
+    width:13%;
+  }
+}
+
 .msgBox {
   border: 1px solid pink;
   border-radius: 5px;

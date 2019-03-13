@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Cloud } from '../models/cloud.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class StorageService {
 
   }
 
-  setClouds(howMany: number) {
-    this.storage.set('clouds', howMany);
+  setClouds(clouds: Array<Cloud>) {
+    this.storage.set('clouds', clouds);
   }
 
   getClouds(): Promise<any> {

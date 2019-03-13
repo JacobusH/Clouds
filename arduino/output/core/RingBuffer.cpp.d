@@ -1,3 +1,3 @@
-e:\Projects\clouds\arduino\output\core\RingBuffer.cpp.o: \
- C:\Users\Jacobus\AppData\Local\Arduino15\packages\adafruit\hardware\nrf52\0.9.2\cores\nRF5\RingBuffer.cpp \
- C:\Users\Jacobus\AppData\Local\Arduino15\packages\adafruit\hardware\nrf52\0.9.2\cores\nRF5\RingBuffer.h
+/Tome/Projects/clouds/arduino/output/core/RingBuffer.cpp.o: \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/RingBuffer.cpp \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/RingBuffer.h

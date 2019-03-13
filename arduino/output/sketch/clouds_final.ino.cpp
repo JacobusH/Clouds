@@ -1,5 +1,5 @@
-#line 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
-#line 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 /*********************************************************************
  This is the controller for Jeanne's Clouds!
 
@@ -362,25 +362,25 @@ NeoPatterns Ring4(24, 27, NEO_GRB + NEO_KHZ800, &Ring4Complete);
 
 
 // Initialize everything and prepare to start
-#line 363 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 363 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void setup();
-#line 423 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 423 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void startAdv(void);
-#line 451 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 451 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void connect_callback(uint16_t conn_handle);
-#line 469 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 469 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void loop();
-#line 795 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 795 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void sendResponse(char const *response);
-#line 800 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 800 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void commandSendA();
-#line 817 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 817 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void commandSetBrightness(int test);
-#line 848 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 848 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void commandSetPixel(Adafruit_NeoPixel cur_cloud);
-#line 886 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 886 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void swapBuffers(Adafruit_NeoPixel cur_cloud);
-#line 363 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+#line 363 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void setup()
 {
   Serial.begin(115200);
@@ -926,5 +926,5 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
 
 }
 
-#line 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\d_patterns.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino"
 

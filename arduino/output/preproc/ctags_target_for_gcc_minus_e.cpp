@@ -1,5 +1,5 @@
-# 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
-# 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 1 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
+# 1 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 /*********************************************************************
 
  This is the controller for Jeanne's Clouds!
@@ -59,7 +59,7 @@
                              
 
 *********************************************************************/
-# 31 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 31 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 // This sketch is intended to be used with Jeanne's App
 //
 // - Compile and flash this sketch to the nRF52 Feather
@@ -71,9 +71,9 @@
 
 /* NOTE: This sketch required at least version 1.1.0 of Adafruit_Neopixel !!! */
 
-# 43 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 2
-# 44 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 2
-# 45 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 2
+# 43 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 2
+# 44 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 2
+# 45 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 2
 
 // BLE Service
 BLEDis bledis;
@@ -81,9 +81,9 @@ BLEUart bleuart;
 
 
 uint8_t *pixelBuffer = 
-# 51 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 3 4
+# 51 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 3 4
                       __null
-# 51 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 51 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
                           ;
 uint8_t width = 0;
 uint8_t height = 0;
@@ -161,9 +161,9 @@ class NeoPatterns : public Adafruit_NeoPixel
             {
                 Index = 0;
                 if (OnComplete != 
-# 127 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 3 4
+# 127 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 3 4
                                  __null
-# 127 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 127 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
                                      )
                 {
                     OnComplete(); // call the comlpetion callback
@@ -177,9 +177,9 @@ class NeoPatterns : public Adafruit_NeoPixel
             {
                 Index = TotalSteps-1;
                 if (OnComplete != 
-# 139 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino" 3 4
+# 139 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino" 3 4
                                  __null
-# 139 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 139 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
                                      )
                 {
                     OnComplete(); // call the comlpetion callback
@@ -397,10 +397,10 @@ void Ring4Complete();
 
 // Define some NeoPatterns for the two rings and the stick
 //  as well as some completion routines
-NeoPatterns Ring1(24, 16, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) + 0x0000 /* 800 KHz datastream*/, &Ring1Complete);
-NeoPatterns Ring2(24, 30, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) + 0x0000 /* 800 KHz datastream*/, &Ring2Complete);
-NeoPatterns Ring3(24, 15, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) + 0x0000 /* 800 KHz datastream*/, &Ring3Complete);
-NeoPatterns Ring4(24, 27, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) + 0x0000 /* 800 KHz datastream*/, &Ring4Complete);
+NeoPatterns Ring1(24, 16, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring1Complete);
+NeoPatterns Ring2(24, 30, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring2Complete);
+NeoPatterns Ring3(24, 15, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring3Complete);
+NeoPatterns Ring4(24, 27, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring4Complete);
 
 
 // Initialize everything and prepare to start
@@ -494,7 +494,7 @@ void startAdv(void)
    * https://developer.apple.com/library/content/qa/qa1931/_index.html   
 
    */
-# 445 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 445 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
   Bluefruit.Advertising.restartOnDisconnect(true);
   Bluefruit.Advertising.setInterval(32, 244); // in unit of 0.625 ms
   Bluefruit.Advertising.setFastTimeout(30); // number of seconds in fast mode
@@ -847,7 +847,7 @@ void Ring4Complete()
  * COMMAND FUNCTIONS
 
 ******************/
-# 795 "e:\\Projects\\clouds\\arduino\\clouds_final\\clouds_final.ino"
+# 795 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void sendResponse(char const *response) {
     Serial.printf("Send Response: %s\n", response);
     bleuart.write(response, strlen(response)*sizeof(char));
@@ -960,4 +960,4 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
   cur_cloud.show();
 
 }
-# 1 "e:\\Projects\\clouds\\arduino\\clouds_final\\d_patterns.ino"
+# 1 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino"

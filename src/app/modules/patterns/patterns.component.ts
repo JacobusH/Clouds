@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StorageService } from '../../modules/shared/services/storage.service';
 import { PatternsService } from '../../modules/shared/services/patterns.service';
 import { Cloud, PatternBlock } from '../../modules/shared/models/cloud.model';
@@ -9,8 +9,8 @@ import { Cloud, PatternBlock } from '../../modules/shared/models/cloud.model';
   styleUrls: ['./patterns.component.scss']
 })
 export class PatternsComponent implements OnInit {
+  @Input('curCloud') curCloud: Cloud;
   clouds: Array<Cloud>;
-  curCloud: Cloud;
   curBlock: PatternBlock;
 
   constructor(
@@ -19,20 +19,16 @@ export class PatternsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storageService.getClouds().then(x => {
-      // x is an array of clouds
-      if(x) {
-        this.clouds = x
-      } else {
-        this.clouds = [ this.patService.createNewCloud() ]
-      }
-      this.curCloud = this.clouds[0]
-      this.curBlock = this.curCloud.buildingBlocks[0]
-    });
-  }
-
-  setCurCloud(idx: number) {
-    this.curCloud = this.clouds[idx];
+    // this.storageService.getClouds().then(x => {
+    //   // x is an array of clouds
+    //   if(x) {
+    //     this.clouds = x
+    //   } else {
+    //     this.clouds = [ this.patService.createNewCloud() ]
+    //   }
+    //   this.curCloud = this.clouds[0]
+    //   this.curBlock = this.curCloud.buildingBlocks[0]
+    // });
   }
 
 

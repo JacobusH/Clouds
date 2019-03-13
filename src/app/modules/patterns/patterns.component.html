@@ -1,8 +1,3 @@
-<div class="top">
-  <div class='cloud-sel' *ngFor="let cloud of clouds; let i = index">
-    <img src="assets/cloud.svg" (tap)="curCloud = clouds[i]" /> 
-  </div>
-</div>
 <div class="patt-cont" *ngIf="curCloud">
   <div class="funcs">
     <div class="left">
