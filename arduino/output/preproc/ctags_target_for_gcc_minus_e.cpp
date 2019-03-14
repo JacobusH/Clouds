@@ -961,3 +961,18 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
 
 }
 # 1 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino"
+
+
+# 4 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino" 2
+# 5 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino" 2
+
+void test()
+{
+  Serial.println("This test function maybe will compile");
+}
+# 1 "/Tome/Projects/clouds/arduino/clouds_final/e_test.ino"
+# 2 "/Tome/Projects/clouds/arduino/clouds_final/e_test.ino" 2
+
+void foo() {
+    test();
+}

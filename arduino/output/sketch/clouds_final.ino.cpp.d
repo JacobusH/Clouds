@@ -132,4 +132,5 @@
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/libraries/Bluefruit52Lib/src/clients/BLEClientHidAdafruit.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/libraries/Bluefruit52Lib/src/services/BLEHidGeneric.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/libraries/Bluefruit52Lib/src/clients/BLEClientBas.h \
- /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/utility/AdaCallback.h
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/utility/AdaCallback.h \
+ /Tome/Projects/clouds/arduino/output/sketch/d_patterns.h

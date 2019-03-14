@@ -236,6 +236,9 @@ Discarded input sections
  .bss           0x00000000        0x0 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
  .text._Z12commandSendAv
                 0x00000000       0x24 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .text._Z4testv
+                0x00000000       0x10 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .text._Z3foov  0x00000000        0x4 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
  .text._Z15commandSetPixel17Adafruit_NeoPixel
                 0x00000000       0xf0 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
  .data.Ring4_curPattern
@@ -2116,7 +2119,7 @@ Linker script and memory map
                 0x00026000                __flash_arduino_start = ORIGIN (FLASH)
                 0x0006d000                __flash_arduino_end = (ORIGIN (FLASH) + LENGTH (FLASH))
 
-.text           0x00026000     0xce48
+.text           0x00026000     0xce68
  *(.isr_vector)
  .isr_vector    0x00026000      0x200 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
                 0x00026000                __isr_vector
@@ -3891,189 +3894,188 @@ Linker script and memory map
  *(.dtors)
  *(.rodata*)
  .rodata.str1.1
-                0x00032224      0x1e7 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
-                                0x20f (size before relaxing)
- *fill*         0x0003240b        0x1 
- .rodata        0x0003240c        0xc /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- *fill*         0x00032418        0x8 
+                0x00032224      0x20d /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+                                0x235 (size before relaxing)
+ *fill*         0x00032431        0x3 
+ .rodata        0x00032434        0xc /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
  .rodata._ZZ21nrfx_coredep_delay_usE14delay_bytecode
-                0x00032420        0x6 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .rodata        0x00032426        0x6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+                0x00032440        0x6 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .rodata        0x00032446        0x6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
  .rodata._ZTV17BLECharacteristic
-                0x0003242c       0x18 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
-                0x0003242c                vtable for BLECharacteristic
+                0x0003244c       0x18 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+                0x0003244c                vtable for BLECharacteristic
  .rodata._ZTV10BLEService
-                0x00032444       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
-                0x00032444                vtable for BLEService
- .rodata        0x00032458       0x20 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+                0x00032464       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+                0x00032464                vtable for BLEService
+ .rodata        0x00032478       0x20 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
  .rodata.str1.1
-                0x00032478      0x1f3 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+                0x00032498      0x1f3 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
                                 0x1fb (size before relaxing)
  .rodata._ZL19UUID128_SVC_DFU_OTA
-                0x0003266b       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+                0x0003268b       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
  .rodata._ZL23UUID128_CHR_DFU_CONTROL
-                0x0003267b       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- *fill*         0x0003268b        0x1 
+                0x0003269b       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ *fill*         0x000326ab        0x1 
  .rodata._ZTV6BLEDfu
-                0x0003268c       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
-                0x0003268c                vtable for BLEDfu
+                0x000326ac       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+                0x000326ac                vtable for BLEDfu
  .rodata._ZL22UUID128_CHR_DFU_PACKET
-                0x000326a0       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+                0x000326c0       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
  .rodata._ZL23UUID128_CHR_DFU_REVISON
-                0x000326b0       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+                0x000326d0       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
  .rodata.str1.1
-                0x000326c0       0x21 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+                0x000326e0       0x21 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
                                  0x35 (size before relaxing)
- *fill*         0x000326e1        0x3 
+ *fill*         0x00032701        0x3 
  .rodata._ZTV6BLEDis
-                0x000326e4       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
-                0x000326e4                vtable for BLEDis
+                0x00032704       0x14 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+                0x00032704                vtable for BLEDis
  .rodata.BLEUART_UUID_CHR_TXD
-                0x000326f8       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
-                0x000326f8                BLEUART_UUID_CHR_TXD
+                0x00032718       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x00032718                BLEUART_UUID_CHR_TXD
  .rodata.BLEUART_UUID_SERVICE
-                0x00032708       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
-                0x00032708                BLEUART_UUID_SERVICE
+                0x00032728       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x00032728                BLEUART_UUID_SERVICE
  .rodata._ZTV7BLEUart
-                0x00032718       0x58 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
-                0x00032718                vtable for BLEUart
+                0x00032738       0x58 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x00032738                vtable for BLEUart
  .rodata.BLEUART_UUID_CHR_RXD
-                0x00032770       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
-                0x00032770                BLEUART_UUID_CHR_RXD
+                0x00032790       0x10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x00032790                BLEUART_UUID_CHR_RXD
  .rodata.str1.1
-                0x00032780        0x8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x000327a0        0x8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
  .rodata.str1.1
-                0x00032788       0x8e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- *fill*         0x00032816        0x2 
+                0x000327a8       0x8e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ *fill*         0x00032836        0x2 
  .rodata._ZTVN11BluefruitFS4FileE
-                0x00032818       0x28 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
-                0x00032818                vtable for BluefruitFS::File
+                0x00032838       0x28 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+                0x00032838                vtable for BluefruitFS::File
  .rodata.str1.1
-                0x00032840        0x2 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+                0x00032860        0x2 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
                                   0x7 (size before relaxing)
- *fill*         0x00032842        0x2 
+ *fill*         0x00032862        0x2 
  .rodata._ZTV8LittleFS
-                0x00032844       0x54 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
-                0x00032844                vtable for LittleFS
+                0x00032864       0x54 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+                0x00032864                vtable for LittleFS
  .rodata.__func__.7731
-                0x00032898        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x000328b8        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.__func__.8335
-                0x000328a7        0xb /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x000328c7        0xb /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.str1.1
-                0x000328b2      0x207 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x000328d2      0x207 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
                                 0x20e (size before relaxing)
  .rodata.__func__.7796
-                0x00032ab9        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x00032ad9        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.__func__.8130
-                0x00032ac8        0xd /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x00032ae8        0xd /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.__func__.8361
-                0x00032ad5        0x9 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x00032af5        0x9 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.__func__.8240
-                0x00032ade        0xe /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x00032afe        0xe /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .rodata.__func__.8145
-                0x00032aec        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- *fill*         0x00032afb        0x1 
+                0x00032b0c        0xf /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ *fill*         0x00032b1b        0x1 
  .rodata.rtable.7456
-                0x00032afc       0x40 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+                0x00032b1c       0x40 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
  .rodata.g_ADigitalPinMap
-                0x00032b3c       0x80 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
-                0x00032b3c                g_ADigitalPinMap
+                0x00032b5c       0x80 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+                0x00032b5c                g_ADigitalPinMap
  .rodata.str1.1
-                0x00032bbc        0x5 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+                0x00032bdc        0x5 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
                                   0xd (size before relaxing)
- *fill*         0x00032bc1        0x3 
+ *fill*         0x00032be1        0x3 
  .rodata._ZTV4Uart
-                0x00032bc4       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
-                0x00032bc4                vtable for Uart
+                0x00032be4       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+                0x00032be4                vtable for Uart
  .rodata.str1.1
-                0x00032bf4       0x14 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+                0x00032c14       0x14 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
  .rodata.str1.1
-                0x00032c08        0xd /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+                0x00032c28        0xd /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
  .rodata.str1.1
-                0x00032c15        0x5 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+                0x00032c35        0x5 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
  .rodata.str1.1
-                0x00032c1a        0x9 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- *fill*         0x00032c23        0x1 
+                0x00032c3a        0x9 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ *fill*         0x00032c43        0x1 
  .rodata._ZTV13Adafruit_FIFO
-                0x00032c24       0x10 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
-                0x00032c24                vtable for Adafruit_FIFO
+                0x00032c44       0x10 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+                0x00032c44                vtable for Adafruit_FIFO
  .rodata.str1.1
-                0x00032c34       0x1c /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+                0x00032c54       0x1c /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
  .rodata.str1.1
-                0x00032c50       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-assert.o)
+                0x00032c70       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-assert.o)
                                  0x3d (size before relaxing)
  .rodata.str1.1
-                0x00032c8c       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
+                0x00032cac       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
                                   0x2 (size before relaxing)
  .rodata._global_impure_ptr
-                0x00032c8c        0x4 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
-                0x00032c8c                _global_impure_ptr
+                0x00032cac        0x4 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
+                0x00032cac                _global_impure_ptr
  .rodata.str1.1
-                0x00032c90       0x11 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
+                0x00032cb0       0x11 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
  .rodata.str1.1
-                0x00032ca1       0x10 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_float.o)
+                0x00032cc1       0x10 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_float.o)
                                  0x12 (size before relaxing)
  .rodata.str1.1
-                0x00032cb1       0x22 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00032cd1       0x22 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
  .rodata.str1.1
-                0x00032cd3        0xd /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-dtoa.o)
+                0x00032cf3        0xd /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-dtoa.o)
                                   0xf (size before relaxing)
  .rodata.__sf_fake_stdin
-                0x00032ce0       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
-                0x00032ce0                __sf_fake_stdin
- .rodata.__sf_fake_stdout
                 0x00032d00       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
-                0x00032d00                __sf_fake_stdout
- .rodata.__sf_fake_stderr
+                0x00032d00                __sf_fake_stdin
+ .rodata.__sf_fake_stdout
                 0x00032d20       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
-                0x00032d20                __sf_fake_stderr
+                0x00032d20                __sf_fake_stdout
+ .rodata.__sf_fake_stderr
+                0x00032d40       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
+                0x00032d40                __sf_fake_stderr
  .rodata.str1.1
-                0x00032d40        0x6 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-locale.o)
+                0x00032d60        0x6 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-locale.o)
                                   0xb (size before relaxing)
- *fill*         0x00032d46        0x2 
+ *fill*         0x00032d66        0x2 
  .rodata.__mprec_tens
-                0x00032d48       0xc8 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
-                0x00032d48                __mprec_tens
+                0x00032d68       0xc8 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
+                0x00032d68                __mprec_tens
  .rodata.__mprec_bigtens
-                0x00032e10       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
-                0x00032e10                __mprec_bigtens
+                0x00032e30       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
+                0x00032e30                __mprec_bigtens
  .rodata.p05.5416
-                0x00032e38        0xc /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
+                0x00032e58        0xc /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
  .rodata.str1.1
-                0x00032e44       0x11 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-svfprintf.o)
+                0x00032e64       0x11 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-svfprintf.o)
  *(.eh_frame*)
- .eh_frame      0x00032e44        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
- .eh_frame      0x00032e44        0x4 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtend.o
+ .eh_frame      0x00032e64        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x00032e64        0x4 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtend.o
 
-.glue_7         0x00032e48        0x0
- .glue_7        0x00032e48        0x0 linker stubs
+.glue_7         0x00032e68        0x0
+ .glue_7        0x00032e68        0x0 linker stubs
 
-.glue_7t        0x00032e48        0x0
- .glue_7t       0x00032e48        0x0 linker stubs
+.glue_7t        0x00032e68        0x0
+ .glue_7t       0x00032e68        0x0 linker stubs
 
-.vfp11_veneer   0x00032e48        0x0
- .vfp11_veneer  0x00032e48        0x0 linker stubs
+.vfp11_veneer   0x00032e68        0x0
+ .vfp11_veneer  0x00032e68        0x0 linker stubs
 
-.v4_bx          0x00032e48        0x0
- .v4_bx         0x00032e48        0x0 linker stubs
+.v4_bx          0x00032e68        0x0
+ .v4_bx         0x00032e68        0x0 linker stubs
 
-.iplt           0x00032e48        0x0
- .iplt          0x00032e48        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
+.iplt           0x00032e68        0x0
+ .iplt          0x00032e68        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00032e48                __exidx_start = .
+                0x00032e68                __exidx_start = .
 
-.ARM.exidx      0x00032e48        0x8
+.ARM.exidx      0x00032e68        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x00032e48        0x8 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
-                0x00032e50                __exidx_end = .
-                0x00032e50                __etext = .
+ .ARM.exidx     0x00032e68        0x8 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+                0x00032e70                __exidx_end = .
+                0x00032e70                __etext = .
 
-.rel.dyn        0x00032e50        0x0
- .rel.iplt      0x00032e50        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
+.rel.dyn        0x00032e70        0x0
+ .rel.iplt      0x00032e70        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
 
-.data           0x20003400       0xe4 load address 0x00032e50
+.data           0x20003400       0xe4 load address 0x00032e70
                 0x20003400                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -4195,13 +4197,13 @@ LOAD /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015
 END GROUP
 
 .tm_clone_table
-                0x200034e4        0x0 load address 0x00032f34
+                0x200034e4        0x0 load address 0x00032f54
  .tm_clone_table
                 0x200034e4        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
  .tm_clone_table
                 0x200034e4        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtend.o
 
-.igot.plt       0x200034e4        0x0 load address 0x00032f34
+.igot.plt       0x200034e4        0x0 load address 0x00032f54
  .igot.plt      0x200034e4        0x0 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/crtbegin.o
                 0x200034e4                . = ALIGN (0x4)
 
@@ -4215,7 +4217,7 @@ END GROUP
  *(.fs_data)
                 [!provide]                PROVIDE (__stop_fs_data, .)
 
-.bss            0x200034e4     0x1ed0 load address 0x00032f34
+.bss            0x200034e4     0x1ed0 load address 0x00032f54
                 0x200034e4                . = ALIGN (0x4)
                 0x200034e4                __bss_start__ = .
  *(.bss*)
@@ -4366,7 +4368,7 @@ END GROUP
                 0x200053b4                . = ALIGN (0x4)
                 0x200053b4                __bss_end__ = .
 
-.heap           0x200053b4     0xa44c load address 0x00034e04
+.heap           0x200053b4     0xa44c load address 0x00034e24
                 0x200053b4                __HeapBase = .
                 0x200053b4                __end__ = .
                 0x200053b4                PROVIDE (end, .)
@@ -4679,109 +4681,109 @@ OUTPUT(/Tome/Projects/clouds/arduino/output/clouds_final.ino.elf elf32-littlearm
  .comment       0x0000006e       0x6f /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
  .comment       0x0000006e       0x6f /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_info     0x00000000    0x714c1
- .debug_info    0x00000000     0x6dfb /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
- .debug_info    0x00006dfb     0x1951 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_info    0x0000874c     0x5517 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
- .debug_info    0x0000dc63     0x48f2 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
- .debug_info    0x00012555     0x62fc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
- .debug_info    0x00018851     0x5c9b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
- .debug_info    0x0001e4ec     0x4535 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
- .debug_info    0x00022a21     0x2a10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
- .debug_info    0x00025431     0x5552 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
- .debug_info    0x0002a983     0x4a78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
- .debug_info    0x0002f3fb     0x50b1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
- .debug_info    0x000344ac     0x454b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
- .debug_info    0x000389f7      0xa69 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
- .debug_info    0x00039460     0x776a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
- .debug_info    0x00040bca     0x5307 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- .debug_info    0x00045ed1      0xb08 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
- .debug_info    0x000469d9     0x6790 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
- .debug_info    0x0004d169      0x6f0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
- .debug_info    0x0004d859     0x5366 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- .debug_info    0x00052bbf       0xea /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
- .debug_info    0x00052ca9     0x23d5 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
- .debug_info    0x0005507e     0x1eb5 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
- .debug_info    0x00056f33     0x589a /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- .debug_info    0x0005c7cd      0x185 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
- .debug_info    0x0005c952      0x1f8 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
- .debug_info    0x0005cb4a     0x279f /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
- .debug_info    0x0005f2e9     0x29fc /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
- .debug_info    0x00061ce5      0x26a /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
- .debug_info    0x00061f4f      0x413 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
- .debug_info    0x00062362      0x966 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
- .debug_info    0x00062cc8      0x1b0 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
- .debug_info    0x00062e78     0x21b1 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
- .debug_info    0x00065029     0x3038 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
- .debug_info    0x00068061     0x17e1 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
- .debug_info    0x00069842      0x83f /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
- .debug_info    0x0006a081     0x1133 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
- .debug_info    0x0006b1b4       0xd7 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
- .debug_info    0x0006b28b       0xe0 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
- .debug_info    0x0006b36b      0x72b /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
- .debug_info    0x0006ba96      0x249 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
- .debug_info    0x0006bcdf      0xe13 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
- .debug_info    0x0006caf2      0x9ab /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
- .debug_info    0x0006d49d      0x535 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- .debug_info    0x0006d9d2      0xcbf /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
- .debug_info    0x0006e691      0x6d4 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
- .debug_info    0x0006ed65     0x15e5 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
- .debug_info    0x0007034a      0x4e7 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
- .debug_info    0x00070831      0x414 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
- .debug_info    0x00070c45      0x5af /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
- .debug_info    0x000711f4      0x2cd /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+.debug_info     0x00000000    0x7151f
+ .debug_info    0x00000000     0x6e59 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .debug_info    0x00006e59     0x1951 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_info    0x000087aa     0x5517 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_info    0x0000dcc1     0x48f2 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_info    0x000125b3     0x62fc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_info    0x000188af     0x5c9b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_info    0x0001e54a     0x4535 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_info    0x00022a7f     0x2a10 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_info    0x0002548f     0x5552 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_info    0x0002a9e1     0x4a78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_info    0x0002f459     0x50b1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_info    0x0003450a     0x454b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_info    0x00038a55      0xa69 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_info    0x000394be     0x776a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_info    0x00040c28     0x5307 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_info    0x00045f2f      0xb08 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_info    0x00046a37     0x6790 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_info    0x0004d1c7      0x6f0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_info    0x0004d8b7     0x5366 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_info    0x00052c1d       0xea /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_info    0x00052d07     0x23d5 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_info    0x000550dc     0x1eb5 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_info    0x00056f91     0x589a /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_info    0x0005c82b      0x185 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_info    0x0005c9b0      0x1f8 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_info    0x0005cba8     0x279f /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_info    0x0005f347     0x29fc /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_info    0x00061d43      0x26a /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_info    0x00061fad      0x413 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_info    0x000623c0      0x966 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_info    0x00062d26      0x1b0 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_info    0x00062ed6     0x21b1 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_info    0x00065087     0x3038 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_info    0x000680bf     0x17e1 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_info    0x000698a0      0x83f /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_info    0x0006a0df     0x1133 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_info    0x0006b212       0xd7 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_info    0x0006b2e9       0xe0 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
+ .debug_info    0x0006b3c9      0x72b /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_info    0x0006baf4      0x249 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_info    0x0006bd3d      0xe13 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_info    0x0006cb50      0x9ab /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_info    0x0006d4fb      0x535 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_info    0x0006da30      0xcbf /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_info    0x0006e6ef      0x6d4 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_info    0x0006edc3     0x15e5 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_info    0x000703a8      0x4e7 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_info    0x0007088f      0x414 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_info    0x00070ca3      0x5af /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_info    0x00071252      0x2cd /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_abbrev   0x00000000     0xc088
- .debug_abbrev  0x00000000      0x72c /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
- .debug_abbrev  0x0000072c      0x4da /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_abbrev  0x00000c06      0x646 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
- .debug_abbrev  0x0000124c      0x571 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
- .debug_abbrev  0x000017bd      0x6f9 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
- .debug_abbrev  0x00001eb6      0x75a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
- .debug_abbrev  0x00002610      0x52d /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
- .debug_abbrev  0x00002b3d      0x50f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
- .debug_abbrev  0x0000304c      0x628 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
- .debug_abbrev  0x00003674      0x61f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
- .debug_abbrev  0x00003c93      0x679 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
- .debug_abbrev  0x0000430c      0x588 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
- .debug_abbrev  0x00004894      0x341 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
- .debug_abbrev  0x00004bd5      0x8ad /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
- .debug_abbrev  0x00005482      0x65b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- .debug_abbrev  0x00005add      0x401 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
- .debug_abbrev  0x00005ede      0x7c4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
- .debug_abbrev  0x000066a2      0x2f4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
- .debug_abbrev  0x00006996      0x64c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- .debug_abbrev  0x00006fe2       0x8e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
- .debug_abbrev  0x00007070      0x4ea /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
- .debug_abbrev  0x0000755a      0x64b /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
- .debug_abbrev  0x00007ba5      0x594 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- .debug_abbrev  0x00008139       0xe9 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
- .debug_abbrev  0x00008222       0xee /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
- .debug_abbrev  0x00008310      0x4a6 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
- .debug_abbrev  0x000087b6      0x5aa /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
- .debug_abbrev  0x00008d60      0x11a /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
- .debug_abbrev  0x00008e7a      0x14f /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
- .debug_abbrev  0x00008fc9      0x29e /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
- .debug_abbrev  0x00009267      0x127 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
- .debug_abbrev  0x0000938e      0x3a9 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
- .debug_abbrev  0x00009737      0x414 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
- .debug_abbrev  0x00009b4b      0x394 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
- .debug_abbrev  0x00009edf      0x2bf /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
- .debug_abbrev  0x0000a19e      0x310 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
- .debug_abbrev  0x0000a4ae       0x65 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
- .debug_abbrev  0x0000a513       0x14 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
- .debug_abbrev  0x0000a527      0x336 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
- .debug_abbrev  0x0000a85d      0x16b /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
- .debug_abbrev  0x0000a9c8      0x19b /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
- .debug_abbrev  0x0000ab63      0x36e /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
- .debug_abbrev  0x0000aed1      0x1eb /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- .debug_abbrev  0x0000b0bc      0x3ee /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
- .debug_abbrev  0x0000b4aa      0x1be /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
- .debug_abbrev  0x0000b668      0x319 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
- .debug_abbrev  0x0000b981      0x214 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
- .debug_abbrev  0x0000bb95      0x1d4 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
- .debug_abbrev  0x0000bd69      0x22b /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
- .debug_abbrev  0x0000bf94       0xf4 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+.debug_abbrev   0x00000000     0xc0be
+ .debug_abbrev  0x00000000      0x762 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .debug_abbrev  0x00000762      0x4da /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_abbrev  0x00000c3c      0x646 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_abbrev  0x00001282      0x571 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_abbrev  0x000017f3      0x6f9 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_abbrev  0x00001eec      0x75a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_abbrev  0x00002646      0x52d /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_abbrev  0x00002b73      0x50f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_abbrev  0x00003082      0x628 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_abbrev  0x000036aa      0x61f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_abbrev  0x00003cc9      0x679 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_abbrev  0x00004342      0x588 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_abbrev  0x000048ca      0x341 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_abbrev  0x00004c0b      0x8ad /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_abbrev  0x000054b8      0x65b /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_abbrev  0x00005b13      0x401 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_abbrev  0x00005f14      0x7c4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_abbrev  0x000066d8      0x2f4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_abbrev  0x000069cc      0x64c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_abbrev  0x00007018       0x8e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_abbrev  0x000070a6      0x4ea /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_abbrev  0x00007590      0x64b /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_abbrev  0x00007bdb      0x594 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_abbrev  0x0000816f       0xe9 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_abbrev  0x00008258       0xee /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_abbrev  0x00008346      0x4a6 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_abbrev  0x000087ec      0x5aa /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_abbrev  0x00008d96      0x11a /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_abbrev  0x00008eb0      0x14f /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_abbrev  0x00008fff      0x29e /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_abbrev  0x0000929d      0x127 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_abbrev  0x000093c4      0x3a9 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_abbrev  0x0000976d      0x414 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_abbrev  0x00009b81      0x394 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_abbrev  0x00009f15      0x2bf /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_abbrev  0x0000a1d4      0x310 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_abbrev  0x0000a4e4       0x65 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_abbrev  0x0000a549       0x14 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
+ .debug_abbrev  0x0000a55d      0x336 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_abbrev  0x0000a893      0x16b /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_abbrev  0x0000a9fe      0x19b /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_abbrev  0x0000ab99      0x36e /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_abbrev  0x0000af07      0x1eb /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_abbrev  0x0000b0f2      0x3ee /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_abbrev  0x0000b4e0      0x1be /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_abbrev  0x0000b69e      0x319 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_abbrev  0x0000b9b7      0x214 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_abbrev  0x0000bbcb      0x1d4 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_abbrev  0x0000bd9f      0x22b /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_abbrev  0x0000bfca       0xf4 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
 .debug_loc      0x00000000    0x164fb
  .debug_loc     0x00000000     0x10dc /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
@@ -4831,422 +4833,422 @@ OUTPUT(/Tome/Projects/clouds/arduino/output/clouds_final.ino.elf elf32-littlearm
  .debug_loc     0x000160dc      0x38b /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
  .debug_loc     0x00016467       0x94 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_aranges  0x00000000     0x1ea0
+.debug_aranges  0x00000000     0x1eb0
  .debug_aranges
-                0x00000000       0xc8 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+                0x00000000       0xd8 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
  .debug_aranges
-                0x000000c8       0xc8 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+                0x000000d8       0xc8 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
  .debug_aranges
-                0x00000190      0x160 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+                0x000001a0      0x160 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
  .debug_aranges
-                0x000002f0       0xa0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+                0x00000300       0xa0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
  .debug_aranges
-                0x00000390      0x1c0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+                0x000003a0      0x1c0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
  .debug_aranges
-                0x00000550      0x160 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+                0x00000560      0x160 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
  .debug_aranges
-                0x000006b0       0x68 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+                0x000006c0       0x68 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
  .debug_aranges
-                0x00000718       0x78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+                0x00000728       0x78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
  .debug_aranges
-                0x00000790      0x108 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+                0x000007a0      0x108 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
  .debug_aranges
-                0x00000898       0x68 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+                0x000008a8       0x68 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
  .debug_aranges
-                0x00000900      0x110 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+                0x00000910      0x110 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
  .debug_aranges
-                0x00000a10       0x50 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+                0x00000a20       0x50 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
  .debug_aranges
-                0x00000a60       0x98 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+                0x00000a70       0x98 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
  .debug_aranges
-                0x00000af8      0x208 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+                0x00000b08      0x208 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
  .debug_aranges
-                0x00000d00       0x60 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+                0x00000d10       0x60 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
  .debug_aranges
-                0x00000d60       0x48 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+                0x00000d70       0x48 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
  .debug_aranges
-                0x00000da8       0xe8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+                0x00000db8       0xe8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
  .debug_aranges
-                0x00000e90       0x60 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+                0x00000ea0       0x60 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
  .debug_aranges
-                0x00000ef0       0xb0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+                0x00000f00       0xb0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
  .debug_aranges
-                0x00000fa0       0x28 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+                0x00000fb0       0x28 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
  .debug_aranges
-                0x00000fc8       0xd8 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+                0x00000fd8       0xd8 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
  .debug_aranges
-                0x000010a0       0xf8 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+                0x000010b0       0xf8 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
  .debug_aranges
-                0x00001198      0x1d0 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+                0x000011a8      0x1d0 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
  .debug_aranges
-                0x00001368       0x20 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+                0x00001378       0x20 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
  .debug_aranges
-                0x00001388       0x20 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+                0x00001398       0x20 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
  .debug_aranges
-                0x000013a8      0x100 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+                0x000013b8      0x100 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
  .debug_aranges
-                0x000014a8       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+                0x000014b8       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
  .debug_aranges
-                0x00001540       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+                0x00001550       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
  .debug_aranges
-                0x00001588       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+                0x00001598       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
  .debug_aranges
-                0x000015c8       0x78 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+                0x000015d8       0x78 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
  .debug_aranges
-                0x00001640       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+                0x00001650       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
  .debug_aranges
-                0x00001668      0x130 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+                0x00001678      0x130 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
  .debug_aranges
-                0x00001798      0x200 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+                0x000017a8      0x200 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
  .debug_aranges
-                0x00001998       0xb0 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+                0x000019a8       0xb0 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
  .debug_aranges
-                0x00001a48       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+                0x00001a58       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
  .debug_aranges
-                0x00001a90       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+                0x00001aa0       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
  .debug_aranges
-                0x00001ac0       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+                0x00001ad0       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
  .debug_aranges
-                0x00001af0       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
+                0x00001b00       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
  .debug_aranges
-                0x00001b10       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+                0x00001b20       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
  .debug_aranges
-                0x00001b50       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+                0x00001b60       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
  .debug_aranges
-                0x00001b88       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+                0x00001b98       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
  .debug_aranges
-                0x00001bc0       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+                0x00001bd0       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
  .debug_aranges
-                0x00001c30       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+                0x00001c40       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
  .debug_aranges
-                0x00001c68       0x90 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+                0x00001c78       0x90 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
  .debug_aranges
-                0x00001cf8       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+                0x00001d08       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
  .debug_aranges
-                0x00001d28       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+                0x00001d38       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
  .debug_aranges
-                0x00001d90       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+                0x00001da0       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
  .debug_aranges
-                0x00001dd8       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+                0x00001de8       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
  .debug_aranges
-                0x00001e30       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+                0x00001e40       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
  .debug_aranges
-                0x00001e60       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+                0x00001e70       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_ranges   0x00000000     0x3188
- .debug_ranges  0x00000000      0x2f8 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
- .debug_ranges  0x000002f8      0x1a8 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_ranges  0x000004a0      0x198 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
- .debug_ranges  0x00000638       0xe0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
- .debug_ranges  0x00000718      0x2c0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
- .debug_ranges  0x000009d8      0x220 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
- .debug_ranges  0x00000bf8       0x78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
- .debug_ranges  0x00000c70       0xf8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
- .debug_ranges  0x00000d68      0x1e0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
- .debug_ranges  0x00000f48      0x118 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
- .debug_ranges  0x00001060      0x1b0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
- .debug_ranges  0x00001210       0x58 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
- .debug_ranges  0x00001268       0xb8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
- .debug_ranges  0x00001320      0x410 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
- .debug_ranges  0x00001730       0xc8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- .debug_ranges  0x000017f8       0x80 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
- .debug_ranges  0x00001878      0x190 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
- .debug_ranges  0x00001a08       0x50 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
- .debug_ranges  0x00001a58       0xe8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- .debug_ranges  0x00001b40       0x18 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
- .debug_ranges  0x00001b58      0x170 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
- .debug_ranges  0x00001cc8      0x148 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
- .debug_ranges  0x00001e10      0x700 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- .debug_ranges  0x00002510       0x10 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
- .debug_ranges  0x00002520       0x10 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
- .debug_ranges  0x00002530      0x150 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
- .debug_ranges  0x00002680      0x130 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
- .debug_ranges  0x000027b0       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
- .debug_ranges  0x000027e8       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
- .debug_ranges  0x00002818       0x80 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
- .debug_ranges  0x00002898       0x18 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
- .debug_ranges  0x000028b0      0x138 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
- .debug_ranges  0x000029e8      0x288 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
- .debug_ranges  0x00002c70       0xd8 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
- .debug_ranges  0x00002d48       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
- .debug_ranges  0x00002db0       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
- .debug_ranges  0x00002e18       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
- .debug_ranges  0x00002e38       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
- .debug_ranges  0x00002e68       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
- .debug_ranges  0x00002e90       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
- .debug_ranges  0x00002eb8       0x60 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
- .debug_ranges  0x00002f18       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- .debug_ranges  0x00002f58       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
- .debug_ranges  0x00002ff0       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
- .debug_ranges  0x00003010       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
- .debug_ranges  0x00003068       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
- .debug_ranges  0x000030a0       0x60 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
- .debug_ranges  0x00003100       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
- .debug_ranges  0x00003158       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+.debug_ranges   0x00000000     0x3198
+ .debug_ranges  0x00000000      0x308 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .debug_ranges  0x00000308      0x1a8 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_ranges  0x000004b0      0x198 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_ranges  0x00000648       0xe0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_ranges  0x00000728      0x2c0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_ranges  0x000009e8      0x220 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_ranges  0x00000c08       0x78 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_ranges  0x00000c80       0xf8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_ranges  0x00000d78      0x1e0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_ranges  0x00000f58      0x118 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_ranges  0x00001070      0x1b0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_ranges  0x00001220       0x58 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_ranges  0x00001278       0xb8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_ranges  0x00001330      0x410 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_ranges  0x00001740       0xc8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_ranges  0x00001808       0x80 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_ranges  0x00001888      0x190 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_ranges  0x00001a18       0x50 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_ranges  0x00001a68       0xe8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_ranges  0x00001b50       0x18 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_ranges  0x00001b68      0x170 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_ranges  0x00001cd8      0x148 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_ranges  0x00001e20      0x700 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_ranges  0x00002520       0x10 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_ranges  0x00002530       0x10 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_ranges  0x00002540      0x150 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_ranges  0x00002690      0x130 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_ranges  0x000027c0       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_ranges  0x000027f8       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_ranges  0x00002828       0x80 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_ranges  0x000028a8       0x18 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_ranges  0x000028c0      0x138 /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_ranges  0x000029f8      0x288 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_ranges  0x00002c80       0xd8 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_ranges  0x00002d58       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_ranges  0x00002dc0       0x68 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_ranges  0x00002e28       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_ranges  0x00002e48       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_ranges  0x00002e78       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_ranges  0x00002ea0       0x28 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_ranges  0x00002ec8       0x60 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_ranges  0x00002f28       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_ranges  0x00002f68       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_ranges  0x00003000       0x20 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_ranges  0x00003020       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_ranges  0x00003078       0x38 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_ranges  0x000030b0       0x60 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_ranges  0x00003110       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_ranges  0x00003168       0x30 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_line     0x00000000    0x173a6
- .debug_line    0x00000000      0xdb8 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
- .debug_line    0x00000db8      0xa24 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_line    0x000017dc      0xd06 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
- .debug_line    0x000024e2      0xa4f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
- .debug_line    0x00002f31      0xe00 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
- .debug_line    0x00003d31      0xda6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
- .debug_line    0x00004ad7      0x8da /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
- .debug_line    0x000053b1      0x8fe /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
- .debug_line    0x00005caf      0xc0a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
- .debug_line    0x000068b9      0x9dc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
- .debug_line    0x00007295      0xc49 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
- .debug_line    0x00007ede      0x88a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
- .debug_line    0x00008768      0x704 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
- .debug_line    0x00008e6c     0x1090 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
- .debug_line    0x00009efc      0x9e6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- .debug_line    0x0000a8e2      0x782 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
- .debug_line    0x0000b064      0xbf1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
- .debug_line    0x0000bc55      0x642 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
- .debug_line    0x0000c297      0xbbf /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- .debug_line    0x0000ce56      0x1ae /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
- .debug_line    0x0000d004      0x879 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
- .debug_line    0x0000d87d      0x9f7 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
- .debug_line    0x0000e274     0x108d /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- .debug_line    0x0000f301      0x289 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
- .debug_line    0x0000f58a      0x264 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
- .debug_line    0x0000f7ee      0x7d3 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
- .debug_line    0x0000ffc1      0x7a3 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
- .debug_line    0x00010764      0x244 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
- .debug_line    0x000109a8      0x378 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
- .debug_line    0x00010d20      0x4ee /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
- .debug_line    0x0001120e      0x377 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
- .debug_line    0x00011585      0x92a /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
- .debug_line    0x00011eaf      0xecc /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
- .debug_line    0x00012d7b      0x60d /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
- .debug_line    0x00013388      0x396 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
- .debug_line    0x0001371e      0x525 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
- .debug_line    0x00013c43      0x21e /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
- .debug_line    0x00013e61       0xc0 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
- .debug_line    0x00013f21      0x62a /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
- .debug_line    0x0001454b      0x430 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
- .debug_line    0x0001497b      0x2b0 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
- .debug_line    0x00014c2b      0x5f4 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
- .debug_line    0x0001521f      0x49e /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- .debug_line    0x000156bd      0x7a0 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
- .debug_line    0x00015e5d      0x3e3 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
- .debug_line    0x00016240      0x4db /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
- .debug_line    0x0001671b      0x39f /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
- .debug_line    0x00016aba      0x228 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
- .debug_line    0x00016ce2      0x373 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
- .debug_line    0x00017055      0x351 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+.debug_line     0x00000000    0x173ea
+ .debug_line    0x00000000      0xdfc /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .debug_line    0x00000dfc      0xa24 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_line    0x00001820      0xd06 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_line    0x00002526      0xa4f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_line    0x00002f75      0xe00 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_line    0x00003d75      0xda6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_line    0x00004b1b      0x8da /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_line    0x000053f5      0x8fe /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_line    0x00005cf3      0xc0a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_line    0x000068fd      0x9dc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_line    0x000072d9      0xc49 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_line    0x00007f22      0x88a /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_line    0x000087ac      0x704 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_line    0x00008eb0     0x1090 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_line    0x00009f40      0x9e6 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_line    0x0000a926      0x782 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_line    0x0000b0a8      0xbf1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_line    0x0000bc99      0x642 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_line    0x0000c2db      0xbbf /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_line    0x0000ce9a      0x1ae /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_line    0x0000d048      0x879 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_line    0x0000d8c1      0x9f7 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_line    0x0000e2b8     0x108d /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_line    0x0000f345      0x289 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_line    0x0000f5ce      0x264 /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_line    0x0000f832      0x7d3 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_line    0x00010005      0x7a3 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_line    0x000107a8      0x244 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_line    0x000109ec      0x378 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_line    0x00010d64      0x4ee /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_line    0x00011252      0x377 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_line    0x000115c9      0x92a /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_line    0x00011ef3      0xecc /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_line    0x00012dbf      0x60d /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_line    0x000133cc      0x396 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_line    0x00013762      0x525 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_line    0x00013c87      0x21e /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_line    0x00013ea5       0xc0 /Tome/Projects/clouds/arduino/output/core/core.a(gcc_startup_nrf52.S.o)
+ .debug_line    0x00013f65      0x62a /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_line    0x0001458f      0x430 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_line    0x000149bf      0x2b0 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_line    0x00014c6f      0x5f4 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_line    0x00015263      0x49e /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_line    0x00015701      0x7a0 /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_line    0x00015ea1      0x3e3 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_line    0x00016284      0x4db /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_line    0x0001675f      0x39f /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_line    0x00016afe      0x228 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_line    0x00016d26      0x373 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_line    0x00017099      0x351 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
 
-.debug_str      0x00000000    0x10937
- .debug_str     0x00000000     0x4889 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
-                               0x568c (size before relaxing)
- .debug_str     0x00004889      0x495 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+.debug_str      0x00000000    0x10948
+ .debug_str     0x00000000     0x489a /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+                               0x569d (size before relaxing)
+ .debug_str     0x0000489a      0x495 /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
                                 0xcf8 (size before relaxing)
- .debug_str     0x00004d1e      0x9e0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_str     0x00004d2f      0x9e0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
                                0x52d9 (size before relaxing)
- .debug_str     0x000056fe      0x13e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_str     0x0000570f      0x13e /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
                                0x5087 (size before relaxing)
- .debug_str     0x0000583c     0x1081 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_str     0x0000584d     0x1081 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
                                0x5a52 (size before relaxing)
- .debug_str     0x000068bd      0xcbb /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_str     0x000068ce      0xcbb /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
                                0x564a (size before relaxing)
- .debug_str     0x00007578      0x242 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_str     0x00007589      0x242 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
                                0x4b01 (size before relaxing)
- .debug_str     0x000077ba      0x159 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_str     0x000077cb      0x159 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
                                0x2a8a (size before relaxing)
- .debug_str     0x00007913      0x486 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_str     0x00007924      0x486 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
                                0x57d3 (size before relaxing)
- .debug_str     0x00007d99      0x175 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_str     0x00007daa      0x175 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
                                0x5160 (size before relaxing)
- .debug_str     0x00007f0e      0x176 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_str     0x00007f1f      0x176 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
                                0x50a7 (size before relaxing)
- .debug_str     0x00008084      0x1d1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_str     0x00008095      0x1d1 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
                                0x4be3 (size before relaxing)
- .debug_str     0x00008255      0x1a2 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_str     0x00008266      0x1a2 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
                                 0x6fb (size before relaxing)
- .debug_str     0x000083f7     0x156c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_str     0x00008408     0x156c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
                                0x6ebc (size before relaxing)
- .debug_str     0x00009963      0x4af /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_str     0x00009974      0x4af /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
                                0x58fd (size before relaxing)
- .debug_str     0x00009e12      0x18f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_str     0x00009e23      0x18f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
                                 0x8d2 (size before relaxing)
- .debug_str     0x00009fa1     0x1297 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_str     0x00009fb2     0x1297 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
                                0x5fa2 (size before relaxing)
- .debug_str     0x0000b238       0x7f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_str     0x0000b249       0x7f /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
                                 0x5a8 (size before relaxing)
- .debug_str     0x0000b2b7      0x344 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_str     0x0000b2c8      0x344 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
                                0x4fec (size before relaxing)
- .debug_str     0x0000b5fb      0x176 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_str     0x0000b60c      0x176 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
                                 0x242 (size before relaxing)
- .debug_str     0x0000b771      0x300 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_str     0x0000b782      0x300 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
                                0x17c8 (size before relaxing)
- .debug_str     0x0000ba71      0x7e2 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_str     0x0000ba82      0x7e2 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
                                 0xd98 (size before relaxing)
- .debug_str     0x0000c253      0x5e0 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_str     0x0000c264      0x5e0 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
                                 0xca0 (size before relaxing)
- .debug_str     0x0000c833       0x74 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_str     0x0000c844       0x74 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
                                 0x255 (size before relaxing)
- .debug_str     0x0000c8a7       0x8a /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_str     0x0000c8b8       0x8a /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
                                 0x2a2 (size before relaxing)
- .debug_str     0x0000c931      0x3c8 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_str     0x0000c942      0x3c8 /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
                                0x136b (size before relaxing)
- .debug_str     0x0000ccf9      0x567 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_str     0x0000cd0a      0x567 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
                                0x1ca7 (size before relaxing)
- .debug_str     0x0000d260       0xe7 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_str     0x0000d271       0xe7 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
                                 0x301 (size before relaxing)
- .debug_str     0x0000d347       0x86 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_str     0x0000d358       0x86 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
                                 0x380 (size before relaxing)
- .debug_str     0x0000d3cd      0x158 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_str     0x0000d3de      0x158 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
                                 0x8ba (size before relaxing)
- .debug_str     0x0000d525       0xa7 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_str     0x0000d536       0xa7 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
                                 0x28b (size before relaxing)
- .debug_str     0x0000d5cc      0x8ca /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_str     0x0000d5dd      0x8ca /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
                                 0xc97 (size before relaxing)
- .debug_str     0x0000de96      0xe02 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_str     0x0000dea7      0xe02 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
                                0x14c5 (size before relaxing)
- .debug_str     0x0000ec98      0x57d /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_str     0x0000eca9      0x57d /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
                                 0xc8c (size before relaxing)
- .debug_str     0x0000f215      0x124 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_str     0x0000f226      0x124 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
                                 0x715 (size before relaxing)
- .debug_str     0x0000f339      0x4a6 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_str     0x0000f34a      0x4a6 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
                                 0xbb1 (size before relaxing)
- .debug_str     0x0000f7df       0x89 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_str     0x0000f7f0       0x89 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
                                 0x238 (size before relaxing)
- .debug_str     0x0000f868       0xbf /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_str     0x0000f879       0xbf /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
                                 0x5a1 (size before relaxing)
- .debug_str     0x0000f927       0x53 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_str     0x0000f938       0x53 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
                                 0x2e5 (size before relaxing)
- .debug_str     0x0000f97a      0x379 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_str     0x0000f98b      0x379 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
                                 0x66a (size before relaxing)
- .debug_str     0x0000fcf3      0x21d /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_str     0x0000fd04      0x21d /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
                                 0x7d8 (size before relaxing)
- .debug_str     0x0000ff10       0xe7 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_str     0x0000ff21       0xe7 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
                                 0x44f (size before relaxing)
- .debug_str     0x0000fff7      0x2bb /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_str     0x00010008      0x2bb /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
                                 0x7f4 (size before relaxing)
- .debug_str     0x000102b2       0xd5 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_str     0x000102c3       0xd5 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
                                 0x461 (size before relaxing)
- .debug_str     0x00010387      0x35b /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_str     0x00010398      0x35b /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
                                0x10dd (size before relaxing)
- .debug_str     0x000106e2       0x81 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_str     0x000106f3       0x81 /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
                                 0x31f (size before relaxing)
- .debug_str     0x00010763       0x6e /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_str     0x00010774       0x6e /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
                                 0x3a8 (size before relaxing)
- .debug_str     0x000107d1       0xc3 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_str     0x000107e2       0xc3 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
                                 0x37d (size before relaxing)
- .debug_str     0x00010894       0xa3 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+ .debug_str     0x000108a5       0xa3 /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
                                 0x350 (size before relaxing)
 
-.debug_frame    0x00000000     0x6514
- .debug_frame   0x00000000      0x2c4 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
- .debug_frame   0x000002c4      0x24c /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_frame   0x00000510      0x40c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
- .debug_frame   0x0000091c      0x168 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
- .debug_frame   0x00000a84      0x4d8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
- .debug_frame   0x00000f5c      0x3bc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
- .debug_frame   0x00001318       0xe0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
- .debug_frame   0x000013f8      0x140 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
- .debug_frame   0x00001538      0x26c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
- .debug_frame   0x000017a4      0x128 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
- .debug_frame   0x000018cc      0x30c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
- .debug_frame   0x00001bd8       0xa4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
- .debug_frame   0x00001c7c      0x140 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
- .debug_frame   0x00001dbc      0x53c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
- .debug_frame   0x000022f8       0xdc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
- .debug_frame   0x000023d4       0x94 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
- .debug_frame   0x00002468      0x2a8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
- .debug_frame   0x00002710       0xd4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
- .debug_frame   0x000027e4      0x28c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
- .debug_frame   0x00002a70       0x40 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
- .debug_frame   0x00002ab0      0x260 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
- .debug_frame   0x00002d10      0x2f4 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
- .debug_frame   0x00003004      0x758 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
- .debug_frame   0x0000375c       0x30 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
- .debug_frame   0x0000378c       0x2c /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
- .debug_frame   0x000037b8      0x36c /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
- .debug_frame   0x00003b24      0x164 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
- .debug_frame   0x00003c88       0x88 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
- .debug_frame   0x00003d10       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
- .debug_frame   0x00003d80      0x104 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
- .debug_frame   0x00003e84       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
- .debug_frame   0x00003ecc      0x3ac /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
- .debug_frame   0x00004278      0x690 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
- .debug_frame   0x00004908      0x208 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
- .debug_frame   0x00004b10       0x78 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
- .debug_frame   0x00004b88       0x64 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
- .debug_frame   0x00004bec       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
- .debug_frame   0x00004c2c       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
- .debug_frame   0x00004c9c       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
- .debug_frame   0x00004d34       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
- .debug_frame   0x00004d8c       0xe4 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
- .debug_frame   0x00004e70       0x84 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
- .debug_frame   0x00004ef4      0x18c /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
- .debug_frame   0x00005080       0x64 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
- .debug_frame   0x000050e4       0xd8 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
- .debug_frame   0x000051bc       0x7c /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
- .debug_frame   0x00005238       0xa0 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
- .debug_frame   0x000052d8       0x84 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
- .debug_frame   0x0000535c       0x6c /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
- .debug_frame   0x000053c8       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/libgcc.a(_popcountsi2.o)
- .debug_frame   0x000053e8       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-aeabi_atexit.o)
- .debug_frame   0x00005408       0x40 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-assert.o)
- .debug_frame   0x00005448       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-cxa_atexit.o)
- .debug_frame   0x00005470       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-exit.o)
- .debug_frame   0x00005498       0x64 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fprintf.o)
- .debug_frame   0x000054fc       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
- .debug_frame   0x00005528       0x30 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-malloc.o)
- .debug_frame   0x00005558       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memcmp.o)
- .debug_frame   0x00005580       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000055a8       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memmove.o)
- .debug_frame   0x000055d0       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memset.o)
- .debug_frame   0x000055f0       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x0000561c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00005648       0xac /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
- .debug_frame   0x000056f4       0x88 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_float.o)
- .debug_frame   0x0000577c       0x60 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x000057dc       0x44 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-rand.o)
- .debug_frame   0x00005820       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-s_fpclassify.o)
- .debug_frame   0x00005848       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00005874       0x70 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-sprintf.o)
- .debug_frame   0x000058e4       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcat.o)
- .debug_frame   0x0000590c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strchr.o)
- .debug_frame   0x0000592c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcmp.o)
- .debug_frame   0x0000594c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcpy.o)
- .debug_frame   0x0000596c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcspn.o)
- .debug_frame   0x00005998       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strspn.o)
- .debug_frame   0x000059c4       0x48 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-vsnprintf.o)
- .debug_frame   0x00005a0c       0x40 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-wbuf.o)
- .debug_frame   0x00005a4c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-wsetup.o)
- .debug_frame   0x00005a78       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-abort.o)
- .debug_frame   0x00005aa0       0x6c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-dtoa.o)
- .debug_frame   0x00005b0c       0x68 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fflush.o)
- .debug_frame   0x00005b74      0x11c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
- .debug_frame   0x00005c90       0x54 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fwalk.o)
- .debug_frame   0x00005ce4       0x98 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-locale.o)
- .debug_frame   0x00005d7c       0x34 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-makebuf.o)
- .debug_frame   0x00005db0      0x238 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
- .debug_frame   0x00005fe8       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-callocr.o)
- .debug_frame   0x00006014       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00006050       0x90 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x000060e0       0x5c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-reent.o)
- .debug_frame   0x0000613c       0xcc /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-signal.o)
- .debug_frame   0x00006208       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-signalr.o)
- .debug_frame   0x00006244       0x88 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-stdio.o)
- .debug_frame   0x000062cc       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-writer.o)
- .debug_frame   0x000062f8       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-closer.o)
- .debug_frame   0x00006324       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fstatr.o)
- .debug_frame   0x00006350       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-isattyr.o)
- .debug_frame   0x0000637c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-lseekr.o)
- .debug_frame   0x000063a8       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x000063c8       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-readr.o)
- .debug_frame   0x000063f4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(close.o)
- .debug_frame   0x00006414       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(fstat.o)
- .debug_frame   0x00006434       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(getpid.o)
- .debug_frame   0x00006454       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(isatty.o)
- .debug_frame   0x00006474       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(kill.o)
- .debug_frame   0x00006494       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(lseek.o)
- .debug_frame   0x000064b4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(read.o)
- .debug_frame   0x000064d4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(sbrk.o)
- .debug_frame   0x000064f4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(_exit.o)
+.debug_frame    0x00000000     0x6534
+ .debug_frame   0x00000000      0x2e4 /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
+ .debug_frame   0x000002e4      0x24c /Tome/Projects/clouds/arduino/output/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_frame   0x00000530      0x40c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEAdvertising.cpp.o
+ .debug_frame   0x0000093c      0x168 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECentral.cpp.o
+ .debug_frame   0x00000aa4      0x4d8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLECharacteristic.cpp.o
+ .debug_frame   0x00000f7c      0x3bc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientCharacteristic.cpp.o
+ .debug_frame   0x00001338       0xe0 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEClientService.cpp.o
+ .debug_frame   0x00001418      0x140 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEDiscovery.cpp.o
+ .debug_frame   0x00001558      0x26c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGap.cpp.o
+ .debug_frame   0x000017c4      0x128 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEGatt.cpp.o
+ .debug_frame   0x000018ec      0x30c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEScanner.cpp.o
+ .debug_frame   0x00001bf8       0xa4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEService.cpp.o
+ .debug_frame   0x00001c9c      0x140 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/BLEUuid.cpp.o
+ .debug_frame   0x00001ddc      0x53c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/bluefruit.cpp.o
+ .debug_frame   0x00002318       0xdc /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDfu.cpp.o
+ .debug_frame   0x000023f4       0x94 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEDis.cpp.o
+ .debug_frame   0x00002488      0x2a8 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/services/BLEUart.cpp.o
+ .debug_frame   0x00002730       0xd4 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/AdaMsg.cpp.o
+ .debug_frame   0x00002804      0x28c /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bonding.cpp.o
+ .debug_frame   0x00002a90       0x40 /Tome/Projects/clouds/arduino/output/libraries/Bluefruit52Lib/utility/bootloader_util.c.o
+ .debug_frame   0x00002ad0      0x260 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/Bluefruit_FileIO.cpp.o
+ .debug_frame   0x00002d30      0x2f4 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+ .debug_frame   0x00003024      0x758 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs.c.o
+ .debug_frame   0x0000377c       0x30 /Tome/Projects/clouds/arduino/output/libraries/FileSystem/littlefs/lfs_util.c.o
+ .debug_frame   0x000037ac       0x2c /Tome/Projects/clouds/arduino/output/core/variant.cpp.o
+ .debug_frame   0x000037d8      0x36c /Tome/Projects/clouds/arduino/output/core/core.a(Print.cpp.o)
+ .debug_frame   0x00003b44      0x164 /Tome/Projects/clouds/arduino/output/core/core.a(Uart.cpp.o)
+ .debug_frame   0x00003ca8       0x88 /Tome/Projects/clouds/arduino/output/core/core.a(WMath.cpp.o)
+ .debug_frame   0x00003d30       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(delay.c.o)
+ .debug_frame   0x00003da0      0x104 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
+ .debug_frame   0x00003ea4       0x48 /Tome/Projects/clouds/arduino/output/core/core.a(heap_3.c.o)
+ .debug_frame   0x00003eec      0x3ac /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
+ .debug_frame   0x00004298      0x690 /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
+ .debug_frame   0x00004928      0x208 /Tome/Projects/clouds/arduino/output/core/core.a(timers.c.o)
+ .debug_frame   0x00004b30       0x78 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis.c.o)
+ .debug_frame   0x00004ba8       0x64 /Tome/Projects/clouds/arduino/output/core/core.a(port_cmsis_systick.c.o)
+ .debug_frame   0x00004c0c       0x40 /Tome/Projects/clouds/arduino/output/core/core.a(port.c.o)
+ .debug_frame   0x00004c4c       0x70 /Tome/Projects/clouds/arduino/output/core/core.a(main.cpp.o)
+ .debug_frame   0x00004cbc       0x98 /Tome/Projects/clouds/arduino/output/core/core.a(new.cpp.o)
+ .debug_frame   0x00004d54       0x58 /Tome/Projects/clouds/arduino/output/core/core.a(system_nrf52.c.o)
+ .debug_frame   0x00004dac       0xe4 /Tome/Projects/clouds/arduino/output/core/core.a(rtos.cpp.o)
+ .debug_frame   0x00004e90       0x84 /Tome/Projects/clouds/arduino/output/core/core.a(AdaCallback.c.o)
+ .debug_frame   0x00004f14      0x18c /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
+ .debug_frame   0x000050a0       0x64 /Tome/Projects/clouds/arduino/output/core/core.a(utilities.c.o)
+ .debug_frame   0x00005104       0xd8 /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+ .debug_frame   0x000051dc       0x7c /Tome/Projects/clouds/arduino/output/core/core.a(wiring_digital.c.o)
+ .debug_frame   0x00005258       0xa0 /Tome/Projects/clouds/arduino/output/core/core.a(RingBuffer.cpp.o)
+ .debug_frame   0x000052f8       0x84 /Tome/Projects/clouds/arduino/output/core/core.a(flash_cache.c.o)
+ .debug_frame   0x0000537c       0x6c /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)
+ .debug_frame   0x000053e8       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/armv7e-m/fpu/libgcc.a(_popcountsi2.o)
+ .debug_frame   0x00005408       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-aeabi_atexit.o)
+ .debug_frame   0x00005428       0x40 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-assert.o)
+ .debug_frame   0x00005468       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-cxa_atexit.o)
+ .debug_frame   0x00005490       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-exit.o)
+ .debug_frame   0x000054b8       0x64 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fprintf.o)
+ .debug_frame   0x0000551c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+ .debug_frame   0x00005548       0x30 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00005578       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memcmp.o)
+ .debug_frame   0x000055a0       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000055c8       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memmove.o)
+ .debug_frame   0x000055f0       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x00005610       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x0000563c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00005668       0xac /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
+ .debug_frame   0x00005714       0x88 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_float.o)
+ .debug_frame   0x0000579c       0x60 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x000057fc       0x44 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-rand.o)
+ .debug_frame   0x00005840       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-s_fpclassify.o)
+ .debug_frame   0x00005868       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00005894       0x70 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-sprintf.o)
+ .debug_frame   0x00005904       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcat.o)
+ .debug_frame   0x0000592c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strchr.o)
+ .debug_frame   0x0000594c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcmp.o)
+ .debug_frame   0x0000596c       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcpy.o)
+ .debug_frame   0x0000598c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strcspn.o)
+ .debug_frame   0x000059b8       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strspn.o)
+ .debug_frame   0x000059e4       0x48 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-vsnprintf.o)
+ .debug_frame   0x00005a2c       0x40 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-wbuf.o)
+ .debug_frame   0x00005a6c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-wsetup.o)
+ .debug_frame   0x00005a98       0x28 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-abort.o)
+ .debug_frame   0x00005ac0       0x6c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-dtoa.o)
+ .debug_frame   0x00005b2c       0x68 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fflush.o)
+ .debug_frame   0x00005b94      0x11c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-findfp.o)
+ .debug_frame   0x00005cb0       0x54 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fwalk.o)
+ .debug_frame   0x00005d04       0x98 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-locale.o)
+ .debug_frame   0x00005d9c       0x34 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-makebuf.o)
+ .debug_frame   0x00005dd0      0x238 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-mprec.o)
+ .debug_frame   0x00006008       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-callocr.o)
+ .debug_frame   0x00006034       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x00006070       0x90 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00006100       0x5c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-reent.o)
+ .debug_frame   0x0000615c       0xcc /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-signal.o)
+ .debug_frame   0x00006228       0x3c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-signalr.o)
+ .debug_frame   0x00006264       0x88 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-stdio.o)
+ .debug_frame   0x000062ec       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-writer.o)
+ .debug_frame   0x00006318       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-closer.o)
+ .debug_frame   0x00006344       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fstatr.o)
+ .debug_frame   0x00006370       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-isattyr.o)
+ .debug_frame   0x0000639c       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-lseekr.o)
+ .debug_frame   0x000063c8       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x000063e8       0x2c /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-readr.o)
+ .debug_frame   0x00006414       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(close.o)
+ .debug_frame   0x00006434       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(fstat.o)
+ .debug_frame   0x00006454       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(getpid.o)
+ .debug_frame   0x00006474       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(isatty.o)
+ .debug_frame   0x00006494       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(kill.o)
+ .debug_frame   0x000064b4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(lseek.o)
+ .debug_frame   0x000064d4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(read.o)
+ .debug_frame   0x000064f4       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(sbrk.o)
+ .debug_frame   0x00006514       0x20 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(_exit.o)
 
 .stab           0x00000000       0xb4
  .stab          0x00000000       0x24 /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libnosys.a(close.o)
@@ -6920,6 +6922,7 @@ flash_nrf5x_read                                  /Tome/Projects/clouds/arduino/
                                                   /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
 flash_nrf5x_write                                 /Tome/Projects/clouds/arduino/output/core/core.a(flash_nrf5x.c.o)
                                                   /Tome/Projects/clouds/arduino/output/libraries/FileSystem/InternalFS.cpp.o
+foo()                                             /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
 fprintf                                           /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-fprintf.o)
 free                                              /home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4/bin/../lib/gcc/arm-none-eabi/5.2.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-malloc.o)
                                                   /Tome/Projects/clouds/arduino/output/core/core.a(adafruit_fifo.cpp.o)
@@ -7240,6 +7243,7 @@ svcHook                                           /Tome/Projects/clouds/arduino/
 swapBuffers(Adafruit_NeoPixel)                    /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
 sysTickHook                                       /Tome/Projects/clouds/arduino/output/core/core.a(hooks.c.o)
 systemOff                                         /Tome/Projects/clouds/arduino/output/core/core.a(wiring.c.o)
+test()                                            /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o
 ucQueueGetQueueType                               /Tome/Projects/clouds/arduino/output/core/core.a(queue.c.o)
 ulTaskNotifyTake                                  /Tome/Projects/clouds/arduino/output/core/core.a(tasks.c.o)
 uxListRemove                                      /Tome/Projects/clouds/arduino/output/core/core.a(list.c.o)

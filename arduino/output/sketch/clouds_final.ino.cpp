@@ -380,6 +380,10 @@ void commandSetBrightness(int test);
 void commandSetPixel(Adafruit_NeoPixel cur_cloud);
 #line 886 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void swapBuffers(Adafruit_NeoPixel cur_cloud);
+#line 6 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino"
+void test();
+#line 3 "/Tome/Projects/clouds/arduino/clouds_final/e_test.ino"
+void foo();
 #line 363 "/Tome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void setup()
 {
@@ -928,3 +932,17 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
 
 #line 1 "/Tome/Projects/clouds/arduino/clouds_final/d_patterns.ino"
 
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <bluefruit.h>
+
+void test()
+{
+  Serial.println("This test function maybe will compile");
+}
+#line 1 "/Tome/Projects/clouds/arduino/clouds_final/e_test.ino"
+#include "d_patterns.h"
+
+void foo() {
+    test();
+}
