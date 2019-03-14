@@ -1,5 +1,5 @@
-# 1 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
-# 1 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 /*********************************************************************
  This is the controller for Jeanne's Clouds!
 
@@ -40,14 +40,14 @@
 // - Use the application to control the clouds
 
 /* NOTE: This sketch required at least version 1.1.0 of Adafruit_Neopixel !!! */
-# 42 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
-# 43 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
-# 44 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <bluefruit.h>
 // #include <vector>
 
-# 47 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
-# 48 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
-# 49 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino" 2
+#include "cz_blue.h"
+#include "e_commands.h"
+#include"d_neoPatterns.h"
 
 // BLE Service
 // BLEDis  bledis;
@@ -60,6 +60,25 @@ NeoPatterns Clouds[1];
 
 
 
+#line 61 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+void setup();
+#line 99 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+void loop();
+#line 228 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+void startAdv(void);
+#line 256 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+void connect_callback(uint16_t conn_handle);
+#line 7 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+void sendResponse(char const *response);
+#line 12 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+void commandSendA();
+#line 29 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+void commandSetBrightness(int bVal, Adafruit_NeoPixel cur_cloud);
+#line 51 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+void commandSetPixel(Adafruit_NeoPixel cur_cloud);
+#line 90 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+void swapBuffers(Adafruit_NeoPixel cur_cloud);
+#line 61 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 void setup() {
   // // test();
   Serial.begin(115200);
@@ -72,7 +91,7 @@ void setup() {
   // Ring1.begin();
 
   // Ring1.setBrightness(120);
-
+  
   // // Kick off patterns
   // //  Ring1.RainbowCycle(5);
   // //  Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 300);
@@ -88,7 +107,7 @@ void setup() {
   // Configure and Start Device Information Service
   bledis.setManufacturer("Adafruit Industries");
   bledis.setModel("Bluefruit Feather52");
-  bledis.begin();
+  bledis.begin();  
 
   // Configure and start BLE UART service
   bleuart.begin();
@@ -110,7 +129,7 @@ void loop() {
       // for(NeoPatterns cloud : Clouds) {
       //   cloud.Update()
       // }
-
+    
       switch (command) {
         case 'A': { // Rainbow Cycle
           int cloudNum = bleuart.read();
@@ -125,16 +144,16 @@ void loop() {
           curCloud.Interval = interval;
           curCloud.TotalSteps = 255;
           curCloud.Color1 = curCloud.Wheel(random(255));
-
+          
           break;
         }
-        case 'B': { // Set Brightness
+        case 'B': {   // Set Brightness
           int cloudNum = bleuart.read();
           int bVal = bleuart.read();
           NeoPatterns curCloud = Clouds[cloudNum];
           commandSetBrightness(bVal, curCloud);
           break;
-        }
+        }      
         case 'C': { // Theater Chase
           int cloudNum = bleuart.read();
           int interval = bleuart.read();
@@ -147,7 +166,7 @@ void loop() {
           curCloud.ActivePattern = THEATER_CHASE;
           curCloud.Color1 = Ring1.Wheel(random(255));
           curCloud.TheaterChase(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), interval);
-
+          
           break;
         }
         case 'D': { // Color Wipe
@@ -163,7 +182,7 @@ void loop() {
           curCloud.TotalSteps = Ring1.numPixels();
           curCloud.Interval = interval;
           curCloud.Color1 = curCloud.Wheel(random(255));
-
+          
           break;
         }
         case 'E': { // Scanner
@@ -178,7 +197,7 @@ void loop() {
 
           curCloud.ActivePattern = SCANNER;
           curCloud.Scanner(curCloud.Wheel(random(255)), interval);
-
+          
           break;
         }
         case 'F': { // Fade
@@ -193,7 +212,7 @@ void loop() {
           int interval = bleuart.read();
           curCloud.ActivePattern = FADE;
           curCloud.Fade(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), random(curCloud.numPixels()), interval, FORWARD);
-
+          
           break;
         }
         case 'Y': { // Turn On
@@ -215,7 +234,7 @@ void loop() {
       }
 
 
-
+ 
   }
 }
 
@@ -228,18 +247,18 @@ void CloudComplete()
 }
 
 void startAdv(void)
-{
+{  
   // Advertising packet
-  Bluefruit.Advertising.addFlags(((0x02) /**< LE General Discoverable Mode. */ | (0x04) /**< BR/EDR not supported. */) /**< LE General Discoverable Mode, BR/EDR not supported. */);
+  Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
   Bluefruit.Advertising.addTxPower();
-
+  
   // Include bleuart 128-bit uuid
   Bluefruit.Advertising.addService(bleuart);
 
   // Secondary Scan Response packet (optional)
   // Since there is no room for 'Name' in Advertising packet
   Bluefruit.ScanResponse.addName();
-
+  
   /* Start Advertising
    * - Enable auto advertising if disconnected
    * - Interval:  fast mode = 20 ms, slow mode = 152.5 ms
@@ -250,9 +269,9 @@ void startAdv(void)
    * https://developer.apple.com/library/content/qa/qa1931/_index.html   
    */
   Bluefruit.Advertising.restartOnDisconnect(true);
-  Bluefruit.Advertising.setInterval(32, 244); // in unit of 0.625 ms
-  Bluefruit.Advertising.setFastTimeout(30); // number of seconds in fast mode
-  Bluefruit.Advertising.start(0); // 0 = Don't stop advertising after n seconds  
+  Bluefruit.Advertising.setInterval(32, 244);    // in unit of 0.625 ms
+  Bluefruit.Advertising.setFastTimeout(30);      // number of seconds in fast mode
+  Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds  
 }
 
 void connect_callback(uint16_t conn_handle)
@@ -272,20 +291,20 @@ NeoPatterns[] getClouds() {
   firstConact = true;
 
   for(int i = 0; i < numClouds; i++) {
-    NeoPatterns tmpCloud(24, 16, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &CloudComplete;
+    NeoPatterns tmpCloud(24, 16, NEO_GRB + NEO_KHZ800, &CloudComplete;
     Clouds.append(tmpCloud);
   }
 }
-# 1 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino"
-
-# 3 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino" 2
-# 4 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino" 2
-
-
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino"
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <bluefruit.h>
+#include "cz_blue.h"
+#include "d_neoPatterns.h"
 
 // empty constructor
 NeoPatterns::NeoPatterns()
-:Adafruit_NeoPixel(24, 7, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/)
+:Adafruit_NeoPixel(24, 7, NEO_GRB + NEO_KHZ800)
 {
 
 }
@@ -300,7 +319,7 @@ NeoPatterns::NeoPatterns(uint16_t pixels, uint8_t pin, uint8_t type, void (*call
 // Update the pattern
 void NeoPatterns::Update()
 {
-
+   
     if((millis() - lastUpdate) > Interval) // time to update
     {
         lastUpdate = millis();
@@ -336,11 +355,7 @@ void NeoPatterns::Increment()
         if (Index >= TotalSteps)
         {
             Index = 0;
-            if (OnComplete != 
-# 60 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino" 3 4
-                             __null
-# 60 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino"
-                                 )
+            if (OnComplete != NULL)
             {
                 OnComplete(); // call the comlpetion callback
             }
@@ -352,11 +367,7 @@ void NeoPatterns::Increment()
         if (Index <= 0)
         {
             Index = TotalSteps-1;
-            if (OnComplete != 
-# 72 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino" 3 4
-                             __null
-# 72 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino"
-                                 )
+            if (OnComplete != NULL)
             {
                 OnComplete(); // call the comlpetion callback
             }
@@ -461,10 +472,10 @@ void NeoPatterns::Scanner(uint32_t color1, uint8_t interval)
 
 // Update the Scanner Pattern
 void NeoPatterns::ScannerUpdate()
-{
+{ 
     for (int i = 0; i < numPixels(); i++)
     {
-        if (i == Index) // Scan Pixel to the right
+        if (i == Index)  // Scan Pixel to the right
         {
                 setPixelColor(i, Color1);
         }
@@ -501,7 +512,7 @@ void NeoPatterns::FadeUpdate()
     uint8_t red = ((Red(Color1) * (TotalSteps - Index)) + (Red(Color2) * Index)) / TotalSteps;
     uint8_t green = ((Green(Color1) * (TotalSteps - Index)) + (Green(Color2) * Index)) / TotalSteps;
     uint8_t blue = ((Blue(Color1) * (TotalSteps - Index)) + (Blue(Color2) * Index)) / TotalSteps;
-
+    
     ColorSet(Color(red, green, blue));
     show();
     Increment();
@@ -563,12 +574,13 @@ uint32_t NeoPatterns::Wheel(byte WheelPos)
         return Color(WheelPos * 3, 255 - WheelPos * 3, 0);
     }
 }
-# 1 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
 
-# 3 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino" 2
-# 4 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino" 2
-
-
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <bluefruit.h>
+#include "cz_blue.h"
+#include "e_commands.h"
 
 void sendResponse(char const *response) {
     Serial.printf("Send Response: %s\n", response);
@@ -616,7 +628,7 @@ void commandSetBrightness(int bVal, Adafruit_NeoPixel cur_cloud) {
 
 void commandSetPixel(Adafruit_NeoPixel cur_cloud) {
   Serial.println("----------------------------------------");
-  Serial.println((reinterpret_cast<const __FlashStringHelper *>(("Command: SetPixel"))));
+  Serial.println(F("Command: SetPixel"));
 
   // Read position
   uint8_t x = bleuart.read();
@@ -644,7 +656,7 @@ void commandSetPixel(Adafruit_NeoPixel cur_cloud) {
   }
   else {
     color = cur_cloud.Color( *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );
-    Serial.printf("\tcolor (%d, %d, %d, %d)\n", *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );
+    Serial.printf("\tcolor (%d, %d, %d, %d)\n", *pixelBufferPointer, *(pixelBufferPointer+1), *(pixelBufferPointer+2), *(pixelBufferPointer+3) );    
   }
   cur_cloud.setPixelColor(neopixelIndex, color);
   cur_cloud.show();
@@ -669,9 +681,10 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
       base_addr += components;
       pixelIndex++;
     }
-    pixelIndex += stride - width; // Move pixelIndex to the next row (take into account the stride)
+    pixelIndex += stride - width;   // Move pixelIndex to the next row (take into account the stride)
   }
   cur_cloud.show();
 
 }
-# 1 "/Tome/Projects/clouds/arduino/clouds_new/z_main.ino"
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/z_main.ino"
+

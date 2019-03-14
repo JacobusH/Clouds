@@ -1,5 +1,5 @@
-/Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp.o: \
- /Tome/Projects/clouds/arduino/output/sketch/clouds_final.ino.cpp \
+/Tome/Projects/clouds/arduino/output/sketch/clouds_new.ino.cpp.o: \
+ /Tome/Projects/clouds/arduino/output/sketch/clouds_new.ino.cpp \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/Arduino.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/avr/pgmspace.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/avr/interrupt.h \
@@ -133,4 +133,6 @@
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/libraries/Bluefruit52Lib/src/services/BLEHidGeneric.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/libraries/Bluefruit52Lib/src/clients/BLEClientBas.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/utility/AdaCallback.h \
- /Tome/Projects/clouds/arduino/output/sketch/d_patterns.h
+ /Tome/Projects/clouds/arduino/output/sketch/cz_blue.h \
+ /Tome/Projects/clouds/arduino/output/sketch/e_commands.h \
+ /Tome/Projects/clouds/arduino/output/sketch/d_neoPatterns.h
