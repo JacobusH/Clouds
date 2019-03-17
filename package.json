@@ -58,6 +58,7 @@
     "ionic": "^4.5.0",
     "ionic-angular": "^3.9.2",
     "ng-animate": "^0.3.4",
+    "ngx-color": "^2.0.6",
     "node": "^10.15.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",

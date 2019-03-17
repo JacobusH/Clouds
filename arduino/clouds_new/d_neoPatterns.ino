@@ -12,7 +12,7 @@ NeoPatterns::NeoPatterns()
 }
 
 // Constructor - calls base-class constructor to initialize strip
-NeoPatterns::NeoPatterns(uint16_t pixels, uint8_t pin, uint8_t type, void (*callback)())
+NeoPatterns::NeoPatterns(uint16_t pixels, uint16_t pin, uint8_t type, void (*callback)())
 :Adafruit_NeoPixel(pixels, pin, type)
 {
     OnComplete = callback;
@@ -41,6 +41,9 @@ void NeoPatterns::Update()
                 break;
             case FADE:
                 FadeUpdate();
+                break;
+            case NONE: 
+                // do nothing
                 break;
             default:
                 break;

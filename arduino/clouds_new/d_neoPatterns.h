@@ -28,7 +28,7 @@ class NeoPatterns : public Adafruit_NeoPixel
 
     // Functions
     NeoPatterns();
-    NeoPatterns(uint16_t pixels, uint8_t pin, uint8_t type, void (*callback)());
+    NeoPatterns(uint16_t pixels, uint16_t pin, uint8_t type, void (*callback)());
 
     // NeoPatterns(uint16_t pixels, uint8_t pin, uint8_t type, void (*callback)())
     // :Adafruit_NeoPixel(pixels, pin, type)

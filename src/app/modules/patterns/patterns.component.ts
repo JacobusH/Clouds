@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StorageService } from '../../modules/shared/services/storage.service';
 import { PatternsService } from '../../modules/shared/services/patterns.service';
 import { Cloud, PatternBlock } from '../../modules/shared/models/cloud.model';
+import { ColorEvent } from 'ngx-color';
 
 @Component({
   selector: 'app-custom-patterns',
@@ -12,6 +13,7 @@ export class PatternsComponent implements OnInit {
   @Input('curCloud') curCloud: Cloud;
   clouds: Array<Cloud>;
   curBlock: PatternBlock;
+  justSent = "";
 
   constructor(
     private storageService: StorageService
@@ -29,6 +31,41 @@ export class PatternsComponent implements OnInit {
     //   this.curCloud = this.clouds[0]
     //   this.curBlock = this.curCloud.buildingBlocks[0]
     // });
+  }
+
+  sendColorWipe() {
+    this.justSent = "Color Wipe";
+    this.patService.sendAnything("D", 1, 30, null);
+  }
+
+  sendFade() {
+    this.justSent = "Color Wipe";
+    this.patService.sendPattern(1, "F", 50);
+  }
+
+  changeComplete($event: ColorEvent) {
+    let color = $event.color;
+    let tmp = color.rgb.r;
+    this.patService.sendAnything("D", 1, 30, {r: color.rgb.r, g: color.rgb.g, b: color.rgb.b});
+    this.justSent = "Color Wipe";
+
+
+    console.log($event.color);
+    // color = {
+    //   hex: '#333',
+    //   rgb: {
+    //     r: 51,
+    //     g: 51,
+    //     b: 51,
+    //     a: 1,
+    //   },
+    //   hsl: {
+    //     h: 0,
+    //     s: 0,
+    //     l: .20,
+    //     a: 1,
+    //   },
+    // }
   }
 
 

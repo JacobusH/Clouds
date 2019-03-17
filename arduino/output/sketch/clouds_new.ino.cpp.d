@@ -135,4 +135,5 @@
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/utility/AdaCallback.h \
  /Tome/Projects/clouds/arduino/output/sketch/cz_blue.h \
  /Tome/Projects/clouds/arduino/output/sketch/e_commands.h \
- /Tome/Projects/clouds/arduino/output/sketch/d_neoPatterns.h
+ /Tome/Projects/clouds/arduino/output/sketch/d_neoPatterns.h \
+ /Tome/Projects/clouds/arduino/output/sketch/f_helpers.h

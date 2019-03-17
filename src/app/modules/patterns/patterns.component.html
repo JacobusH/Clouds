@@ -1,6 +1,8 @@
 <div class="patt-cont" *ngIf="curCloud">
   <div class="funcs">
     <div class="left">
+      <button (click)="sendColorWipe()">Send Color Wipe</button><br/>
+      <button (click)="sendFade()">Send Fade</button>
       <div class="building-block" *ngFor="let block of curCloud.buildingBlocks" (click)="curBlock = block">
         {{block.blockID}}
         <!-- <div class="pixels" *ngFor="let pix of pixels; let i = index">
@@ -9,12 +11,15 @@
       </div>
     </div>
     <div class="right">
-      {{curCloud.cloudID}}
+      Right Side
+      {{justSent}}
+      <!-- {{curCloud.cloudID}}
       {{curCloud.numPixels}}
       {{curCloud.curBrightness}}
-      {{curCloud.isActive}}
+      {{curCloud.isActive}} -->
     </div>
   </div>
+  <color-sketch  (onChangeComplete)="changeComplete($event)"></color-sketch>
   <div class="state" *ngIf="curBlock">
     <app-state-circle [items]="curBlock.pixels"></app-state-circle>
   </div>

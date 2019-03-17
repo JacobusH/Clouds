@@ -80,4 +80,15 @@
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/wiring_digital.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/wiring_analog.h \
  /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/wiring_shift.h \
- /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/WInterrupts.h
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/WInterrupts.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_err.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_gap.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_hci.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_ranges.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_types.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_l2cap.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_gatt.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_gattc.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_gatts.h \
+ /home/jacobus/.arduino15/packages/adafruit/hardware/nrf52/0.9.3/cores/nRF5/nordic/softdevice/s132_nrf52_6.1.1_API/include/ble_hci.h

@@ -40,34 +40,45 @@
 // - Use the application to control the clouds
 
 /* NOTE: This sketch required at least version 1.1.0 of Adafruit_Neopixel !!! */
+#include <vector>
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 #include <bluefruit.h>
-// #include <vector>
 
 #include "cz_blue.h"
 #include "e_commands.h"
-#include"d_neoPatterns.h"
+#include "d_neoPatterns.h"
+#include "f_helpers.h"
 
 // BLE Service
 // BLEDis  bledis;
 // BLEUart bleuart;
 
-boolean firstConact = false;
+boolean firstConact = true; // TODO: set to false when dynamic input for clouds
 void CloudComplete();
 void getClouds();
-NeoPatterns Clouds[1];
+std::vector<NeoPatterns> Clouds(4);
+NeoPatterns Ring1(24, 16, NEO_GRB + NEO_KHZ800, &CloudComplete);
+NeoPatterns Ring2(24, 30, NEO_GRB + NEO_KHZ800, &CloudComplete);
+NeoPatterns Ring3(24, 15, NEO_GRB + NEO_KHZ800, &CloudComplete);
+NeoPatterns Ring4(24, 27, NEO_GRB + NEO_KHZ800, &CloudComplete);
+
+int loopTimer = 0;
 
 
+/* EXAMPLES FOR SOME PATTERNS */
+// Ring1.begin();
+// Ring1.RainbowCycle(5);
+// Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 300);
 
-#line 61 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 72 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 void setup();
-#line 99 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
-void loop();
-#line 228 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 114 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 void startAdv(void);
-#line 256 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 142 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 void connect_callback(uint16_t conn_handle);
+#line 155 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+void loop();
 #line 7 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
 void sendResponse(char const *response);
 #line 12 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
@@ -78,26 +89,31 @@ void commandSetBrightness(int bVal, Adafruit_NeoPixel cur_cloud);
 void commandSetPixel(Adafruit_NeoPixel cur_cloud);
 #line 90 "/Tome/Projects/clouds/arduino/clouds_new/e_commands.ino"
 void swapBuffers(Adafruit_NeoPixel cur_cloud);
-#line 61 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
+#line 72 "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino"
 void setup() {
   // // test();
   Serial.begin(115200);
   Serial.println("Welcome into the mind of Jeanne's Clouds");
   Serial.println("--------------------------------");
-  Serial.println();
   Serial.println("Please connect using Jeanne's awesome app");
 
-  // // Initialize all the pixelStrips
-  // Ring1.begin();
+  // initialize the clouds
+  // NeoPatterns Ring1(24, 16, NEO_GRB + NEO_KHZ800, &CloudComplete);
+  // NeoPatterns Ring2(24, 30, NEO_GRB + NEO_KHZ800, &CloudComplete);
+  // NeoPatterns Ring3(24, 15, NEO_GRB + NEO_KHZ800, &CloudComplete);
+  // NeoPatterns Ring4(24, 27, NEO_GRB + NEO_KHZ800, &CloudComplete);
+  Clouds[0] = Ring1;
+  Clouds[1] = Ring2;
+  Clouds[2] = Ring3;
+  Clouds[3] = Ring4;
+  for(int i = 0; i < Clouds.size(); i++) {
+    NeoPatterns& tmp = Clouds.at(i);
+    tmp.begin();
+    tmp.setBrightness(120);
+    tmp.RainbowCycle(5);
+    tmp.Color1 = tmp.Color1;
+  }
 
-  // Ring1.setBrightness(120);
-  
-  // // Kick off patterns
-  // //  Ring1.RainbowCycle(5);
-  // //  Ring1.TheaterChase(Ring1.Color(255,255,0), Ring1.Color(0,0,50), 300);
-  // Ring1.RainbowCycle(5);
-
-  // // Init Bluefruit
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
   Bluefruit.setTxPower(4);
@@ -114,136 +130,6 @@ void setup() {
 
   // Set up and start advertising
   startAdv();
-}
-
-
-void loop() {
-
-    if ( Bluefruit.connected() ) {
-      int command = bleuart.read();
-
-      if(!firstConact && command == 'X') {
-        Clouds = getClouds();
-      }
-      // Update the cluds.
-      // for(NeoPatterns cloud : Clouds) {
-      //   cloud.Update()
-      // }
-    
-      switch (command) {
-        case 'A': { // Rainbow Cycle
-          int cloudNum = bleuart.read();
-          int interval = bleuart.read();
-          Serial.println("----- In Rainbow Cycle -----");
-          Serial.println(command);
-          Serial.println(cloudNum);
-          Serial.println(interval);
-
-          NeoPatterns curCloud = Clouds[cloudNum];
-          curCloud.ActivePattern = RAINBOW_CYCLE;
-          curCloud.Interval = interval;
-          curCloud.TotalSteps = 255;
-          curCloud.Color1 = curCloud.Wheel(random(255));
-          
-          break;
-        }
-        case 'B': {   // Set Brightness
-          int cloudNum = bleuart.read();
-          int bVal = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-          commandSetBrightness(bVal, curCloud);
-          break;
-        }      
-        case 'C': { // Theater Chase
-          int cloudNum = bleuart.read();
-          int interval = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-          Serial.println("----- In Theater Chase -----");
-          Serial.println(command);
-          Serial.println(cloudNum);
-          Serial.println(interval);
-
-          curCloud.ActivePattern = THEATER_CHASE;
-          curCloud.Color1 = Ring1.Wheel(random(255));
-          curCloud.TheaterChase(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), interval);
-          
-          break;
-        }
-        case 'D': { // Color Wipe
-          int cloudNum = bleuart.read();
-          int interval = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-          Serial.println("----- In Color Wipe -----");
-          Serial.println(command);
-          Serial.println(cloudNum);
-          Serial.println(interval);
-
-          curCloud.ActivePattern = COLOR_WIPE;
-          curCloud.TotalSteps = Ring1.numPixels();
-          curCloud.Interval = interval;
-          curCloud.Color1 = curCloud.Wheel(random(255));
-          
-          break;
-        }
-        case 'E': { // Scanner
-          int cloudNum = bleuart.read();
-          int interval = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-
-          Serial.println("----- In Scanner -----");
-          Serial.println(command);
-          Serial.println(cloudNum);
-          Serial.println(interval);
-
-          curCloud.ActivePattern = SCANNER;
-          curCloud.Scanner(curCloud.Wheel(random(255)), interval);
-          
-          break;
-        }
-        case 'F': { // Fade
-          NeoPatterns curCloud = Clouds[cloudNum];
-          int cloudNum = bleuart.read();
-
-          Serial.println("----- In Fade -----");
-          Serial.println(command);
-          Serial.println(cloudNum);
-          Serial.println(interval);
-
-          int interval = bleuart.read();
-          curCloud.ActivePattern = FADE;
-          curCloud.Fade(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), random(curCloud.numPixels()), interval, FORWARD);
-          
-          break;
-        }
-        case 'Y': { // Turn On
-          int cloudNum = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-          curCloud.ActivePattern = COLOR_WIPE;
-          curCloud.TotalSteps = curCloud.numPixels();
-          curCloud.Interval = 100;
-          curCloud.Color1 = curCloud.Wheel(random(255));
-        }
-        case 'Z': { // Turn Off
-        int cloudNum = bleuart.read();
-          NeoPatterns curCloud = Clouds[cloudNum];
-          curCloud.ActivePattern = COLOR_WIPE;
-          curCloud.TotalSteps = Ring1.numPixels();
-          curCloud.Interval = 10;
-          curCloud.Color1 = Ring1.Wheel(0);
-        }
-      }
-
-
- 
-  }
-}
-
-// Ring1 Completion Callback
-void CloudComplete()
-{
-  // TODO: figure out how to have a parameter for a callback func
-  // curCloud.Reverse();
-  Serial.println("---TRIED TO USE CALLBACK FUNCTION---")
 }
 
 void startAdv(void)
@@ -286,13 +172,172 @@ void connect_callback(uint16_t conn_handle)
   Serial.println("Please select a cloud pattern and enjoy");
 }
 
-NeoPatterns[] getClouds() {
+
+void loop() {
+  // Loop printout
+  loopTimer += 1;
+  if(loopTimer % 20000 == 0) {
+    // Serial.println("----- In Loop Cycle -----");
+    // Serial.println(Clouds.size());
+    loopTimer = 0;
+  }
+
+  // Update cycle
+  for(int i = 0; i < Clouds.size(); i++) {
+    Clouds[i].Update();
+  }
+
+  if ( Bluefruit.connected() ) {
+    if(loopTimer % 20000 == 0) {
+      // Serial.println("----- In BLE Cycle -----");
+      // Serial.println(Clouds.size());
+    }
+    int command = bleuart.read();
+
+    switch (command) {
+      case 'A': { // Rainbow Cycle
+        int cloudNum = bleuart.read();
+        int interval = bleuart.read();
+        Serial.println("----- In Rainbow Cycle -----");
+        Serial.println(command);
+        Serial.println(cloudNum);
+        Serial.println(interval);
+
+        NeoPatterns curCloud = Clouds[cloudNum];
+        curCloud.ActivePattern = NeoPatterns::pattern::RAINBOW_CYCLE;
+        curCloud.Interval = interval;
+        curCloud.TotalSteps = 255;
+        curCloud.Color1 = curCloud.Wheel(random(255));
+        
+        break;
+      }
+      case 'B': {   // Set Brightness
+        int cloudNum = bleuart.read();
+        int bVal = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+        commandSetBrightness(bVal, curCloud);
+        break;
+      }      
+      case 'C': { // Theater Chase
+        int cloudNum = bleuart.read();
+        int interval = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+        Serial.println("----- In Theater Chase -----");
+        Serial.println(command);
+        Serial.println(cloudNum);
+        Serial.println(interval);
+
+        curCloud.ActivePattern = NeoPatterns::pattern::THEATER_CHASE;
+        curCloud.Color1 = curCloud.Wheel(random(255));
+        curCloud.TheaterChase(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), interval);
+        
+        break;
+      }
+      case 'D': { // Color Wipe
+        int cloudNum = bleuart.read();
+        int interval = bleuart.read();
+        int rCol = bleuart.read();
+        int gCol = bleuart.read();
+        int bCol = bleuart.read();
+
+        Serial.println("----- In Color Wipe -----");
+        Serial.println(command);
+        Serial.println(cloudNum);
+        Serial.println(interval);
+        Serial.println(rCol);
+        Serial.println(gCol);
+        Serial.println(bCol);
+
+        NeoPatterns& curCloud = Clouds[cloudNum];
+
+        curCloud.ActivePattern = NeoPatterns::pattern::NONE;
+        Serial.println("-- after color wipe cur cloud");
+        Serial.println(curCloud.numPixels());
+
+
+        for(int i = 0;  i < curCloud.numPixels(); i++) {
+          curCloud.setPixelColor(i, rCol, gCol, bCol);
+        }
+        curCloud.show();
+
+        // Refresh pixels
+        swapBuffers(curCloud);
+        
+        // curCloud.ActivePattern = NeoPatterns::pattern::COLOR_WIPE;
+        // curCloud.TotalSteps = curCloud.numPixels();
+        // curCloud.Interval = interval;
+        // curCloud.Color1 = curCloud.Wheel(random(255));
+        
+        break;
+      }
+      case 'E': { // Scanner
+        int cloudNum = bleuart.read();
+        int interval = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+
+        Serial.println("----- In Scanner -----");
+        Serial.println(command);
+        Serial.println(cloudNum);
+        Serial.println(interval);
+
+        curCloud.ActivePattern = NeoPatterns::pattern::SCANNER;
+        curCloud.Scanner(curCloud.Wheel(random(255)), interval);
+        
+        break;
+      }
+      case 'F': { // Fade
+        int cloudNum = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+
+        Serial.println("----- In Fade -----");
+        Serial.println(command);
+        Serial.println(cloudNum);
+
+        int interval = bleuart.read();
+        curCloud.ActivePattern = NeoPatterns::pattern::FADE;
+        curCloud.Fade(curCloud.Wheel(random(255)), curCloud.Wheel(random(255)), random(curCloud.numPixels()), interval, NeoPatterns::direction::FORWARD);
+        
+        break;
+      }
+      case 'Y': { // Turn On
+        int cloudNum = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+        curCloud.ActivePattern = NeoPatterns::pattern::COLOR_WIPE;
+        curCloud.TotalSteps = curCloud.numPixels();
+        curCloud.Interval = 100;
+        curCloud.Color1 = curCloud.Wheel(random(255));
+      }
+      case 'Z': { // Turn Off
+        int cloudNum = bleuart.read();
+        NeoPatterns curCloud = Clouds[cloudNum];
+        curCloud.ActivePattern = NeoPatterns::pattern::COLOR_WIPE;
+        curCloud.TotalSteps = curCloud.numPixels();
+        curCloud.Interval = 10;
+        curCloud.Color1 = curCloud.Wheel(0);
+      }
+      default: {
+        // Serial.println("--- In Default ---");
+        // Serial.println(command);
+      }
+    } // end of switch case
+  } // end of ble read
+} // end of loop
+
+// Ring1 Completion Callback
+void CloudComplete()
+{
+  // TODO: figure out how to have a parameter for a callback func
+  // curCloud.Reverse();
+  // Serial.println("---TRIED TO USE CALLBACK FUNCTION---");
+}
+
+void getClouds() {
   int numClouds = bleuart.read(); // read how many clouds we have
   firstConact = true;
 
   for(int i = 0; i < numClouds; i++) {
-    NeoPatterns tmpCloud(24, 16, NEO_GRB + NEO_KHZ800, &CloudComplete;
-    Clouds.append(tmpCloud);
+    NeoPatterns tmpCloud(24, 16, NEO_GRB + NEO_KHZ800, &CloudComplete);
+    Clouds.push_back(tmpCloud);
   }
 }
 #line 1 "/Tome/Projects/clouds/arduino/clouds_new/d_neoPatterns.ino"
@@ -310,7 +355,7 @@ NeoPatterns::NeoPatterns()
 }
 
 // Constructor - calls base-class constructor to initialize strip
-NeoPatterns::NeoPatterns(uint16_t pixels, uint8_t pin, uint8_t type, void (*callback)())
+NeoPatterns::NeoPatterns(uint16_t pixels, uint16_t pin, uint8_t type, void (*callback)())
 :Adafruit_NeoPixel(pixels, pin, type)
 {
     OnComplete = callback;
@@ -339,6 +384,9 @@ void NeoPatterns::Update()
                 break;
             case FADE:
                 FadeUpdate();
+                break;
+            case NONE: 
+                // do nothing
                 break;
             default:
                 break;
@@ -686,5 +734,28 @@ void swapBuffers(Adafruit_NeoPixel cur_cloud)
   cur_cloud.show();
 
 }
+#line 1 "/Tome/Projects/clouds/arduino/clouds_new/f_helpers.ino"
+#include <vector>
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include "f_helpers.h"
+// #include <string>
+
+
+// void hexToRGB(String hexVal) {
+//   // hexVal="FFFFFF"
+
+//   char charbuf[8];
+//   hexVal.toCharArray(charbuf,8);
+//   long int rgb = std::stol(charbuf,0,16);
+//   byte r = (byte)(rgb>>16);
+//   byte g = (byte)(rgb>>8);
+//   byte b = (byte)(rgb);
+
+//   Serial.println("-- RGB Val -- ");
+//   Serial.println(r);
+//   Serial.println(g);
+//   Serial.println(b);
+// }
 #line 1 "/Tome/Projects/clouds/arduino/clouds_new/z_main.ino"
 

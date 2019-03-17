@@ -329,7 +329,7 @@ body {
         top:random(80) * 1%;
         -webkit-transform:scale(0.2*$i);
         -webkit-animation:clouds-in-out 15+$i+s ($j*2)+s infinite linear;
-        z-index:5000000;
+        z-index:500;
       }
       $j : $j + 1;
     }

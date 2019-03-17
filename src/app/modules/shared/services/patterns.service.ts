@@ -79,7 +79,15 @@ export class PatternsService {
     }
 
     let cmd = new Uint8Array([hexxy, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
-    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer)
+    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer);
+  }
+
+  sendAnything(pattern: string, cloudNum: number, interval: number, colors: {r: number, g: number, b: number}) {
+    let hexxy = 0x44;
+
+    let cmd = new Uint8Array([hexxy, cloudNum, interval, colors.r, colors.g, colors.b]); // send cloudNum, pattHex, timingInterval
+    return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer);
+
   }
 
   getPatternHex(patternLett: string) {
