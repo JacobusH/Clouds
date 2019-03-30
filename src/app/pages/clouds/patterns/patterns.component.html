@@ -1,33 +1,26 @@
-<div class="pattern-cont">
-  <div class="patt-col">
-      <div class="cloud-btn cloud-name cloud1">One</div>
-      <div
-        *ngFor="let cloud of buttons1; let i = index" 
-        [ngClass]="computeClass(cloud)"
-        (click)="selectThis(cloud, i, 1)" >
-        {{cloud.pattern}}
+<div class="patt-cont" *ngIf="curCloud">
+  <div class="funcs">
+    <div class="left">
+      <button (click)="sendColorWipe()">Send Color Wipe</button><br/>
+      <button (click)="sendFade()">Send Fade</button>
+      <div class="building-block" *ngFor="let block of curCloud.buildingBlocks" (click)="curBlock = block">
+        {{block.blockID}}
+        <!-- <div class="pixels" *ngFor="let pix of pixels; let i = index">
+          {{cloud.pix}}
+        </div> -->
       </div>
-      <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud1_interval"  (keyup)="changeInterval(1)" /></div>
     </div>
-  <div class="patt-col">
-      <div class="cloud-btn cloud-name cloud2">Two</div>
-      <div
-        *ngFor="let cloud of buttons2; let i = index" 
-        [ngClass]="computeClass(cloud)"
-        (click)="selectThis(cloud, i, 2)" >
-        {{cloud.pattern}}
-      </div>
-      <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud2_interval" (keyup)="changeInterval(2)" /></div>
+    <div class="right">
+      Right Side
+      {{justSent}}
+      <!-- {{curCloud.cloudID}}
+      {{curCloud.numPixels}}
+      {{curCloud.curBrightness}}
+      {{curCloud.isActive}} -->
     </div>
-  <div class="patt-col">
-    <div class="cloud-btn cloud-name cloud3">Three</div>
-    <div
-      *ngFor="let cloud of buttons3; let i = index" 
-      [ngClass]="computeClass(cloud)"
-      (click)="selectThis(cloud, i, 3)" >
-      {{cloud.pattern}}
-    </div>
-    <div class="cloud-interval"><input type="number" class="interval" [(ngModel)]="cloud3_interval"  (keyup)="changeInterval(3)" /></div>
-    <!-- {{cloud3_interval}} -->
+  </div>
+  <color-sketch  (onChangeComplete)="changeComplete($event)"></color-sketch>
+  <div class="state" *ngIf="curBlock">
+    <app-state-circle [items]="curBlock.pixels"></app-state-circle>
   </div>
 </div>

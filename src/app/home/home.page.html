@@ -1,66 +1,20 @@
 <ion-content class="padding">
-  <div style="position: absolute; z-index: 499; height:100%; width: 100%;">
-      <!-- <div [@routeAnimations]="prepareRoute(outlet)" >
-        <router-outlet #outlet="outlet"></router-outlet>
-      </div> -->
-      <main [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
-          <router-outlet #o="outlet"></router-outlet>
-        </main>
+  <div *ngIf="debugMode">{{debugMsg}}</div>
+  <div *ngIf="isWindowOpen" class="window-section">
+    <main [@routeAnimations]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+    </main>
   </div>
-  <div class="ground"></div>
-  <div class="sky">
-    <div class="cloud variant-1" routerLink='/home/clouds'></div>
-    <div class="cloud variant-2" routerLink='/home/clouds'></div>
-    <div class="cloud variant-3" routerLink='/home/clouds'></div>
-    <div class="cloud variant-4" routerLink='/home/clouds'></div>
-    <div class="cloud variant-5" routerLink='/home/clouds'></div>
-    <app-sun-moon style="z-index: 500000000;" (brightness)="changeBrightness($event)"></app-sun-moon>
-  </div>
-  <div class="rainbow-preloader">
-    <div class="rainbow-stripe"></div>
-    <div class="rainbow-stripe"></div>
-    <div class="rainbow-stripe"></div>
-    <div class="rainbow-stripe"></div>
-    <div class="rainbow-stripe"></div>
-    <div class="shadow"></div>
-    <div class="shadow"></div>
-  </div>
-  <!-- <div *ngIf="!keyboard.isOpen()" class="house-cont"> -->
-  <div  class="house-cont">
-      <div *ngIf="debugMode">{{debugMsg}}</div>
-    <img class="house" src="assets/house.svg" routerLink='/home/overview' />
-  </div>
-  <div  class="ant-cont">
-      <img class="antenna" 
-        src="assets/antenna.svg" 
-        (press)="onPress($event)"
-        (tap)="onTap($event)" />
-      <div *ngIf="isConnected">
-        <img class="pulsarR" src="assets/signal.svg" />
-        <img class="pulsarL" src="assets/signal.svg" />
-      </div>
-      <div *ngIf="!isConnected">
-        <img class="one" src="assets/lightning.svg" />
-        <img class="two" src="assets/lightning.svg" />
-        <img class="three" src="assets/lightning.svg" />
-      </div>
-  </div>
-  <div class="mountains-cont">
-      <img class="mountains" src="assets/mountains.svg" />
-  </div>
-  <div class="tent-cont">
-      <img class="tent" src="assets/tent.svg" routerLink='/home/settings' />
-  </div>
-  <div class="power-cont">
-    <div *ngIf="isOn" (click)="flipPower('off')">
-      <img src="assets/power_on.svg" />
+  <div class="home-panorama">
+    <app-home-flowers style="width:100%; height: 100%;"></app-home-flowers>
+    <div class="ground">
+        <app-home-house></app-home-house>
+        <app-home-power></app-home-power>
+        <app-home-mountains></app-home-mountains>
     </div>
-    <div *ngIf="!isOn" (click)="flipPower('on')">
-      <img src="assets/power_off.svg" />
+    <div class="sky">
+      <app-home-clouds></app-home-clouds>
+      <app-home-sun-moon class="selectable-elem" (brightness)="changeBrightness($event)"></app-home-sun-moon>
     </div>
   </div>
-  <app-flowers style="width:100%; height: 100%;"></app-flowers>
-  
-
-  
 </ion-content>

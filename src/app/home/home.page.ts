@@ -1,16 +1,15 @@
-import { Component, OnInit, NgZone, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, NgZone, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
-import { DeviceService } from '../modules/shared/services/device.service';
+import { DeviceService } from '../services/device.service';
 import { Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { PatternsService } from '../modules/shared/services/patterns.service';
-import { ScannerService } from '../modules/shared/services/scanner.service';
+import { PatternsService } from '../services/patterns.service';
+import { PageViewService } from '../services/page-view.service';
+import { ScannerService } from '../services/scanner.service';
 import { bounce, pulse, fadeOutRight } from 'ng-animate';
 import { routeAnimations } from '../animations/routes.animation';
 // import { Keyboard } from 'ionic-angular';
-
-const NEOPIXEL_SERVICE = 'ccc0';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +31,10 @@ export class HomePage implements OnInit {
   displayMessage:string = "Hallo";
   logMessage:string = "No device selected";
   isConnected;
+  innerWidth: any;
   isOn = true;
+  isCloudVisible = true;
+  isWindowOpen = false;
 
   triggerTemplate;
   isCollapsed = false;
@@ -43,10 +45,12 @@ export class HomePage implements OnInit {
               , private deviceService: DeviceService
               , private router: Router
               , private patternService: PatternsService
-              , private scannerService: ScannerService) { 
+              , private scannerService: ScannerService
+              , private pageViewService: PageViewService) { 
   }
   
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
     window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
@@ -59,12 +63,19 @@ export class HomePage implements OnInit {
       this.isOn = x;
       console.log('connect', x)
     })
+
+    this.pageViewService.isVisible$.subscribe(x => {
+      console.log('vissy', x)
+      this.isWindowOpen = x;
+    })
   } 
+
+  
+
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
-
 
   installPWA() {
     this.deferredPrompt.prompt();
@@ -98,28 +109,15 @@ export class HomePage implements OnInit {
     console.log('home brightness', brightness);
   }
 
-  flipPower(flipTo: string) {
-    if(flipTo == 'off') {
-      this.patternService.sendPattern(0, 'Z', 10);
-    }
-    else { // to 'on'
-      this.patternService.sendPattern(0, 'Y', 100);
-    }
-  }
+  
 
-  onTap(event) {
-    console.log("tapped")
-    this.debugMsg = 'tapped';
-    this.scannerService.setShowSettingsFalse();
-    this.router.navigateByUrl('/home/scanner', { queryParams: { 'isShort': 'true' }} )
-  }
+  
 
-  onPress(event) {
-    console.log("held")
-    this.debugMsg = 'held';
-    this.scannerService.setShowSettingsTrue();
-    this.router.navigateByUrl('/home/scanner', { queryParams: { 'isShort': 'false' }} )
-  }
+  
+
+  
+
+  
 
 
 }

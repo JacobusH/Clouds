@@ -1,0 +1,58 @@
+.my-cloud {
+	position: absolute;
+	width: 20%;
+	right: 80px;
+  top: 40px;
+  z-index: 503;
+}
+
+.cloud {
+  background: rgb(235,245,252);
+  border-radius: 200px;
+  box-shadow:0 1px 1px rgba(0,0,0,0.1);
+  height: 39px;
+  margin-right: -102px;
+  position: absolute;
+  right: 0%;
+  width: 102px;
+
+  $j: 0;
+  @for $i from 1 to 6 {
+    &.variant-#{$i} {
+      top:random(80) * 1%;
+      -webkit-transform:scale(0.2*$i);
+      -webkit-animation:clouds-in-out 15+$i+s ($j*2)+s infinite linear;
+      z-index:500;
+    }
+    $j : $j + 1;
+  }
+  
+  &:before,
+  &:after {
+    background: rgb(235,245,252);
+    border-radius: 100px;
+    content: '';
+    height: 45px;
+    left: 10px;
+    position: absolute;
+    top: -10px;
+    width: 60px;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    transform: rotate(30deg);
+  }
+
+  &:after {
+    height: 60px;
+    left: auto;
+    right: 12px;
+    top: -24px;
+    width: 60px;
+  }
+  
+}
+
+@-webkit-keyframes clouds-in-out {
+  0% {right:-15%;}
+  100% {right:115%;}
+}

@@ -1,0 +1,13 @@
+<div class="ant-cont" (press)="onPress($event)" (tap)="onTap($event)">
+  <img class="antenna" src="assets/antenna.svg" 
+    [style.width]="getPowerWidth()"/>
+  <div *ngIf="isConnected">
+    <img class="pulsarR" src="assets/signal.svg" />
+    <img class="pulsarL" src="assets/signal.svg" />
+  </div>
+  <div *ngIf="!isConnected">
+    <img class="one" src="assets/lightning.svg" />
+    <img class="two" src="assets/lightning.svg" />
+    <img class="three" src="assets/lightning.svg" />
+  </div>
+</div>

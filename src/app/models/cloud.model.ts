@@ -1,5 +1,6 @@
 export interface Cloud {
   cloudID: string,
+  cloudNum: number,
   numPixels: number;
   curBrightness: number;
   isActive: boolean

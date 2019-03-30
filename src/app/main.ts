@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import { environment } from '../environments/environment';
 
 import 'gsap';
+import 'hammerjs';
 
 if (environment.production) {
   enableProdMode();

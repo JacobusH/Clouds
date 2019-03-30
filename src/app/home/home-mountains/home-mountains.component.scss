@@ -1,0 +1,13 @@
+// MOUNTAINS
+.mountains-cont {
+  position: absolute;
+    bottom: 89%;
+    left: -16px;
+    right: 26px;
+    outline: none;
+    z-index: 1;
+
+  .mountain {
+    outline: none;
+  }
+}

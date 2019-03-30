@@ -19,6 +19,16 @@ export class StorageService {
     return this.storage.get('clouds');
   }
 
+  getCloudByID(id: string) {
+    return this.storage.get('clouds').then(clouds => {
+      clouds.forEach(el => {
+        if(el.cloudID == id) {
+          return el;
+        }
+      });
+    })
+  }
+
   /***********
    * Cloud Settings 
   ***********/

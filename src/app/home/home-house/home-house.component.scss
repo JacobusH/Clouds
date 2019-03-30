@@ -1,0 +1,13 @@
+// HOUSE
+.house-cont {
+  position: absolute;
+  z-index: 10000;
+  bottom: 0px;
+  left: 12px;
+  outline: none;
+
+  .house {
+    // width: 50%;
+    outline: none;
+  }
+}

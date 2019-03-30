@@ -1,10 +1,10 @@
 import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
 import { BLE } from '@ionic-native/ble/ngx';
-import { DeviceService } from '../../modules/shared/services/device.service';
+import { DeviceService } from '../../services/device.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ScannerService } from '../../modules/shared/services/scanner.service';
+import { ScannerService } from '../../services/scanner.service';
 import { switchMap } from 'rxjs/operators';
 // import { AlertController } from 'ionic-angular';
 

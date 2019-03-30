@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cloud, PatternBlock } from '../../../modules/shared/models/cloud.model';
+import { Cloud, PatternBlock } from "../models/cloud.model";
 import { BLE } from '@ionic-native/ble/ngx';
 import { DeviceService } from './device.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { v4 as uuid } from 'uuid';
-import { convertToR3QueryMetadata } from '@angular/core/src/render3/jit/directive';
+import { StorageService } from './storage.service';
 
 
 @Injectable({
@@ -19,21 +19,27 @@ export class PatternsService {
 
   constructor(
     private ble: BLE 
-    , private deviceService: DeviceService) { 
+    , private deviceService: DeviceService
+    , private storageService: StorageService) { 
       
   }
 
-  createNewCloud(): Cloud {
-    return {
-      cloudID: uuid(),
-      numPixels: 24,
-      curBrightness: 125,
-      isActive: true,
-      buildingBlocks: [{
-        blockID: uuid(),
-        pixels: Array<string>().fill('#8B008B', 0, 23) // arr of clouds hex colors in position
-      }]
-    }
+  createNewCloud(): Promise<Cloud> {
+    return this.storageService.getClouds().then(clouds => {
+      let cNum = 0
+      if(clouds) { cNum = clouds.length; }
+      return {
+        cloudID: uuid(),
+        cloudNum: cNum,
+        numPixels: 24,
+        curBrightness: 125,
+        isActive: true,
+        buildingBlocks: [{
+          blockID: uuid(),
+          pixels: Array<string>().fill('#8B008B', 0, 23) // arr of clouds hex colors in position
+        }]
+      }
+    });
   }
 
   // Commands to send to controller
