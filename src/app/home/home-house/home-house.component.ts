@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { PageViewService } from 'src/app/services/page-view.service';
+import { PageViewService } from '../../services/page-view.service';
 
 @Component({
   selector: 'app-home-house',
@@ -8,11 +8,16 @@ import { PageViewService } from 'src/app/services/page-view.service';
 })
 export class HomeHouseComponent implements OnInit {
   innerWidth;
+  isWindowOpen = false;
 
   constructor(private pageViewService: PageViewService) { }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
+    this.pageViewService.isVisible$.subscribe(x => {
+      this.isWindowOpen = x;
+      console.log('hoem', x)
+    })
   }
 
   @HostListener('window:resize', ['$event'])

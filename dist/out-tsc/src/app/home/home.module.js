@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
-import { SharedModule } from '../modules/shared/shared.module';
 import { PatternsModule } from '../modules/patterns/patterns.module';
 import { HomePage } from './home.page';
 import { CloudsPage } from '../pages/clouds/clouds.page';
@@ -32,7 +31,6 @@ var HomePageModule = /** @class */ (function () {
             ],
             imports: [
                 routing,
-                SharedModule,
                 CommonModule,
                 DragDropModule,
                 FormsModule,

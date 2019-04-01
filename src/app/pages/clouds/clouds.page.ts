@@ -4,6 +4,9 @@ import { Cloud } from '../../models/cloud.model';
 import { routeAnimations } from '../../animations/routes.animation';
 import { StorageService } from '../../services/storage.service';
 import { PageViewService } from '../../services/page-view.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { PerfectScrollbarConfigInterface, PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+
 
 import {Power1, Power2, Bounce} from 'gsap/all';
 import { TimeLineMax } from 'gsap/all';
@@ -18,21 +21,20 @@ declare var TimelineMax: any;
   animations: [ routeAnimations ]
 })
 export class CloudsPage implements OnInit, OnDestroy {
-  @ViewChild('bunnyShroom') bunnyShroom: ElementRef;
-  @ViewChild('mushroom') shroom: ElementRef;
-  @ViewChild('bunny') bunny: ElementRef;
-
-  @ViewChild('shroomy') shroomy: ElementRef;
-
-  @ViewChild('left') left: ElementRef;
-  @ViewChild('right') right: ElementRef;
-
-  @ViewChild('stem') stem: ElementRef;
-
-
   clouds: Array<Cloud>;
   selCloud: Cloud; 
   selCloudIdx: number; 
+  blocks: Array<any>;
+  config: PerfectScrollbarConfigInterface = {};
+
+  artists = [
+    'Artist I - Davido',
+    'Artist II - Wizkid',
+    'Artist III - Burna Boy',
+    'Artist IV - Kiss Daniel',
+    'Artist V - Mayorkun',
+    
+  ];
 
   constructor(
     private patService: PatternsService
@@ -54,7 +56,7 @@ export class CloudsPage implements OnInit, OnDestroy {
       console.log('clouds', this.clouds)
     })
 
-    
+    this.blocks = ["one", "two", "three", "four", "five"]
   }
 
 
@@ -85,6 +87,14 @@ export class CloudsPage implements OnInit, OnDestroy {
     
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.artists, event.previousIndex, event.currentIndex);
+  }
+
+  dEnd(event) {
+    console.log('dend', event)
+  }
+
   doIt(): void {
     // TweenMax.fromTo(this.bunnyShroom.nativeElement, 2, {x: 20}, {x: 440, ease: Power1.easeOut});
     // TweenMax.fromTo(this.bunnyShroom.nativeElement, 2, {y: 20}, {y: 440, ease: Bounce.easeOut});
@@ -106,7 +116,7 @@ export class CloudsPage implements OnInit, OnDestroy {
     //   ease: Power1.easeInOut
     // });
 
-    TimelineMax.from(this.stem.nativeElement, 0.5, {scaleY: 0, transformOrigin: "bottom", ease: Power2.easeOut})
+    // TimelineMax.from(this.stem.nativeElement, 0.5, {scaleY: 0, transformOrigin: "bottom", ease: Power2.easeOut})
   }
 
   
