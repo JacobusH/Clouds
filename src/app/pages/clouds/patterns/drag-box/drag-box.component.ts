@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ResizeEvent } from 'angular-resizable-element';
+import { PatternBlock, Cloud } from '../../../../models/cloud.model';
+import { PageViewService } from '../../../../services/page-view.service';
+import { PatternsService } from '../../../../services/patterns.service';
 
 @Component({
   selector: 'app-drag-box',
@@ -7,13 +10,17 @@ import { ResizeEvent } from 'angular-resizable-element';
   styleUrls: ['./drag-box.component.scss']
 })
 export class DragBoxComponent implements OnInit {
+  @Input() patBlock: PatternBlock;
+  @Input() cloud: Cloud;
   style: object = {};
 
-  constructor() { 
+  constructor(private pageViewService: PageViewService
+    , private patService: PatternsService) { 
+
   }
 
   ngOnInit() {
-    
+
   }
 
   validate(event: ResizeEvent): boolean {
@@ -37,6 +44,13 @@ export class DragBoxComponent implements OnInit {
       width: `${event.rectangle.width}px`,
       height: `${event.rectangle.height}px`
     };
-}
+  }
+
+  emitShowColors(val: boolean) {
+    this.patService.setCurrentPatternBlock(this.patBlock);
+    this.patService.setCurrentCloud(this.cloud);
+    this.pageViewService.setColorsVisibleTrue();
+  }
+
 
 }

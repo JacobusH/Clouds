@@ -52,10 +52,6 @@ var FlowersComponent = /** @class */ (function () {
         //   , 'index': 300
         // }
         this.ngZone.run(function () {
-            var obby$ = of([1, 2, 3, 4, 5]);
-            obby$.subscribe(function (x) {
-                console.log('obby', x);
-            });
             // this.trees.push(firstTree);
             var flowerMaker$ = interval(1000).subscribe(function (n) {
                 left = _this.randomIntFromInterval(leftBound, rightBound);

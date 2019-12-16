@@ -1,8 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StorageService } from '../../../services/storage.service';
 import { PatternsService } from '../../../services/patterns.service';
 import { Cloud, PatternBlock } from '../../../models/cloud.model';
 import { ColorEvent } from 'ngx-color';
+import { PageViewService } from '../../../services/page-view.service';
+
+interface RGBA {
+  r: number,
+  g: number,
+  b: number,
+  a: number
+}
 
 @Component({
   selector: 'app-custom-patterns',
@@ -10,28 +18,80 @@ import { ColorEvent } from 'ngx-color';
   styleUrls: ['./patterns.component.scss']
 })
 export class PatternsComponent implements OnInit {
-  @Input('curCloud') curCloud: Cloud;
-  clouds: Array<Cloud>;
+  @Output('onColorChange') emitColorChange: EventEmitter<RGBA>;
+  colors = ['#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB',
+  '#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB','#BBB'];
+  curCloud: Cloud;
   curBlock: PatternBlock;
+  curPixel: number = 0; 
+  curColorHex: string = '#BBB'; 
   justSent = "";
 
   constructor(
     private storageService: StorageService
-    , private patService: PatternsService) { 
+    , private patService: PatternsService
+    , private pageViewService: PageViewService) { 
+      this.emitColorChange = new EventEmitter<RGBA>();
   }
 
   ngOnInit() {
-    // this.storageService.getClouds().then(x => {
-    //   // x is an array of clouds
-    //   if(x) {
-    //     this.clouds = x
-    //   } else {
-    //     this.clouds = [ this.patService.createNewCloud() ]
-    //   }
-    //   this.curCloud = this.clouds[0]
-    //   this.curBlock = this.curCloud.buildingBlocks[0]
-    // });
+    this.patService.curBlock$.subscribe(x => {
+      this.curBlock = x;
+      // console.log(this.curBlock.blockID)
+    })
+    this.patService.curClou$.subscribe(x => {
+      this.curCloud = x;
+      // console.log(this.curBlock.blockID)
+    })
   }
+
+  removeBlock() {
+    this.storageService.removeBlockFromCloud(this.curCloud.cloudID, this.curBlock).then(x =>{
+      this.hideColors();
+    });
+  }
+
+  hideColors() {
+    this.pageViewService.setColorsVisibleFalse();
+  }
+
+  onColorChange(ev: ColorEvent) {
+    // console.log('rgbbb', ev.color.rgb);
+    this.curColorHex = ev.color.hex;
+    this.emitColorChange.emit(ev.color.rgb);
+  }
+
+  onPixelSelect(selPixelIdx: number) {
+    // console.log('selected pixel: ', selPixelIdx);
+    this.colors[selPixelIdx] = this.curColorHex;
+  }
+
+  onChangeBlockName(ev: any) {
+    let newName = ev.target.value;
+    this.curBlock.name = newName;
+    this.storageService.changeBlockName(this.curBlock.blockID, newName);
+  }
+
+  onChangeBlockPatLet(ev: any) {
+    let newBlockPatLet = ev.target.value;
+    this.curBlock.blockPatLet = newBlockPatLet;
+    this.storageService.changeBlockPatLet(this.curBlock.blockID, newBlockPatLet).then(x => {
+      // this.patService.beginColor();
+    });
+  }
+
+  onChangeBlockHeight(ev: any) {
+    let newBlockHeight = ev.target.value;
+    this.curBlock.height = newBlockHeight;
+    this.storageService.changeBlockHeight(this.curBlock.blockID, newBlockHeight);
+  }
+
+  onChangeBrightness(ev: any) {
+    let newBrightness = ev.target.value;
+    this.curBlock.brightness = newBrightness;
+    this.storageService.changeBlockHeight(this.curBlock.blockID, newBrightness);
+  }
+
 
   sendColorWipe() {
     this.justSent = "Color Wipe";
@@ -39,7 +99,7 @@ export class PatternsComponent implements OnInit {
   }
 
   sendFade() {
-    this.justSent = "Color Wipe";
+    this.justSent = "Fade";
     this.patService.sendPattern(1, "F", 50);
   }
 
@@ -50,7 +110,8 @@ export class PatternsComponent implements OnInit {
     this.justSent = "Color Wipe";
 
 
-    console.log($event.color);
+    // console.log($event.color);
+    
     // color = {
     //   hex: '#333',
     //   rgb: {

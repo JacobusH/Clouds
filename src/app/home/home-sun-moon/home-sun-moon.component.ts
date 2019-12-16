@@ -5,7 +5,7 @@ import {
 } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-home-sun-moon',
+  selector: '[app-home-sun-moon]',
   templateUrl: './home-sun-moon.component.html',
   styleUrls: ['./home-sun-moon.component.scss']
 })
@@ -71,7 +71,7 @@ export class HomeSunMoonComponent implements OnInit {
       toEmit = Math.floor(opacityVal * 255);
     }
     this.brightness.emit(toEmit);
-    console.log('emitted brightness', toEmit)
+    // console.log('emitted brightness', toEmit)
 
     this.ngZone.run(() => {
       this.curBrightness = toEmit

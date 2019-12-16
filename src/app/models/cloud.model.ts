@@ -9,7 +9,13 @@ export interface Cloud {
 
 export interface PatternBlock {
   blockID: string,
-  pixels: Array<string> // arr of pixel color hex-codes in position
+  name: string,
+  pixels: Array<string>, // arr of pixel color hex-codes in position
+  coordinates: { x: number, y: number },
+  height: number,
+  blockPatLet: string,
+  brightness: number,
+  hasSent?: boolean
 }
 
 export interface FunctionBlock {

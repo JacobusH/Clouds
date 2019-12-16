@@ -1,26 +1,39 @@
-<div class="patt-cont" *ngIf="curCloud">
-  <div class="funcs">
-    <div class="left">
-      <button (click)="sendColorWipe()">Send Color Wipe</button><br/>
-      <button (click)="sendFade()">Send Fade</button>
-      <div class="building-block" *ngFor="let block of curCloud.buildingBlocks" (click)="curBlock = block">
-        {{block.blockID}}
-        <!-- <div class="pixels" *ngFor="let pix of pixels; let i = index">
-          {{cloud.pix}}
-        </div> -->
+<div class="cont">
+  <div class="middle">
+    <div class="info-section">
+      <div><input type="text" [value]="curBlock.name" (change)="onChangeBlockName($event)" /></div>
+      <div class="btn-cont"><button class="btn back" (click)="hideColors()">Back</button></div>
+    </div>
+    <div class="rule-section">
+      <div class="pat-num">
+        <label>Block Pat Let</label>
+        <input type="text" [value]="curBlock.blockPatLet" (change)="onChangeBlockPatLet($event)" />
+      </div>
+      <div class="len">
+        <label>Height</label>
+        <input type="number" [value]="curBlock.height" (change)="onChangeBlockHeight($event)"/>
+      </div>
+      <div class="bright">
+          <label>Brightness</label>
+          <input type="number" [value]="curBlock.brightness" (change)="onChangeBrightness($event)"/>
+      </div>
+      <div class="remove">
+          <button class="btn del" (click)="removeBlock()">Remove</button>
       </div>
     </div>
-    <div class="right">
-      Right Side
-      {{justSent}}
-      <!-- {{curCloud.cloudID}}
-      {{curCloud.numPixels}}
-      {{curCloud.curBrightness}}
-      {{curCloud.isActive}} -->
-    </div>
+    <app-state-circle (onPixelSelect)="onPixelSelect($event)" [colors]="colors"></app-state-circle>
   </div>
-  <color-sketch  (onChangeComplete)="changeComplete($event)"></color-sketch>
-  <div class="state" *ngIf="curBlock">
-    <app-state-circle [items]="curBlock.pixels"></app-state-circle>
+  <div class="bottom">
+      <color-sketch (onChangeComplete)="onColorChange($event)"></color-sketch>
   </div>
 </div>
+
+      
+      
+
+
+<!-- <color-sketch
+  color="#fff"
+  (onChangeComplete)="handleChangeComplete($event)"
+></color-sketch> -->
+

@@ -2,9 +2,17 @@
   "compileOnSave": false,
   "compilerOptions": {
     "moduleResolution": "node",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@app/*": ["app/*"]
+      "@app/*": [
+        "app/*"
+      ],
+      "ars-components": [
+        "dist/ars-components"
+      ],
+      "ars-components/*": [
+        "dist/ars-components/*"
+      ]
     },
     "importHelpers": true,
     "outDir": "./dist/out-tsc",

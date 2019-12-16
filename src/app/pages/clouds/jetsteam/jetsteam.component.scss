@@ -1,0 +1,15 @@
+.jetstream-cont {
+  height: 100%;
+  border-right: 1px solid black;
+
+  .jetstream {
+    background: white;
+
+    .blocky {
+      background: pink;
+      height: 60px;
+      margin: 2px;
+      border-radius: 5px;
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { PatternsService } from '../../services/patterns.service';
 
  
 @Component({ 
-  selector: 'app-home-power',
+  selector: '[app-home-power]',
   templateUrl: './home-power.component.html',
   styleUrls: ['./home-power.component.scss']
 })
@@ -35,7 +35,7 @@ export class HomePowerComponent implements OnInit {
   }
 
   onPress(event) {
-    console.log("held")
+    // console.log("held")
     this.scannerService.setShowSettingsTrue();
     this.router.navigateByUrl('/home/scanner', { queryParams: { 'isShort': 'false' }} )
     // this.isWindowOpen = true;
@@ -51,7 +51,62 @@ export class HomePowerComponent implements OnInit {
   }
 
   getPowerWidth() {
-    return "50%";
+    // console.log(window.innerWidth);
+    if(window.innerWidth > 360) {
+      return "25%";
+    }
+    else {
+      return "47%";
+    }
+  }
+
+  getOneBottom() {
+    if(window.innerWidth < 400) {
+      return "56px";
+    }
+    else {
+      return "280px";
+    }
+  }
+  getOneLeft() {
+    if(window.innerWidth < 400) {
+      return "90px";
+    }
+    else {
+      return "150px";
+    }
+  }
+  getTwoBottom() {
+    if(window.innerWidth < 400) {
+      return "71px";
+    }
+    else {
+      return "150px";
+    }
+  }
+  getTwoLeft() {
+    if(window.innerWidth < 400) {
+      return "118px";
+    }
+    else {
+      return "150px";
+    }
+  }
+  getThreeBottom() {
+    if(window.innerWidth < 400) {
+      return "49px";
+    }
+    else {
+      return "150px";
+    }
+  }
+  getThreeLeft() {
+    if(window.innerWidth < 400) {
+      return "137px";
+    }
+    else {
+      return "150px";
+    }
   }
 
 }

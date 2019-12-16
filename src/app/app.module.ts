@@ -7,6 +7,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { IonicStorageModule } from '@ionic/storage';
 // import { CustomReuseStrategy } from './home/route-reuse-strategy';
+import { MatIconModule } from '@angular/material';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular'; 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -27,26 +28,28 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 
+
+
 registerLocaleData(en);
 // import { AlertController } from 'ionic-angular';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule
+    , AppRoutingModule
     , AngularFirestoreModule
     , AngularFireStorageModule
     , AngularFireModule.initializeApp(environment.firebase)
+    , BrowserAnimationsModule
     , DragDropModule
+    , FormsModule
     , IonicModule.forRoot()
     , IonicStorageModule.forRoot()
-    , AppRoutingModule
-    , BrowserAnimationsModule
-    , FormsModule
     , HttpClientModule
+    , MatIconModule
     , ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

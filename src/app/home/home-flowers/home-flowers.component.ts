@@ -23,7 +23,7 @@ interface Flower {
 }
 
 @Component({
-  selector: 'app-home-flowers',
+  selector: '[app-home-flowers]',
   templateUrl: './home-flowers.component.html',
   styleUrls: ['./home-flowers.component.scss'],
   animations: [ grow, growSlowly ]
@@ -76,7 +76,7 @@ export class HomeFlowersComponent implements OnInit, AfterViewInit {
     this.ngZone.run(() => {
       let obby$ = of([1,2,3,4,5]);
       obby$.subscribe(x => {
-        console.log('obby', x)
+        // console.log('obby', x)
       })
       // this.trees.push(firstTree);
 

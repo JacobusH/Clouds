@@ -1,36 +1,35 @@
 <div class="whole-screen">
-  <!-- <app-patterns></app-patterns> -->
-  <!-- <app-drag-box></app-drag-box> -->
+  <div @fadeInFadeOut class="colors-cont" *ngIf="isColorsVisible">
+    <app-custom-patterns></app-custom-patterns>
+  </div>
   <div class="top">
-    <div class='cloud-sel' *ngFor="let cloud of clouds; let i = index">
-      <img *ngIf="selCloudIdx != i" src="assets/cloud.svg" (tap)="setSelCloud(i)" /> 
-      <img *ngIf="selCloudIdx == i" src="assets/cloud-sel.svg" (tap)="setSelCloud(i)" /> 
+    <input class="interval-timer" type="text" [value]="intervalTimer" (change)="setIntervalTimer($event)" />
+    <div class="cloud-row">
+      <div class='cloud-sel' *ngFor="let cloud of clouds; let i = index">
+        <img *ngIf="selCloudIdx != i" src="assets/cloud.svg" (tap)="setSelCloud(i)" /> 
+        <img *ngIf="selCloudIdx == i" src="assets/cloud-sel.svg" (tap)="setSelCloud(i)" />  
+      </div>
     </div>
     <button class="add-new-cloud" (click)="addCloud()">+</button>
   </div>
-  <perfect-scrollbar class="middle" [config]="config">
-    <div class="middle-inner">
-      <div *ngFor="let cloud of clouds; let i = index" (cdkDropListDropped)="drop($event)" cdkDropList>
-        <div class="block" *ngFor="let art of artists" [dragSnapGrid]="{x: 0, y: 20}" 
-          (dragEnd)="dEnd($event)" mwlDraggable cdkDrag>
-        {{art}}
+  <div class="middle">
+    <div class="middle-inner" cdkDropListGroup>
+      <div class="tick-marks">
+        <div class="tick" *ngFor="let tick of ticks">
+          -
         </div>
       </div>
-    </div>
-  </perfect-scrollbar >
-  <div class="bottom">
-    <div class="home">
-      <button class="btn-cloud">Go home</button>
-    </div>
-    <div class="func">
-      <button class="btn-cloud">Add Func</button>
-    </div>
-    <div class="block">
-      <button class="btn-cloud">Add Func</button>
+      <div class="lanes" *ngFor="let cloud of clouds; let i = index">
+        <app-jetsteam [cloudIdx]="i" [cloudID]="cloud.cloudID" [cloud]="cloud"></app-jetsteam>
+      </div>
     </div>
   </div>
-  <!-- <app-custom-patterns [curCloud]="selCloud"></app-custom-patterns> -->
+  <div class="bottom">
+    <button class="btn-cloud" (click)="addBlock()">Add Block</button>
+    <button class="btn-cloud" (click)="addFunc()">Add Func</button>
+  </div>
 </div>
+
 
 
 

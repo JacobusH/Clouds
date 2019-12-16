@@ -1,11 +1,23 @@
-<svg id='menuWheel' 
+<div class="cont">
+  <svg id='menuWheel' [attr.height]='svgH'>
+    <circle class='menu-item' 
+      *ngFor="let color of colors; let i = index"
+      [attr.r]='itemRadius' 
+      [attr.cx]='determineItemCX(i)' 
+      [attr.cy]='determineItemCY(i)'
+      [attr.fill]='color'
+      (click)="setPixel(i)">
+    </circle>
+    <circle id='menuCenter' r='15' fill="red" [attr.cx]='menuRadius + itemRadius + driftFac' [attr.cy]='menuRadius + itemRadius'
+    (click)="back()">
+    </circle>
+  </svg>
+</div>
+
+<!-- <svg id='menuWheel' 
   [attr.width]='menuRadius * 2'
-  [attr.heightZ]='menuRadius * 2'>
-  <circle class='menu-item' 
-    [attr.r]='itemRadius' 
-    [attr.cx]='determineItemCX(i)' 
-    [attr.cy]='determineItemCY(i)'
-    *ngFor="let item of items; let i = index">
-  </circle>
-  <circle id='menuCenter' r='5' fill="red" [attr.cx]='menuRadius + itemRadius' [attr.cy]='menuRadius + itemRadius'></circle>
-</svg>
+  [attr.height]='menuRadius * 2'> -->
+
+  <!-- <svg id='menuWheel' 
+    [attr.width]='"100%"'
+    [attr.height]='"70vh"'> -->

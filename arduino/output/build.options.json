@@ -1,11 +1,11 @@
 {
-  "additionalFiles": "/cz_blue.h,/d_neoPatterns.h,/e_commands.h,/f_helpers.h,/z_main.h",
+  "additionalFiles": "",
   "builtInLibrariesFolders": "",
-  "customBuildProperties": "build.path=/Tome/Projects/clouds/arduino/output,build.warn_data_percentage=75,runtime.tools.nrfjprog.path=/home/jacobus/.arduino15/packages/adafruit/tools/nrfjprog/9.4.0,runtime.tools.nrfjprog-9.4.0.path=/home/jacobus/.arduino15/packages/adafruit/tools/nrfjprog/9.4.0,runtime.tools.gcc-arm-none-eabi.path=/home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4,runtime.tools.gcc-arm-none-eabi-5_2-2015q4.path=/home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4",
+  "customBuildProperties": "build.path=/InnerTome/Projects/clouds/arduino/output,build.warn_data_percentage=75,runtime.tools.gcc-arm-none-eabi.path=/home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4,runtime.tools.gcc-arm-none-eabi-5_2-2015q4.path=/home/jacobus/.arduino15/packages/adafruit/tools/gcc-arm-none-eabi/5_2-2015q4,runtime.tools.nrfjprog.path=/home/jacobus/.arduino15/packages/adafruit/tools/nrfjprog/9.4.0,runtime.tools.nrfjprog-9.4.0.path=/home/jacobus/.arduino15/packages/adafruit/tools/nrfjprog/9.4.0",
   "fqbn": "adafruit:nrf52:feather52832:softdevice=s132v6,debug=l1",
   "hardwareFolders": "/usr/share/arduino/hardware,/home/jacobus/.arduino15/packages",
-  "otherLibrariesFolders": "/home/jacobus/Arduino/libraries",
-  "runtime.ide.version": "10808",
-  "sketchLocation": "/Tome/Projects/clouds/arduino/clouds_new/clouds_new.ino",
+  "otherLibrariesFolders": "/home/jacobus/arduino/libraries",
+  "runtime.ide.version": "10809",
+  "sketchLocation": "/InnerTome/Projects/clouds/arduino/clouds_final/clouds_final.ino",
   "toolsFolders": "/usr/share/arduino/tools-builder,/home/jacobus/.arduino15/packages"
 }

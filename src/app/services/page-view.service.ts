@@ -8,6 +8,9 @@ export class PageViewService {
   public bhSub = new BehaviorSubject<boolean>(false);
   isVisible$ = this.bhSub.asObservable();
 
+  public bhSub2 = new BehaviorSubject<boolean>(false);
+  isColorsVisible$ = this.bhSub2.asObservable();
+
   constructor() { 
 
   }
@@ -19,6 +22,16 @@ export class PageViewService {
 
   setVisibleTrue(){
     this.bhSub.next(true);
+    return true;
+  }
+
+  setColorsVisibleFalse(){
+    this.bhSub2.next(false);
+    return false;
+  }
+
+  setColorsVisibleTrue(){
+    this.bhSub2.next(true);
     return true;
   }
   

@@ -58,11 +58,3 @@ class NeoPatterns : public Adafruit_NeoPixel
 };
 
 #endif d_neoPatterns
-
-
-
-
-
-
-
-

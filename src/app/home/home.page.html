@@ -6,15 +6,18 @@
     </main>
   </div>
   <div class="home-panorama">
-    <app-home-flowers style="width:100%; height: 100%;"></app-home-flowers>
+    <!-- {{displayMessage}} -->
+    <div app-home-flowers></div>
     <div class="ground">
-        <app-home-house></app-home-house>
-        <app-home-power></app-home-power>
-        <app-home-mountains></app-home-mountains>
+      <div app-home-mountains></div>
+      <div app-home-house></div>
+      <div app-home-power></div>
+      <!-- <button class="tmp-btn" (tap)="scan(true)">{{isConnected}}</button>
+      <button class="btn-reset" (tap)="resetColors()">Resset</button> -->
     </div>
     <div class="sky">
-      <app-home-clouds></app-home-clouds>
-      <app-home-sun-moon class="selectable-elem" (brightness)="changeBrightness($event)"></app-home-sun-moon>
+      <div app-home-clouds></div>
+      <div app-home-sun-moon class="selectable-elem" (brightness)="changeBrightness($event)"></div>
     </div>
   </div>
 </ion-content>

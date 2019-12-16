@@ -1,35 +1,42 @@
-.patt-cont {
+.bottom {
+  display: flex;
+  justify-content: center;
 
-  .funcs {
-    // border: 1px solid pink;
-    // border-radius: 5px;
-    // background: white;
-  
-    display:flex;
-    flex-flow: row wrap;
-  
-    .left {
-      display: flex;
-      flex-flow: column nowrap;
-      flex: 1;
-      width: 49%;
-      border: 1px solid pink;
-  
-      .building-block {
-        border: 2px solid blue;
-      }
-    }
-    .right {
-      flex: 1;
-      width: 49%;
-      border: 1px solid pink;
-    }
+  color-sketch {
+    width: 80%;
   }
-
 }
 
-button {
-  margin: 8px;
-  padding: 8px; 
-  border: 2px solid purple;
+.info-section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+
+  > div {
+    width: 50%;
+  }
+  .btn-cont {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    button {
+      border-radius: 5px;
+    }
+  }
+}
+
+.rule-section {
+  display: flex;
+  flex-flow: row wrap;
+
+  > div {
+    width: 25%; 
+  }
+  input {
+    width: 50%;
+  }
+  button {
+    margin-top: 20px;
+  }
 }

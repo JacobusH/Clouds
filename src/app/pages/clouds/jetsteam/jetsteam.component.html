@@ -1,0 +1,7 @@
+<div class="jetstream-cont" [cdkDropListData]="{'blocks': blocks, 'cloudID': cloudID}" (cdkDropListDropped)="drop($event)" cdkDropList>
+  <!-- <div class="jetstream" *ngFor="let block of blocks" [dragSnapGrid]="{x: 0, y: 10}" [dragAxis]="{x: false, y: true}" 
+  (dragEnd)="dEnd($event)" mwlDraggable cdkDrag> -->
+  <div class="jetstream" *ngFor="let block of blocks" cdkDrag>
+    <app-drag-box [patBlock]="block" [cloud]="cloud"></app-drag-box>
+  </div>
+</div>

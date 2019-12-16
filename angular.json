@@ -41,7 +41,8 @@
               }
             ],
             "scripts": [
-              "node_modules/gsap/src/uncompressed/TweenMax.js"
+              "node_modules/gsap/src/uncompressed/TweenMax.js",
+              "./node_modules/gsap/umd/TimelineMax.js"
             ]
           },
           "configurations": {
@@ -96,8 +97,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-            ],
+            "styles": [],
             "scripts": [
               "node_modules/gsap/src/uncompressed/TweenMax.js"
             ],
@@ -169,6 +169,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ars-components": {
+      "root": "projects/ars-components",
+      "sourceRoot": "projects/ars-components/src",
+      "projectType": "library",
+      "prefix": "ars",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ars-components/tsconfig.lib.json",
+            "project": "projects/ars-components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ars-components/src/test.ts",
+            "tsConfig": "projects/ars-components/tsconfig.spec.json",
+            "karmaConfig": "projects/ars-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ars-components/tsconfig.lib.json",
+              "projects/ars-components/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

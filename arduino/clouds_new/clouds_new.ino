@@ -1,11 +1,8 @@
 /*********************************************************************
  This is the controller for Jeanne's Clouds!
-
  It works in conjunction with her personal Android App so she can set
  colors and patterns on her clouds in any way she wants. 
-
  Love you Jeanne!  
-
  .;;;, .;;;,                   .;;;, .;;;,
        .;;;,;;;;;,;;;;;,.;;;,       .;;;.,;;;;;,;;;;;,;;;.
       ;;;;oOOoOOoOOoOOoOOo;;;. .,. .;;;oOOoOOoOOoOOoOOo;;;;
@@ -89,7 +86,8 @@ void setup() {
     NeoPatterns& tmp = Clouds.at(i);
     tmp.begin();
     tmp.setBrightness(120);
-    tmp.RainbowCycle(5);
+    // tmp.RainbowCycle(5);
+    tmp.TheaterChase(tmp.Wheel(random(255)), tmp.Wheel(random(255)), 50);
     tmp.Color1 = tmp.Color1;
   }
 
@@ -163,11 +161,16 @@ void loop() {
 
   // Update cycle
   for(int i = 0; i < Clouds.size(); i++) {
+    if(loopTimer % 2000000 == 0) {
+      Serial.println("ActPat");
+      Serial.println(i);
+      Serial.println(Clouds[i].ActivePattern);
+    }
     Clouds[i].Update();
   }
 
   if ( Bluefruit.connected() ) {
-    if(loopTimer % 20000 == 0) {
+    if(loopTimer % 200000 == 0) {
       // Serial.println("----- In BLE Cycle -----");
       // Serial.println(Clouds.size());
     }

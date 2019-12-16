@@ -390,16 +390,19 @@ void setup()
 //  Ring2.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 300);
 //  Ring3.TheaterChase(Ring1.Color(0,255,58), Ring1.Color(23,0,50), 300);
 
-//  Ring2.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
+ Ring1.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
+ Ring2.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
+ Ring3.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
+ Ring4.TheaterChase(Ring1.Color(0,255,0), Ring1.Color(0,23,50), 100);
 
-  Ring1.RainbowCycle(5);
-  Ring1.Color1 = Ring1.Color1;
-  Ring2.RainbowCycle(10);
-  Ring2.Color1 = Ring2.Color1;
-  Ring3.RainbowCycle(15);
-  Ring3.Color1 = Ring3.Color1;
-  Ring4.RainbowCycle(15);
-  Ring4.Color1 = Ring4.Color1;
+  // Ring1.RainbowCycle(5);
+  // Ring1.Color1 = Ring1.Color1;
+  // Ring2.RainbowCycle(10);
+  // Ring2.Color1 = Ring2.Color1;
+  // Ring3.RainbowCycle(15);
+  // Ring3.Color1 = Ring3.Color1;
+  // Ring4.RainbowCycle(15);
+  // Ring4.Color1 = Ring4.Color1;
 
   // Init Bluefruit
   Bluefruit.begin();
@@ -492,21 +495,25 @@ void loop()
             Ring1.Interval = interval;
             Ring1.TotalSteps = 255;
             Ring1.Color1 = Ring1.Wheel(random(255));
+            Ring1.setBrightness(120);
           }
           else if(cloudNum == 2) {
             Ring2.ActivePattern = RAINBOW_CYCLE;
             Ring2.Interval = interval;
             Ring2.TotalSteps = 255;
+            Ring2.setBrightness(120);
           }
           else if(cloudNum == 3) {
             Ring3.ActivePattern = RAINBOW_CYCLE;
             Ring3.Interval = interval;
             Ring3.TotalSteps = 255;
+            Ring3.setBrightness(120);
           }
           else if(cloudNum == 4) {
             Ring4.ActivePattern = RAINBOW_CYCLE;
             Ring4.Interval = interval;
             Ring4.TotalSteps = 255;
+            Ring4.setBrightness(120);
           }
           break;
         }
@@ -657,25 +664,43 @@ void loop()
           Ring4.Color1 = Ring4.Wheel(random(255));
         }
         case 'Z': { // Turn Off
-          Ring1.ActivePattern = COLOR_WIPE;
-          Ring1.TotalSteps = Ring1.numPixels();
-          Ring1.Interval = 10;
-          Ring1.Color1 = Ring1.Wheel(0);
+          int cloudNum = bleuart.read();
 
-          Ring2.ActivePattern = COLOR_WIPE;
-          Ring2.TotalSteps = Ring2.numPixels();
-          Ring2.Interval = 10;
-          Ring2.Color1 = Ring2.Wheel(0);
+          Serial.println("----- In Turn Off -----");
+          Serial.println(command);
+          Serial.println(cloudNum);
 
-          Ring3.ActivePattern = COLOR_WIPE;
-          Ring3.TotalSteps = Ring3.numPixels();
-          Ring3.Interval = 10;
-          Ring3.Color1 = Ring3.Wheel(0);
+          if(cloudNum == 1) {
+            Ring1.ActivePattern = COLOR_WIPE;
+            Ring1.TotalSteps = Ring1.numPixels();
+            Ring1.Interval = 100;
+            Ring1.Color1 = Ring1.Wheel(0);
+            Ring1.setBrightness(0);
+          }
+          if(cloudNum == 2) {
+            Ring2.ActivePattern = COLOR_WIPE;
+            Ring2.TotalSteps = Ring2.numPixels();
+            Ring2.Interval = 100;
+            Ring2.Color1 = Ring2.Wheel(0);
+            Ring2.setBrightness(0);
+          }
+          if(cloudNum == 3) {
+            Ring3.ActivePattern = COLOR_WIPE;
+            Ring3.TotalSteps = Ring3.numPixels();
+            Ring3.Interval = 100;
+            Ring3.Color1 = Ring3.Wheel(0);
+            // Ring3.setBrightness(0);
+          }
+          if(cloudNum == 4) {
+            Ring4.ActivePattern = COLOR_WIPE;
+            Ring4.TotalSteps = Ring4.numPixels();
+            Ring4.Interval = 100;
+            Ring4.Color1 = Ring4.Wheel(0);
+            Ring4.setBrightness(0);
+          }
+
           
-          Ring4.ActivePattern = COLOR_WIPE;
-          Ring4.TotalSteps = Ring4.numPixels();
-          Ring4.Interval = 10;
-          Ring4.Color1 = Ring4.Wheel(0);
+
         }
       }
       
