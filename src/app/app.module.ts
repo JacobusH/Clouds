@@ -47,7 +47,10 @@ registerLocaleData(en);
     , DragDropModule
     , FormsModule
     , IonicModule.forRoot()
-    , IonicStorageModule.forRoot()
+    , IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['sqlite', 'indexeddb', 'websql', 'localstorage']
+    })
     , HttpClientModule
     , MatIconModule
     , ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

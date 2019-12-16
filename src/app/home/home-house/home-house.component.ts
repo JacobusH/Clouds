@@ -21,7 +21,7 @@ export class HomeHouseComponent implements OnInit {
     this.innerWidth = window.innerWidth;
     this.pageViewService.isVisible$.subscribe(x => {
       this.isWindowOpen = x;
-      console.log('home', x)
+      // console.log('home', x)
     })
   }
 

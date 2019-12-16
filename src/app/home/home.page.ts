@@ -72,7 +72,7 @@ export class HomePage implements OnInit {
       this.isWindowOpen = x;
     })
 
-    this.patternService.beginColor();
+    // this.patternService.beginColor();
   } 
 
   prepareRoute(outlet: RouterOutlet) {

@@ -400,7 +400,7 @@ void Ring4Complete();
 NeoPatterns Ring1(24, 16, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring1Complete);
 NeoPatterns Ring2(24, 30, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring2Complete);
 NeoPatterns Ring3(24, 15, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring3Complete);
-NeoPatterns Ring4(24, 27, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring4Complete);
+NeoPatterns Ring4(24, 7, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /* 0x52*/ + 0x0000 /* 800 KHz datastream*/, &Ring4Complete);
 
 
 // Initialize everything and prepare to start
@@ -547,7 +547,6 @@ void loop()
             Ring1.ActivePattern = RAINBOW_CYCLE;
             Ring1.Interval = interval;
             Ring1.TotalSteps = 255;
-            Ring1.Color1 = Ring1.Wheel(random(255));
             Ring1.setBrightness(120);
           }
           else if(cloudNum == 2) {
@@ -588,21 +587,25 @@ void loop()
             Ring1.ActivePattern = THEATER_CHASE;
             Ring1.Color1 = Ring1.Wheel(random(255));
             Ring1.TheaterChase(Ring1.Wheel(random(255)), Ring1.Wheel(random(255)), interval);
+            Ring1.setBrightness(120);
           }
           else if(cloudNum == 2) {
             Ring2.ActivePattern = THEATER_CHASE;
             Ring2.Color1 = Ring2.Wheel(random(255));
             Ring2.TheaterChase(Ring2.Wheel(random(255)), Ring2.Wheel(random(255)), interval);
+            Ring2.setBrightness(120);
           }
           else if(cloudNum == 3) {
             Ring3.ActivePattern = THEATER_CHASE;
             Ring3.Color1 = Ring3.Wheel(random(255));
             Ring3.TheaterChase(Ring3.Wheel(random(255)), Ring3.Wheel(random(255)), interval);
+            Ring3.setBrightness(120);
           }
           else if(cloudNum == 4) {
             Ring4.ActivePattern = THEATER_CHASE;
             Ring4.Color1 = Ring4.Wheel(random(255));
             Ring4.TheaterChase(Ring4.Wheel(random(255)), Ring4.Wheel(random(255)), interval);
+            Ring4.setBrightness(120);
           }
           break;
         }
@@ -742,7 +745,7 @@ void loop()
             Ring3.TotalSteps = Ring3.numPixels();
             Ring3.Interval = 100;
             Ring3.Color1 = Ring3.Wheel(0);
-            // Ring3.setBrightness(0);
+            Ring3.setBrightness(0);
           }
           if(cloudNum == 4) {
             Ring4.ActivePattern = COLOR_WIPE;
@@ -872,7 +875,7 @@ void Ring4Complete()
  * COMMAND FUNCTIONS
 
 ******************/
-# 820 "/InnerTome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
+# 823 "/InnerTome/Projects/clouds/arduino/clouds_final/clouds_final.ino"
 void sendResponse(char const *response) {
     Serial.printf("Send Response: %s\n", response);
     bleuart.write(response, strlen(response)*sizeof(char));

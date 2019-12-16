@@ -80,14 +80,18 @@ export class PatternsComponent implements OnInit {
     });
   }
 
-  onChangeBlockHeight(ev: any) {
-    let newBlockHeight = ev.target.value;
-    this.curBlock.height = newBlockHeight;
-    this.storageService.changeBlockHeight(this.curBlock.blockID, newBlockHeight);
+  // onChangeBlockHeight(ev: any) {
+  //   let newBlockHeight = ev.target.value as number;
+  //   this.curBlock.height = newBlockHeight;
+  //   this.storageService.changeBlockHeight(this.curBlock.blockID, newBlockHeight);
+  // }
+
+  onChangeBlockHeight() {
+    this.storageService.changeBlockHeight(this.curBlock.blockID, this.curBlock.height);
   }
 
   onChangeBrightness(ev: any) {
-    let newBrightness = ev.target.value;
+    let newBrightness = ev.target.value as number;
     this.curBlock.brightness = newBrightness;
     this.storageService.changeBlockHeight(this.curBlock.blockID, newBrightness);
   }

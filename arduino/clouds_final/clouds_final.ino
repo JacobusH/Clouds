@@ -356,7 +356,7 @@ void Ring4Complete();
 NeoPatterns Ring1(24, 16, NEO_GRB + NEO_KHZ800, &Ring1Complete);
 NeoPatterns Ring2(24, 30, NEO_GRB + NEO_KHZ800, &Ring2Complete);
 NeoPatterns Ring3(24, 15, NEO_GRB + NEO_KHZ800, &Ring3Complete);
-NeoPatterns Ring4(24, 27, NEO_GRB + NEO_KHZ800, &Ring4Complete);
+NeoPatterns Ring4(24, 7, NEO_GRB + NEO_KHZ800, &Ring4Complete);
 
 
 // Initialize everything and prepare to start
@@ -494,7 +494,6 @@ void loop()
             Ring1.ActivePattern = RAINBOW_CYCLE;
             Ring1.Interval = interval;
             Ring1.TotalSteps = 255;
-            Ring1.Color1 = Ring1.Wheel(random(255));
             Ring1.setBrightness(120);
           }
           else if(cloudNum == 2) {
@@ -535,21 +534,25 @@ void loop()
             Ring1.ActivePattern = THEATER_CHASE;
             Ring1.Color1 = Ring1.Wheel(random(255));
             Ring1.TheaterChase(Ring1.Wheel(random(255)), Ring1.Wheel(random(255)), interval);
+            Ring1.setBrightness(120);
           }
           else if(cloudNum == 2) {
             Ring2.ActivePattern = THEATER_CHASE;
             Ring2.Color1 = Ring2.Wheel(random(255));
             Ring2.TheaterChase(Ring2.Wheel(random(255)), Ring2.Wheel(random(255)), interval);
+            Ring2.setBrightness(120);
           }
           else if(cloudNum == 3) {
             Ring3.ActivePattern = THEATER_CHASE;
             Ring3.Color1 = Ring3.Wheel(random(255));
             Ring3.TheaterChase(Ring3.Wheel(random(255)), Ring3.Wheel(random(255)), interval);
+            Ring3.setBrightness(120);
           }
           else if(cloudNum == 4) {
             Ring4.ActivePattern = THEATER_CHASE;
             Ring4.Color1 = Ring4.Wheel(random(255));
             Ring4.TheaterChase(Ring4.Wheel(random(255)), Ring4.Wheel(random(255)), interval);
+            Ring4.setBrightness(120);
           }
           break;
         }
@@ -689,7 +692,7 @@ void loop()
             Ring3.TotalSteps = Ring3.numPixels();
             Ring3.Interval = 100;
             Ring3.Color1 = Ring3.Wheel(0);
-            // Ring3.setBrightness(0);
+            Ring3.setBrightness(0);
           }
           if(cloudNum == 4) {
             Ring4.ActivePattern = COLOR_WIPE;

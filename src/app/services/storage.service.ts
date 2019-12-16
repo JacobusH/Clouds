@@ -26,16 +26,21 @@ export class StorageService {
   }
 
   // CLOUDS
-  setClouds(clouds: Array<Cloud>) {
-    this.storage.set(this.CLOUDS, clouds).then(x => {
+  refreshClouds(): Promise<any> {
+    return this.getClouds();
+  }
+
+  setClouds(clouds: Array<Cloud>): Promise<void> {
+    return this.storage.set(this.CLOUDS, clouds).then(x => {
       this.clouds = clouds;
     });
   }
 
   getClouds(): Promise<any> {
-    return this.storage.get(this.CLOUDS).then(clouds => {
-      this.clouds = clouds;
-    });
+    // return this.storage.get(this.CLOUDS).then(clouds => {
+    //   this.clouds = clouds;
+    // });
+    return this.storage.get('clouds');
   }
 
   getCloudByID(id: string): Promise<any> {
@@ -46,6 +51,65 @@ export class StorageService {
         }
       });
     })
+  }
+
+  refreshCloud(cloud: Cloud) {
+    this.storage.get(this.CLOUDS).then(clouds => {
+      // clouds.forEach(el => {
+      //   if(el.cloudID == cloud.cloudID) {
+      //     el = cloud;
+      //   }
+      // })
+      let cc = clouds as Array<Cloud>;
+      for(var i = 0; i < clouds.length; i++) {
+        if(cc[i].cloudID == cloud.cloudID) {
+          cc[i] = cloud;
+        }
+      }
+      this.setClouds(cc);
+    })
+  }
+
+  calcAllBegEnd(inpCloud: Cloud = null) {
+    if(!inpCloud) { /// do for all
+      this.storage.get(this.CLOUDS).then(clouds => {
+        if(clouds) {
+          for(var i = 0; i < clouds.length; i++) {
+            let curCloud = clouds[i] as Cloud;
+            for(var j = 0; j < clouds[i].buildingBlocks.length; j++) {
+              let curBlock = curCloud.buildingBlocks[j] as PatternBlock;
+              let beg = 0;
+              if(j == 0) {
+                // set nothing
+              }
+              else {
+                beg = curCloud.buildingBlocks[j-1].end;
+              }
+              let end = curBlock.height + beg;
+              curBlock.beginning = beg; 
+              curBlock.end = end; 
+            }
+            this.refreshCloud(curCloud);
+          }
+        }
+      })
+    }
+    else { // do for only one
+      for(var i = 0; i < inpCloud.buildingBlocks.length; i++) {
+        let curBlock = inpCloud.buildingBlocks[i] as PatternBlock;
+        let beg = 0;
+        if(i == 0) {
+          // set nothing
+        }
+        else {
+          beg = inpCloud.buildingBlocks[i-1].end;
+        }
+        let end = curBlock.height + beg;
+        curBlock.beginning = beg; 
+        curBlock.end = end; 
+      }
+      this.refreshCloud(inpCloud);
+    }
   }
 
   // BLOCKS
@@ -79,7 +143,9 @@ export class StorageService {
         }
       })
       // this.storage.set(this.CLOUDS, clouds);
-      this.setClouds(clouds);
+      this.setClouds(clouds).then(x => {
+        this.calcAllBegEnd();
+      });
     })
   }
 

@@ -13,6 +13,8 @@ export interface PatternBlock {
   pixels: Array<string>, // arr of pixel color hex-codes in position
   coordinates: { x: number, y: number },
   height: number,
+  beginning: number,
+  end: number,
   blockPatLet: string,
   brightness: number,
   hasSent?: boolean

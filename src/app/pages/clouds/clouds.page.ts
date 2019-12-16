@@ -7,6 +7,8 @@ import { StorageService } from '../../services/storage.service';
 import { PageViewService } from '../../services/page-view.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+import { Observable } from 'rxjs';
+// import 'rxjs/add/observable/fromPromise';
 
 @Component({
   selector: 'app-clouds',
@@ -15,6 +17,7 @@ import { PerfectScrollbarConfigInterface, PerfectScrollbarComponent, PerfectScro
   animations: [ routeAnimations, fadeInFadeOut ]
 })
 export class CloudsPage implements OnInit, OnDestroy {
+  clouds$: Observable<Cloud[]>;
   clouds: Array<Cloud>;
   selCloud: Cloud; 
   selCloudIdx: number; 
@@ -30,24 +33,24 @@ export class CloudsPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.storageService.getClouds().then(clouds => {
-    //   if(clouds) {
-    //     this.clouds = clouds
-    //     this.setSelCloud(0);
-    //   } else {
-    //     this.addCloud().then(cloud => {
-    //       this.setSelCloud(0);
-    //     });
-    //   }
-    // });
-    this.clouds = this.storageService.clouds;
-    if(this.clouds) {
-      this.setSelCloud(0);
-    } else {
-      this.addCloud().then(cloud => {
+    this.storageService.getClouds().then(clouds => {
+      if(clouds) {
+        this.clouds = clouds
         this.setSelCloud(0);
-      });
-    }
+      } else {
+        this.addCloud().then(cloud => {
+          this.setSelCloud(0);
+        });
+      }
+    });
+    // this.clouds = this.storageService.clouds;
+    // if(this.clouds) {
+    //   this.setSelCloud(0);
+    // } else {
+    //   this.addCloud().then(cloud => {
+    //     this.setSelCloud(0);
+    //   });
+    // }
     this.storageService.getIntervalTimer().then(timer => {
       this.intervalTimer = timer || 10;
     })
@@ -79,18 +82,22 @@ export class CloudsPage implements OnInit, OnDestroy {
     this.storageService.setIntervalTimer(this.intervalTimer);
   }
 
-  addCloud(): Promise<Array<Cloud>> { 
+  addCloud(){ 
     if(!this.clouds) {
       return this.patService.createDefaultCloud().then(newCloud => {
-        this.clouds = [ newCloud ]
-        this.storageService.setClouds(this.clouds);
+        this.clouds = [ newCloud ];
+        this.storageService.setClouds(this.clouds).then(x => {
+          this.storageService.calcAllBegEnd();
+        });
         return this.clouds;
       })
     }
     else {
       return this.patService.createDefaultCloud().then(newCloud => {
-        this.clouds = [ ...this.clouds, newCloud ]
-        this.storageService.setClouds(this.clouds);
+        this.clouds = [ ...this.clouds, newCloud ];
+        this.storageService.setClouds(this.clouds).then(x => {
+          this.storageService.calcAllBegEnd();
+        });
         return this.clouds;
       })
     }
@@ -98,7 +105,9 @@ export class CloudsPage implements OnInit, OnDestroy {
 
   addBlock() {
       this.storageService.addBlockToCloud(this.selCloud.cloudID, this.patService.createDefaultBlock()).then(x => {
-        this.refreshClouds();
+        this.storageService.getClouds().then(clouds => {
+          this.clouds = clouds; 
+        });
       });
   }
 

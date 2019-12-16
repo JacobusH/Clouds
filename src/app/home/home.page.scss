@@ -68,8 +68,10 @@ body {
 
 .btn-reset {
   position: absolute;
-    bottom: 40px;
-    right: 40px;
+  bottom: 40px;
+  right: 150px;
+  z-index: 10001;
+  cursor: pointer;
 }
 
 //////////

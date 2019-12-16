@@ -38,9 +38,14 @@ export class JetsteamComponent implements OnInit {
       let blockToMove = event.previousContainer.data.blocks[event.previousIndex];
       this.storageService.moveBlockBetweenClouds(event.previousContainer.data.cloudID, event.container.data.cloudID, blockToMove);
       transferArrayItem(event.previousContainer.data.blocks, event.container.data.blocks, event.previousIndex, event.currentIndex);
+      this.storageService.calcAllBegEnd(event.previousContainer.data);
+      this.storageService.calcAllBegEnd(event.container.data);
     } 
     else {
-      moveItemInArray(event.container.data.blocks, event.previousIndex, event.currentIndex);
+      // moveItemInArray(event.container.data.blocks, event.previousIndex, event.currentIndex);
+      moveItemInArray(this.cloud.buildingBlocks, event.previousIndex, event.currentIndex);
+      //  this.storageService.refreshCloud(this.cloud);
+      this.storageService.calcAllBegEnd(this.cloud);
     }
   }
 

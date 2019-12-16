@@ -57,11 +57,16 @@ export class PatternsService {
   }
 
   createDefaultBlock(blockId = "", name = "New"): PatternBlock {
+    let startHeight = 100;
+    let beginning = 0;
+    let end = startHeight + beginning;
     return {
       blockID: (blockId == "" ? uuid() : blockId),
       name: name,
       coordinates: { x: 0, y: 0},
-      height: 100,
+      height: startHeight,
+      beginning: beginning,
+      end: end,
       blockPatLet: 'A',
       brightness: 125,
       pixels: Array<string>().fill('#8B008B', 0, 23),
@@ -78,6 +83,7 @@ export class PatternsService {
   beginColor() {
     this.storageService.getIntervalTimer().then(interval => {
       this.storageService.getClouds().then(c => {
+        console.log('in begin colors')
         if(c) {
 
         
@@ -86,11 +92,12 @@ export class PatternsService {
         clouds.forEach(cloud => {
           for(var i = 0; i < cloud.buildingBlocks.length; i++) { // just send first block for now
             cloud.buildingBlocks[i].hasSent = false;
-            if(cloud.buildingBlocks[i].height > maxVal) {
-              maxVal = cloud.buildingBlocks[i].height;
+            if(cloud.buildingBlocks[i].end > maxVal) {
+              maxVal = cloud.buildingBlocks[i].end;
             }
           }
         })
+        console.log('maxval', maxVal)
 
         // timer
         let loopNum = 0;
@@ -101,15 +108,19 @@ export class PatternsService {
           let curTime = val * 50;
           // console.log(curTime);
           clouds.forEach(cloud => {
-            for(var i = 0; i < cloud.buildingBlocks.length; i++) { // just send first block for now
-              if(curTime >= cloud.buildingBlocks[i].height && !cloud.buildingBlocks[i].hasSent) { // 
+            for(var i = 0; i < cloud.buildingBlocks.length; i++) { 
+              // if(curTime >= cloud.buildingBlocks[i].height && !cloud.buildingBlocks[i].hasSent) { // 
+              console.log('ouuta if')
+              if(curTime >= cloud.buildingBlocks[i].beginning && curTime <= cloud.buildingBlocks[i].end && !cloud.buildingBlocks[i].hasSent) { // 
                 cloud.buildingBlocks[i].hasSent = true;
-                this.sendPattern(cloud.cloudNum, cloud.buildingBlocks[i].blockPatLet, interval)
+                console.log(`time: ${curTime} | cloudNum ${cloud.cloudNum} | patternLet: ${cloud.buildingBlocks[i].blockPatLet}
+                  | interval: ${interval}`);
+                this.sendPattern(cloud.cloudNum+1, cloud.buildingBlocks[i].blockPatLet, interval);
               }
             }
           })
 
-          if(curTime > 20000) {
+          if(curTime > maxVal) {
             // curTime = curTime - (maxVal*loopNum);
             this.colorTimer$.unsubscribe();
             this.beginColor();
@@ -143,7 +154,7 @@ export class PatternsService {
   }
 
   sendPattern(cloudNum: number, pattern: string, interval: number) {
-    if (location.hostname != "localhost") {
+    // if (location.hostname != "localhost") {
       // console.log('patternservice', cloudNum, pattern, interval)
       let hexxy = 0x41;
       if(pattern == this.PATTERNS.rainbow) { // RAINBOW_CYCLE, A
@@ -171,7 +182,7 @@ export class PatternsService {
 
       let cmd = new Uint8Array([hexxy, cloudNum, interval]); // send cloudNum, pattHex, timingInterval
       return this.ble.write(this.deviceService.peripheral.id, this.deviceService.serviceCloud1, this.deviceService.txCloud1, cmd.buffer as ArrayBuffer);
-    }
+    // }
     
   }
 

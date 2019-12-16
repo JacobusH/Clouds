@@ -11,7 +11,8 @@
       </div>
       <div class="len">
         <label>Height</label>
-        <input type="number" [value]="curBlock.height" (change)="onChangeBlockHeight($event)"/>
+        <!-- <input type="number" [value]="curBlock.height" (change)="onChangeBlockHeight($event)"/> -->
+        <input type="number"  [(ngModel)]="curBlock.height" (change)="onChangeBlockHeight()"/>
       </div>
       <div class="bright">
           <label>Brightness</label>
